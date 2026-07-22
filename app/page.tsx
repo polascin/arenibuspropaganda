@@ -170,7 +170,7 @@ export default function Home() {
       <section id="features" className="py-20 px-4 bg-surface">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-foreground mb-12">
-            Funkcie nefrologického a dialyzačného systému Arenibus v aktuálnej verzii
+            Funkcie nefrologického a dialyzačného informačného systému Arenibus v aktuálnej verzii
             <span className="block mt-2">(MVP = Minimum Viable Product)</span>
             <span className="block mt-1 text-2xl">(Minimálny životaschopný produkt)</span>
           </h2>
