@@ -34,22 +34,31 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormStatus("submitting");
+
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const name = String(formData.get("name") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const message = String(formData.get("message") ?? "").trim();
 
-    const subject = encodeURIComponent(`Správa z webu Arenibus od ${name || "návštevníka"}`);
-    const body = encodeURIComponent(
-      `Meno: ${name || "-"}\nEmail: ${email || "-"}\n\nSpráva:\n${message || "-"}`
-    );
+    try {
+      const response = await fetch("https://formspree.io/f/mvzebqzj", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    window.location.href = `mailto:arenibus@polascin.net?subject=${subject}&body=${body}`;
-    setFormStatus("success");
-    form.reset();
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   return (
