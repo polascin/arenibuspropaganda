@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Arenibus Brand Colors */
+  --brand: #0f766e;
+  --brand-strong: #0b5f58;
+  --brand-soft: #d7ede9;
+  --brand-contrast: #ffffff;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Light Mode */
+  --background: #eef2f3;
+  --surface: #ffffff;
+  --surface-2: #f7fafa;
+  --surface-3: #eef4f4;
+  --border: #dbe4e4;
+  --border-strong: #c3d0d0;
+  --foreground: #16241f;
+  --foreground-2: #435049;
+  --muted: #6b7a74;
+
+  /* Semantic Colors */
+  --danger: #b91c1c;
+  --danger-soft: #fde4e4;
+  --warn: #b45309;
+  --warn-soft: #fdeccb;
+  --ok: #15803d;
+  --ok-soft: #d8f2e0;
+  --info: #1d4ed8;
+  --info-soft: #dbe6ff;
+  --accent: #5b21b6;
+  --accent-soft: #ede9fe;
+
+  /* Shape & Depth */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(15, 40, 35, 0.06), 0 1px 3px rgba(15, 40, 35, 0.05);
+  --shadow: 0 4px 14px rgba(15, 40, 35, 0.08);
+  --shadow-lg: 0 18px 48px rgba(15, 40, 35, 0.18);
+  --ring: 0 0 0 3px rgba(15, 118, 110, 0.28);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark Mode */
+    --background: #0b1512;
+    --surface: #10201c;
+    --surface-2: #16261f;
+    --surface-3: #1c2f28;
+    --border: #24382f;
+    --border-strong: #32493f;
+    --foreground: #e6f1ec;
+    --foreground-2: #aebeb6;
+    --muted: #7d8f87;
+
+    --danger: #f87171;
+    --danger-soft: #3a1a1a;
+    --warn: #fbbf24;
+    --warn-soft: #3a2c10;
+    --ok: #4ade80;
+    --ok-soft: #12321f;
+    --info: #93b4ff;
+    --info-soft: #16233f;
+    --accent: #c4b5fd;
+    --accent-soft: #241a3a;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.6);
+    --ring: 0 0 0 3px rgba(45, 212, 191, 0.34);
   }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-foreground: var(--foreground);
+  --color-foreground-2: var(--foreground-2);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --radius-brand: var(--radius);
+  --radius-brand-sm: var(--radius-sm);
+  --radius-brand-lg: var(--radius-lg);
+  --shadow-brand: var(--shadow);
+  --shadow-brand-sm: var(--shadow-sm);
+  --shadow-brand-lg: var(--shadow-lg);
+  --ring-brand: var(--ring);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter Variable", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand);
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--foreground);
 }

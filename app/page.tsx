@@ -1,17 +1,20 @@
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="flex flex-col min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+      <nav className="w-full bg-surface/80 backdrop-blur-sm border-b border-border sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">Arenibus</h1>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm">
+                <img src="/ArenibusLogo.png" alt="Arenibus Logo" className="w-full h-full object-cover" />
+              </div>
+              <h1 className="text-2xl font-bold text-brand-strong">Arenibus</h1>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#features" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Funkcie</a>
-              <a href="#demo" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Demo</a>
-              <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Kontakt</a>
+              <a href="#features" className="text-foreground-2 hover:text-brand transition-colors">Funkcie</a>
+              <a href="#demo" className="text-foreground-2 hover:text-brand transition-colors">Demo</a>
+              <a href="#contact" className="text-foreground-2 hover:text-brand transition-colors">Kontakt</a>
             </div>
           </div>
         </div>
@@ -20,10 +23,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
             Nefrologický Informačný Systém
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-xl md:text-2xl text-foreground-2 mb-8">
             Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -31,13 +34,13 @@ export default function Home() {
               href="https://demo.arenibus.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+              className="px-8 py-4 bg-brand text-brand-contrast rounded-lg font-semibold hover:bg-brand-strong transition-colors shadow-brand"
             >
               Skúsiť Demo Verziu
             </a>
             <a
               href="#contact"
-              className="px-8 py-4 bg-transparent border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors"
+              className="px-8 py-4 bg-transparent border-2 border-brand text-brand rounded-lg font-semibold hover:bg-brand-soft transition-colors"
             >
               Kontaktujte Nás
             </a>
@@ -46,148 +49,148 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-white dark:bg-gray-800">
+      <section id="features" className="py-20 px-4 bg-surface">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+          <h3 className="text-4xl font-bold text-center text-foreground mb-12">
             Funkcie nefrologické ambulancie (MVP)
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature Cards */}
-            <div className="bg-blue-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Správa Pacientov</h4>
-              <p className="text-gray-600 dark:text-gray-300">Registrácia, vyhľadávanie, úprava, alergie, medikácia s históriou, poučenia a informované súhlasy.</p>
+              <h4 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h4>
+              <p className="text-foreground-2">Registrácia, vyhľadávanie, úprava, alergie, medikácia s históriou, poučenia a informované súhlasy.</p>
             </div>
 
-            <div className="bg-green-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Evidencia Návštev</h4>
-              <p className="text-gray-600 dark:text-gray-300">Klinický zápis SOAP, KDIGO CGA, epikríza, dispenzarizácia, merania a vykonané výkony.</p>
+              <h4 className="text-xl font-semibold text-foreground mb-2">Evidencia Návštev</h4>
+              <p className="text-foreground-2">Klinický zápis SOAP, KDIGO CGA, epikríza, dispenzarizácia, merania a vykonané výkony.</p>
             </div>
 
-            <div className="bg-purple-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Dialyzačný Predpis</h4>
-              <p className="text-gray-600 dark:text-gray-300">Plný dialyzačný predpis podľa prevádzkových tabuliek, číselníky materiálu, mesačné kontroly.</p>
+              <h4 className="text-xl font-semibold text-foreground mb-2">Dialyzačný Predpis</h4>
+              <p className="text-foreground-2">Plný dialyzačný predpis podľa prevádzkových tabuliek, číselníky materiálu, mesačné kontroly.</p>
             </div>
 
-            <div className="bg-orange-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Objednávanie Termínov</h4>
-              <p className="text-gray-600 dark:text-gray-300">Kalendár ambulancie a dialýzy, denný harmonogram, správa termínov pacientov.</p>
+              <h4 className="text-xl font-semibold text-foreground mb-2">Objednávanie Termínov</h4>
+              <p className="text-foreground-2">Kalendár ambulancie a dialýzy, denný harmonogram, správa termínov pacientov.</p>
             </div>
 
-            <div className="bg-red-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Audit a Bezpečnosť</h4>
-              <p className="text-gray-600 dark:text-gray-300">Append-only audit log, audit čítaní pacientskych záznamov, OIDC autentifikácia.</p>
+              <h4 className="text-xl font-semibold text-foreground mb-2">Audit a Bezpečnosť</h4>
+              <p className="text-foreground-2">Append-only audit log, audit čítaní pacientskych záznamov, OIDC autentifikácia.</p>
             </div>
 
-            <div className="bg-teal-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Laboratórne Výsledky</h4>
-              <p className="text-gray-600 dark:text-gray-300">Trendová matica laboratórnych výsledkov, zápis panela odberu s referenčnými rozsahmi.</p>
+              <h4 className="text-xl font-semibold text-foreground mb-2">Laboratórne Výsledky</h4>
+              <p className="text-foreground-2">Trendová matica laboratórnych výsledkov, zápis panela odberu s referenčnými rozsahmi.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Demo Section */}
-      <section id="demo" className="py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section id="demo" className="py-20 px-4 bg-gradient-to-r from-brand-strong to-brand">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-4xl font-bold text-white mb-6">
+          <h3 className="text-4xl font-bold text-brand-contrast mb-6">
             Vyskúšajte Arenibus MVP
           </h3>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-brand-soft mb-8">
             Funkčné demo nefrologickej ambulancie s reálnou databázou. Fiktívne dáta sa každú noc obnovujú.
           </p>
           <a
             href="https://demo.arenibus.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-10 py-5 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors shadow-xl text-lg"
+            className="inline-block px-10 py-5 bg-surface text-brand rounded-lg font-semibold hover:bg-surface-2 transition-colors shadow-brand-lg text-lg"
           >
             Spustiť Demo Verziu
           </a>
-          <p className="text-blue-200 mt-4 text-sm">
+          <p className="text-brand-soft mt-4 text-sm">
             Demo verzia je k dispozícii na https://demo.arenibus.com/ (kontá: demo-lekar / demo-sestra)
           </p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-800">
+      <section id="contact" className="py-20 px-4 bg-surface">
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+          <h3 className="text-4xl font-bold text-center text-foreground mb-12">
             Kontaktujte Nás
           </h3>
-          <div className="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md">
+          <div className="bg-surface-2 p-8 rounded-lg shadow-brand border border-border">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Máte otázky?</h4>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <h4 className="text-xl font-semibold text-foreground mb-4">Máte otázky?</h4>
+                <p className="text-foreground-2 mb-6">
                   Kontaktujte nás pre viac informácií o Arenibus systéme, cenách alebo demonštrácii.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center">
-                    <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-gray-700 dark:text-gray-300">arenibus@polascin.net</span>
+                    <span className="text-foreground-2">arenibus@polascin.net</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    <span className="text-gray-700 dark:text-gray-300">+421 123 456 789</span>
+                    <span className="text-foreground-2">+421 123 456 789</span>
                   </div>
                 </div>
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Pošlite správu</h4>
+                <h4 className="text-xl font-semibold text-foreground mb-4">Pošlite správu</h4>
                 <form className="space-y-4">
                   <input
                     type="text"
                     placeholder="Vaše meno"
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   />
                   <input
                     type="email"
                     placeholder="Váš email"
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   />
                   <textarea
                     placeholder="Vaša správa"
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   ></textarea>
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                    className="w-full px-6 py-3 bg-brand text-brand-contrast rounded-lg font-semibold hover:bg-brand-strong transition-colors"
                   >
                     Odoslať Správu
                   </button>
@@ -199,12 +202,12 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-4">
+      <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-400">
+          <p className="text-foreground-2">
             © 2024 Arenibus. Všetky práva vyhradené.
           </p>
-          <p className="text-gray-500 mt-2 text-sm">
+          <p className="text-muted mt-2 text-sm">
             Nefrologický a dialyzačný informačný systém pre moderné zdravotníctvo.
           </p>
         </div>

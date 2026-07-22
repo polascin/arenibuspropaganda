@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Arenibus - Nefrologický a Dialyzačný Informačný Systém",
-  description: "Moderný informačný systém pre nefrológiu a dialýzu. Spravujte pacientov, dialyzačné výkony a liečbu efektívne s Arenibus.",
+  title: "Arenibus - Nefrologický Informačný Systém",
+  description: "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom. Spravujte pacientov, návštevy, dialyzačný predpis a laboratórne výsledky efektívne s Arenibus.",
 };
 
 export default function RootLayout({
@@ -23,10 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="sk" className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
