@@ -68,6 +68,31 @@ export const viewport: Viewport = {
   ],
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Arenibus",
+  description:
+    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
+  url: "https://arenibus.polascin.net/",
+  applicationCategory: "HealthApplication",
+  operatingSystem: "Any",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+  },
+  isAccessibleForFree: true,
+  provider: {
+    "@type": "Person",
+    name: "MUDr. Ľubomír Polaščín",
+  },
+  sameAs: [
+    "https://demo.arenibus.com/",
+    "https://x.com/polascin",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,6 +100,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk" className="h-full antialiased scroll-smooth">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

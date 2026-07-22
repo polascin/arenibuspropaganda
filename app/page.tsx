@@ -1,38 +1,58 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useEffect, useState, useSyncExternalStore } from "react";
+
+function getDarkModeSnapshot() {
+  if (typeof window === "undefined") return false;
+  const saved = localStorage.getItem("darkMode");
+  if (saved !== null) return saved === "true";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function getDarkModeServerSnapshot() {
+  return false;
+}
+
+function subscribeDarkMode(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const handler = (e: StorageEvent) => {
+    if (e.key === "darkMode") callback();
+  };
+  window.addEventListener("storage", handler);
+  return () => window.removeEventListener("storage", handler);
+}
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const darkMode = useSyncExternalStore(
+    subscribeDarkMode,
+    getDarkModeSnapshot,
+    getDarkModeServerSnapshot
+  );
 
   useEffect(() => {
-    // Check for saved preference or system preference
-    const saved = localStorage.getItem("darkMode");
-    if (saved !== null) {
-      setDarkMode(saved === "true");
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(prefersDark);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Apply dark mode to document
-    if (darkMode) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
-    // Save preference
-    localStorage.setItem("darkMode", darkMode.toString());
+    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    const newMode = !darkMode;
+    localStorage.setItem("darkMode", newMode.toString());
+    document.documentElement.setAttribute("data-theme", newMode ? "dark" : "light");
+    window.dispatchEvent(new StorageEvent("storage", { key: "darkMode" }));
   };
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [mobileMenuOpen]);
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -75,8 +95,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm">
-                <img src="/ArenibusLogo.png" alt="Arenibus Logo" className="w-full h-full object-cover" />
+              <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
+                <Image
+                  src="/ArenibusLogo.png"
+                  alt="Arenibus logo"
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                  priority
+                />
               </div>
               <p className="text-2xl font-bold text-brand-strong">Arenibus</p>
             </div>
@@ -132,13 +159,14 @@ export default function Home() {
       {/* Hero Section */}
       <section id="main-content" className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <img
+          <div className="mb-8 relative w-96 h-96 mx-auto">
+            <Image
               src="/ArenibusLogo.png"
               alt="Arenibus logo"
-              width={384}
-              height={384}
-              className="w-96 h-96 mx-auto rounded-xl shadow-brand-lg object-cover"
+              fill
+              className="rounded-xl shadow-brand-lg object-cover"
+              sizes="(max-width: 768px) 100vw, 384px"
+              priority
             />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
@@ -182,7 +210,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h4>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h3>
               <p className="text-foreground-2">Registrácia, vyhľadávanie, úprava, alergie, medikácia s históriou, poučenia a informované súhlasy.</p>
             </div>
 
@@ -192,7 +220,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">Evidencia Návštev</h4>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Evidencia Návštev</h3>
               <p className="text-foreground-2">Klinický zápis SOAP, KDIGO CGA, epikríza, dispenzarizácia, merania a vykonané výkony.</p>
             </div>
 
@@ -202,7 +230,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">Dialyzačný Predpis</h4>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Dialyzačný Predpis</h3>
               <p className="text-foreground-2">Plný dialyzačný predpis podľa prevádzkových tabuliek, číselníky materiálu, mesačné kontroly.</p>
             </div>
 
@@ -212,7 +240,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">Objednávanie Termínov</h4>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Objednávanie Termínov</h3>
               <p className="text-foreground-2">Kalendár ambulancie a dialýzy, denný harmonogram, správa termínov pacientov.</p>
             </div>
 
@@ -222,7 +250,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">Audit a Bezpečnosť</h4>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Audit a Bezpečnosť</h3>
               <p className="text-foreground-2">Append-only audit log, audit čítaní pacientskych záznamov, OIDC autentifikácia.</p>
             </div>
 
@@ -232,7 +260,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-2">Laboratórne Výsledky</h4>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Laboratórne Výsledky</h3>
               <p className="text-foreground-2">Trendová matica laboratórnych výsledkov, zápis panela odberu s referenčnými rozsahmi.</p>
             </div>
           </div>
@@ -271,7 +299,7 @@ export default function Home() {
           <div className="bg-surface-2 p-8 rounded-lg shadow-brand border border-border">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-xl font-semibold text-foreground mb-4">Máte otázky?</h4>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Máte otázky?</h3>
                 <p className="text-foreground-2 mb-6">
                   Kontaktujte nás pre viac informácií o Arenibus systéme, cenách alebo demonštrácii.
                 </p>
@@ -327,7 +355,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-foreground mb-4">Pošlite správu</h4>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Pošlite správu</h3>
                 <form onSubmit={handleContactSubmit} className="space-y-4" aria-label="Kontaktný formulár">
                   <div>
                     <label htmlFor="contact-name" className="sr-only">Vaše meno</label>
