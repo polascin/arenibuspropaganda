@@ -304,7 +304,7 @@ export default function Home() {
                     Odoslať Správu
                   </button>
                   {formStatus === "success" && (
-                    <p className="text-ok font-medium text-center">Otvára sa váš e-mail klient. Ak sa neotvorí, napíšte nám priamo na arenibus@polascin.net.</p>
+                    <p className="text-ok font-medium text-center">Správa bola úspešne odoslaná. Čoskoro sa vám ozveme.</p>
                   )}
                 </form>
               </div>
