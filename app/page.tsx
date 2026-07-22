@@ -21,10 +21,10 @@ export default function Home() {
       <section className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Nefrologický a Dialyzačný Informačný Systém
+            Nefrologický Informačný Systém
           </h2>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-            Moderný riešenie pre správu pacientov, dialyzačných výkonov a komplexnej liečby v nefrológii
+            Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -49,7 +49,7 @@ export default function Home() {
       <section id="features" className="py-20 px-4 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            Komplexné Funkcie pre Nefrológiu
+            Funkcie nefrologické ambulancie (MVP)
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature Cards */}
@@ -60,7 +60,7 @@ export default function Home() {
                 </svg>
               </div>
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Správa Pacientov</h4>
-              <p className="text-gray-600 dark:text-gray-300">Komplexný záznam pacientov s anamnézou, laboratórnymi výsledkami a liečebným plánom.</p>
+              <p className="text-gray-600 dark:text-gray-300">Registrácia, vyhľadávanie, úprava, alergie, medikácia s históriou, poučenia a informované súhlasy.</p>
             </div>
 
             <div className="bg-green-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -69,8 +69,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Dialyzačné Výkony</h4>
-              <p className="text-gray-600 dark:text-gray-300">Plánovanie a evidencia dialyzačných výkonov s automatickým výpočtom parametrov.</p>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Evidencia Návštev</h4>
+              <p className="text-gray-600 dark:text-gray-300">Klinický zápis SOAP, KDIGO CGA, epikríza, dispenzarizácia, merania a vykonané výkony.</p>
             </div>
 
             <div className="bg-purple-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -79,8 +79,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Štatistiky a Reporty</h4>
-              <p className="text-gray-600 dark:text-gray-300">Pokročilé analytické nástroje a generovanie reportov pre klinické rozhodovanie.</p>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Dialyzačný Predpis</h4>
+              <p className="text-gray-600 dark:text-gray-300">Plný dialyzačný predpis podľa prevádzkových tabuliek, číselníky materiálu, mesačné kontroly.</p>
             </div>
 
             <div className="bg-orange-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -89,8 +89,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Lekárenský Systém</h4>
-              <p className="text-gray-600 dark:text-gray-300">Integrácia s lekárňou, evidencia liekov a kontrola interakcií.</p>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Objednávanie Termínov</h4>
+              <p className="text-gray-600 dark:text-gray-300">Kalendár ambulancie a dialýzy, denný harmonogram, správa termínov pacientov.</p>
             </div>
 
             <div className="bg-red-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -99,8 +99,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Bezpečnosť Dát</h4>
-              <p className="text-gray-600 dark:text-gray-300">Šifrovanie dát, zálohovanie a splnenie GDPR požiadaviek.</p>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Audit a Bezpečnosť</h4>
+              <p className="text-gray-600 dark:text-gray-300">Append-only audit log, audit čítaní pacientskych záznamov, OIDC autentifikácia.</p>
             </div>
 
             <div className="bg-teal-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -109,8 +109,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Rýchla Implementácia</h4>
-              <p className="text-gray-600 dark:text-gray-300">Jednoduchá inštalácia a konfigurácia s kompletnou podporou.</p>
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Laboratórne Výsledky</h4>
+              <p className="text-gray-600 dark:text-gray-300">Trendová matica laboratórnych výsledkov, zápis panela odberu s referenčnými rozsahmi.</p>
             </div>
           </div>
         </div>
@@ -120,10 +120,10 @@ export default function Home() {
       <section id="demo" className="py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-4xl font-bold text-white mb-6">
-            Vyskúšajte Arenibus v Praxi
+            Vyskúšajte Arenibus MVP
           </h3>
           <p className="text-xl text-blue-100 mb-8">
-            Otestujte všetky funkcie nášho systému v interaktívnej demo verzii. Žiadna inštalácia, žiadne záväzky.
+            Funkčné demo nefrologickej ambulancie s reálnou databázou. Fiktívne dáta sa každú noc obnovujú.
           </p>
           <a
             href="https://demo.arenibus.com/"
@@ -134,7 +134,7 @@ export default function Home() {
             Spustiť Demo Verziu
           </a>
           <p className="text-blue-200 mt-4 text-sm">
-            Demo verzia je k dispozícii na https://demo.arenibus.com/
+            Demo verzia je k dispozícii na https://demo.arenibus.com/ (kontá: demo-lekar / demo-sestra)
           </p>
         </div>
       </section>
