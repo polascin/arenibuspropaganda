@@ -283,6 +283,12 @@ export default function Home() {
                     </svg>
                     <a href="https://wa.me/421917370474" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">WhatsApp Business +421917370474</a>
                   </div>
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2zM9 10a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2v-4a2 2 0 00-2-2H9z" />
+                    </svg>
+                    <a href="https://discord.gg/7hxgQQba" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Discord server</a>
+                  </div>
                 </div>
               </div>
               <div>
