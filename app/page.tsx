@@ -155,7 +155,8 @@ export default function Home() {
       <section id="features" className="py-20 px-4 bg-surface">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-4xl font-bold text-center text-foreground mb-12">
-            Funkcie informačného systému Arenibus v aktuálnej verzii (MVP = Minimal Viable Product)
+            Funkcie nefrologického a dialyzačného systému Arenibus v aktuálnej verzii
+            <span className="block mt-2">(MVP = Minimal Viable Product)</span>
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature Cards */}
