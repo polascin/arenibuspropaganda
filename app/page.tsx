@@ -354,7 +354,7 @@ export default function Home() {
       <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-foreground-2">
-            Arenibus · © 2026 Ľubomír Polaščín
+            Arenibus © 2026 Ľubomír Polaščín
           </p>
           <p className="text-muted mt-2 text-sm">
             MUDr. Ľubomír Polaščín — Nephroctor
