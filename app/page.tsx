@@ -124,7 +124,7 @@ export default function Home() {
       <section className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
-            <img src="/ArenibusLogo.png" alt="Arenibus Logo" className="w-48 h-48 mx-auto rounded-xl shadow-brand-lg object-cover" />
+            <img src="/ArenibusLogo.png" alt="Arenibus Logo" className="w-96 h-96 mx-auto rounded-xl shadow-brand-lg object-cover" />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             Nefrologický informačný systém
