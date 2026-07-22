@@ -32,6 +32,35 @@ export default function Home() {
   };
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mvzebqzj", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       {/* Navigation */}
@@ -246,28 +275,42 @@ export default function Home() {
               </div>
               <div>
                 <h4 className="text-xl font-semibold text-foreground mb-4">Pošlite správu</h4>
-                <form className="space-y-4">
+                <form onSubmit={handleContactSubmit} className="space-y-4">
                   <input
                     type="text"
+                    name="name"
                     placeholder="Vaše meno"
+                    required
                     className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   />
                   <input
                     type="email"
+                    name="email"
                     placeholder="Váš email"
+                    required
                     className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   />
                   <textarea
+                    name="message"
                     placeholder="Vaša správa"
                     rows={4}
+                    required
                     className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   ></textarea>
+                  <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors"
+                    disabled={formStatus === "submitting"}
+                    className="w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Odoslať Správu
+                    {formStatus === "submitting" ? "Odosielam..." : "Odoslať Správu"}
                   </button>
+                  {formStatus === "success" && (
+                    <p className="text-ok font-medium text-center">Správa bola úspešne odoslaná. Čoskoro sa vám ozveme.</p>
+                  )}
+                  {formStatus === "error" && (
+                    <p className="text-danger font-medium text-center">Pri odosielaní sa vyskytla chyba. Skúste to znova.</p>
+                  )}
                 </form>
               </div>
             </div>
