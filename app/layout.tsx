@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Arenibus - Nefrologický Informačný Systém",
   description: "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom. Spravujte pacientov, návštevy, dialyzačný predpis a laboratórne výsledky efektívne s Arenibus.",
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/ArenibusLogo.png',
+  },
 };
 
 export default function RootLayout({

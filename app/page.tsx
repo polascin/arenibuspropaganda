@@ -94,8 +94,11 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-            Nefrologický Informačný Systém
+          <div className="mb-8">
+            <img src="/ArenibusLogo.png" alt="Arenibus Logo" className="w-32 h-32 mx-auto rounded-xl shadow-brand-lg object-cover" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            Nefrologický informačný systém
           </h2>
           <p className="text-xl md:text-2xl text-foreground-2 mb-8">
             Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom
