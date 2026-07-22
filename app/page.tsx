@@ -114,7 +114,7 @@ export default function Home() {
             </a>
             <a
               href="#contact"
-              className="px-8 py-4 bg-transparent border-2 border-brand text-brand rounded-lg font-semibold hover:bg-brand-soft transition-colors"
+              className="px-8 py-4 bg-transparent border-2 border-brand text-brand rounded-lg font-semibold hover:bg-brand hover:text-brand-text transition-colors"
             >
               Kontaktujte Nás
             </a>
@@ -199,7 +199,7 @@ export default function Home() {
           <h3 className="text-4xl font-bold text-brand-text mb-6">
             Vyskúšajte Arenibus MVP
           </h3>
-          <p className="text-xl text-brand-soft mb-8">
+          <p className="text-xl text-brand-text mb-8">
             Funkčné demo nefrologickej ambulancie s reálnou databázou. Fiktívne dáta sa každú noc obnovujú.
           </p>
           <a
@@ -210,7 +210,7 @@ export default function Home() {
           >
             Spustiť Demo Verziu
           </a>
-          <p className="text-brand-soft mt-4 text-sm">
+          <p className="text-brand-text mt-4 text-sm">
             Demo verzia je k dispozícii na https://demo.arenibus.com/ (kontá: demo-lekar / demo-sestra)
           </p>
         </div>
