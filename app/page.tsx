@@ -279,10 +279,13 @@ export default function Home() {
       <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-foreground-2">
-            © 2024 Arenibus. Všetky práva vyhradené.
+            Arenibus · © 2026 Ľubomír Polaščín
           </p>
           <p className="text-muted mt-2 text-sm">
-            Nefrologický a dialyzačný informačný systém pre moderné zdravotníctvo.
+            MUDr. Ľubomír Polaščín — Nephroctor
+          </p>
+          <p className="text-muted mt-1 text-sm">
+            IČO 57646856
           </p>
         </div>
       </footer>
