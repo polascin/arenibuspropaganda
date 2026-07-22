@@ -289,6 +289,12 @@ export default function Home() {
                     </svg>
                     <a href="https://discord.gg/7hxgQQba" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Discord server</a>
                   </div>
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                    <a href="https://t.me/juzerni" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Telegram @juzerni</a>
+                  </div>
                 </div>
               </div>
               <div>
