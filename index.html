@@ -490,6 +490,16 @@
         return;
       }
 
+      // Validate email format
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        var emailField = document.getElementById('contact-email');
+        emailField.setCustomValidity('Zadajte platnú e-mailovú adresu.');
+        emailField.reportValidity();
+        emailField.setCustomValidity('');
+        return;
+      }
+
       var subjectLine = subject
         ? 'Arenibus – ' + subject
         : 'Arenibus – Dopyt';
