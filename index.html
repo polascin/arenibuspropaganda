@@ -361,7 +361,7 @@
         <h3>Napíšte nám správu</h3>
         <p class="sub">Odpovieme do 1–2 pracovných dní.</p>
 
-        <form action="mailto:arenibus@polascin.net" method="get" enctype="text/plain" aria-label="Kontaktný formulár">
+        <form id="contact-form" novalidate aria-label="Kontaktný formulár">
           <div class="form-group">
             <label for="contact-name">Meno a priezvisko</label>
             <input type="text" id="contact-name" name="name" placeholder="Ján Novák" required autocomplete="name" />
@@ -376,17 +376,17 @@
             <label for="contact-subject">Predmet</label>
             <select id="contact-subject" name="subject">
               <option value="">— Vyberte predmet —</option>
-              <option value="demo">Záujem o demo / prezentáciu</option>
-              <option value="pricing">Cenová ponuka</option>
-              <option value="implementation">Implementácia a nasadenie</option>
-              <option value="support">Technická podpora</option>
-              <option value="other">Iné</option>
+              <option value="Záujem o demo / prezentáciu">Záujem o demo / prezentáciu</option>
+              <option value="Cenová ponuka">Cenová ponuka</option>
+              <option value="Implementácia a nasadenie">Implementácia a nasadenie</option>
+              <option value="Technická podpora">Technická podpora</option>
+              <option value="Iné">Iné</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="contact-message">Správa</label>
-            <textarea id="contact-message" name="body" placeholder="Popíšte vaše potreby alebo otázky…" required></textarea>
+            <textarea id="contact-message" name="message" placeholder="Popíšte vaše potreby alebo otázky…" required></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary form-submit">
@@ -474,6 +474,37 @@
       ? '0 2px 20px rgba(10,92,158,0.15)'
       : '0 2px 12px rgba(10,92,158,0.08)';
   }, { passive: true });
+
+  // Contact form – build mailto link from validated fields
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name    = document.getElementById('contact-name').value.trim();
+      var email   = document.getElementById('contact-email').value.trim();
+      var subject = document.getElementById('contact-subject').value;
+      var message = document.getElementById('contact-message').value.trim();
+
+      if (!name || !email || !message) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      var subjectLine = subject
+        ? 'Arenibus – ' + subject
+        : 'Arenibus – Dopyt';
+
+      var body = 'Meno: ' + name + '\n'
+               + 'E-mail: ' + email + '\n\n'
+               + message;
+
+      var mailto = 'mailto:arenibus@polascin.net'
+                 + '?subject=' + encodeURIComponent(subjectLine)
+                 + '&body='    + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    });
+  }
 </script>
 
 </body>
