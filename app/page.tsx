@@ -108,7 +108,7 @@ export default function Home() {
               href="https://demo.arenibus.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-brand text-brand-contrast rounded-lg font-semibold hover:bg-brand-strong transition-colors shadow-brand"
+              className="px-8 py-4 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors shadow-brand"
             >
               Skúsiť Demo Verziu
             </a>
@@ -126,13 +126,13 @@ export default function Home() {
       <section id="features" className="py-20 px-4 bg-surface">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-4xl font-bold text-center text-foreground mb-12">
-            Funkcie nefrologické ambulancie (MVP)
+            Funkcie informačného systému Arenibus v aktuálnej verzii (MVP = Minimal Viable Product)
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature Cards */}
             <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
               <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
@@ -142,7 +142,7 @@ export default function Home() {
 
             <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
               <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -152,7 +152,7 @@ export default function Home() {
 
             <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
               <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
@@ -162,7 +162,7 @@ export default function Home() {
 
             <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
               <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
@@ -172,7 +172,7 @@ export default function Home() {
 
             <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
               <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
@@ -182,7 +182,7 @@ export default function Home() {
 
             <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
               <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-brand-contrast" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -196,7 +196,7 @@ export default function Home() {
       {/* Demo Section */}
       <section id="demo" className="py-20 px-4 bg-gradient-to-r from-brand-strong to-brand">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-4xl font-bold text-brand-contrast mb-6">
+          <h3 className="text-4xl font-bold text-brand-text mb-6">
             Vyskúšajte Arenibus MVP
           </h3>
           <p className="text-xl text-brand-soft mb-8">
@@ -264,7 +264,7 @@ export default function Home() {
                   ></textarea>
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-brand text-brand-contrast rounded-lg font-semibold hover:bg-brand-strong transition-colors"
+                    className="w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors"
                   >
                     Odoslať Správu
                   </button>
