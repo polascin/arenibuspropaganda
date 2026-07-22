@@ -34,31 +34,22 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
-  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus("submitting");
-
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
 
-    try {
-      const response = await fetch("https://formspree.io/f/mvzebqzj", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+    const subject = encodeURIComponent(`Správa z webu Arenibus od ${name || "návštevníka"}`);
+    const body = encodeURIComponent(
+      `Meno: ${name || "-"}\nEmail: ${email || "-"}\n\nSpráva:\n${message || "-"}`
+    );
 
-      if (response.ok) {
-        setFormStatus("success");
-        form.reset();
-      } else {
-        setFormStatus("error");
-      }
-    } catch {
-      setFormStatus("error");
-    }
+    window.location.href = `mailto:arenibus@polascin.net?subject=${subject}&body=${body}`;
+    setFormStatus("success");
+    form.reset();
   };
 
   return (
@@ -297,19 +288,14 @@ export default function Home() {
                     required
                     className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
                   ></textarea>
-                  <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
                   <button
                     type="submit"
-                    disabled={formStatus === "submitting"}
-                    className="w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors"
                   >
-                    {formStatus === "submitting" ? "Odosielam..." : "Odoslať Správu"}
+                    Odoslať Správu
                   </button>
                   {formStatus === "success" && (
-                    <p className="text-ok font-medium text-center">Správa bola úspešne odoslaná. Čoskoro sa vám ozveme.</p>
-                  )}
-                  {formStatus === "error" && (
-                    <p className="text-danger font-medium text-center">Pri odosielaní sa vyskytla chyba. Skúste to znova.</p>
+                    <p className="text-ok font-medium text-center">Otvára sa váš e-mail klient. Ak sa neotvorí, napíšte nám priamo na arenibus@polascin.net.</p>
                   )}
                 </form>
               </div>
