@@ -21,7 +21,7 @@ export default function Home() {
     if (darkMode) {
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "light");
     }
     // Save preference
     localStorage.setItem("darkMode", darkMode.toString());
