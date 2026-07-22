@@ -53,7 +53,10 @@ export const metadata: Metadata = {
     images: ["/ArenibusLogo.png"],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
     apple: "/ArenibusLogo.png",
   },
 };
