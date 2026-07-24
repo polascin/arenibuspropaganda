@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arenibus.polascin.net"),
-  title: "Arenibus - Nefrologický Informačný Systém",
+  title: "Arenibus – Informačný systém pre nefrologické ambulancie",
   description:
     "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom. Spravujte pacientov, návštevy, dialyzačný predpis a laboratórne výsledky efektívne s Arenibus.",
   keywords: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     locale: "sk_SK",
     url: "https://arenibus.polascin.net/",
     siteName: "Arenibus",
-    title: "Arenibus - Nefrologický Informačný Systém",
+    title: "Arenibus – Informačný systém pre nefrologické ambulancie",
     description:
       "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arenibus - Nefrologický Informačný Systém",
+    title: "Arenibus – Informačný systém pre nefrologické ambulancie",
     description:
       "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
     images: ["/ArenibusLogo.png"],
@@ -62,6 +62,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#0f766e" },
     { media: "(prefers-color-scheme: dark)", color: "#0a1f1a" },
@@ -87,10 +89,7 @@ const jsonLd = {
     "@type": "Person",
     name: "MUDr. Ľubomír Polaščín",
   },
-  sameAs: [
-    "https://demo.arenibus.com/",
-    "https://x.com/polascin",
-  ],
+  sameAs: ["https://demo.arenibus.com/"],
 };
 
 export default function RootLayout({

@@ -102,6 +102,8 @@ export default function Home() {
                   fill
                   className="object-cover"
                   sizes="40px"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
                   priority
                 />
               </div>
@@ -114,6 +116,7 @@ export default function Home() {
                 <a href="#contact" className="text-foreground-2 hover:text-brand transition-colors">Kontakt</a>
               </div>
               <button
+                type="button"
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
                 aria-label="Toggle dark mode"
@@ -130,6 +133,7 @@ export default function Home() {
               </button>
               {/* Mobile menu button */}
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
                 aria-label="Menu"
@@ -166,6 +170,8 @@ export default function Home() {
               fill
               className="rounded-xl shadow-brand-lg object-cover"
               sizes="(max-width: 768px) 100vw, 384px"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
               priority
             />
           </div>
@@ -310,48 +316,6 @@ export default function Home() {
                     </svg>
                     <a href="mailto:arenibus@polascin.net" className="text-foreground-2 hover:text-brand transition-colors">arenibus@polascin.net</a>
                   </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <a href="tel:+421917370474" className="text-foreground-2 hover:text-brand transition-colors">+421 917 370 474</a>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2zM7 8h2a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6a2 2 0 012-2z" />
-                    </svg>
-                    <a href="https://teams.microsoft.com/l/chat/0/0?users=polascin@outlook.com" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Microsoft Teams (polascin@outlook.com)</a>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    <a href="https://wa.me/421917370474" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">WhatsApp Business +421917370474</a>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2v-6a2 2 0 012-2zM9 10a2 2 0 00-2 2v4a2 2 0 002 2h2a2 2 0 002-2v-4a2 2 0 00-2-2H9z" />
-                    </svg>
-                    <a href="https://discord.gg/7hxgQQba" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Discord server</a>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    <a href="https://t.me/juzerni" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Telegram @juzerni</a>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                    <a href="https://signal.me/#u/Lubomir_Polascin.71" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">Signal @Lubomir_Polascin.71</a>
-                  </div>
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
-                    </svg>
-                    <a href="https://x.com/polascin" target="_blank" rel="noopener noreferrer" className="text-foreground-2 hover:text-brand transition-colors">X.com @polascin</a>
-                  </div>
                 </div>
               </div>
               <div>
@@ -398,7 +362,10 @@ export default function Home() {
                     {formStatus === "submitting" ? "Odosielam..." : "Odoslať Správu"}
                   </button>
                   {formStatus === "success" && (
-                    <p className="text-ok font-medium text-center">Správa bola úspešne odoslaná. Čoskoro sa vám ozveme.</p>
+                    <p role="status" className="text-ok font-medium text-center">Správa bola úspešne odoslaná. Čoskoro sa vám ozveme.</p>
+                  )}
+                  {formStatus === "error" && (
+                    <p role="alert" className="text-danger font-medium text-center">Správu sa nepodarilo odoslať. Skúste to prosím znova alebo nám napíšte e-mail.</p>
                   )}
                 </form>
               </div>
