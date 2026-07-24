@@ -1,0 +1,96 @@
+name: Build and deploy to arenibus.polascin.net
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify sync with origin/main
+        run: |
+          git fetch origin main
+          LOCAL_SHA=$(git rev-parse HEAD)
+          REMOTE_SHA=$(git rev-parse origin/main)
+          if [ "$LOCAL_SHA" != "$REMOTE_SHA" ]; then
+            echo "Local HEAD ($LOCAL_SHA) is out of sync with origin/main ($REMOTE_SHA)."
+            exit 1
+          fi
+          echo "Repository is in sync with origin/main ($LOCAL_SHA)."
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.WEBSUPPORT_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" >> ~/.ssh/known_hosts
+
+      - name: Prepare remote directory
+        run: |
+          ssh -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
+            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR || '/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus' }}"
+            cd "$DEPLOY_DIR" || exit 1
+            if [ -n "$(ls -A . 2>/dev/null)" ]; then
+              echo "Creating backup..."
+              tar -czf "backup_$(date +%Y%m%d_%H%M%S).tar.gz" .
+            else
+              echo "Directory is empty, no backup needed."
+            fi
+            echo "Removing old files..."
+            rm -rf -- *
+          ENDSSH
+
+      - name: Upload built files
+        run: |
+          scp -P "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" -r out/* "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}:${{ secrets.WEBSUPPORT_DEPLOY_DIR || '/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus' }}/"
+
+      - name: Set permissions
+        run: |
+          ssh -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
+            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR || '/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus' }}"
+            cd "$DEPLOY_DIR" || exit 1
+            chmod -R 755 .
+            chmod -R 644 *.html *.json *.js *.css 2>/dev/null || true
+            echo "Deployment completed successfully!"
+          ENDSSH
+
+      - name: Smoke test live site
+        run: |
+          for i in 1 2 3; do
+            sleep 5
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://arenibus.polascin.net/)
+            if [ "$STATUS" = "200" ]; then
+              echo "Live site responded with HTTP $STATUS"
+              exit 0
+            fi
+            echo "Attempt $i: site returned HTTP $STATUS, retrying..."
+          done
+          echo "Smoke test failed: site did not return HTTP 200"
+          exit 1

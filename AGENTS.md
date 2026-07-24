@@ -41,3 +41,26 @@ The main demo version is available at https://demo.arenibus.com/ and is prominen
 
 ## Deployment
 Deployment uses SSH to websupport server with static export build files. Target directory: /data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus
+
+### GitHub Actions CI/CD
+The repository includes `.github/workflows/deploy.yml` that automatically builds and deploys the site on every push to `main`:
+1. Verifies the local checkout is in sync with `origin/main`.
+2. Installs Node.js dependencies (`npm ci`).
+3. Runs lint (`npm run lint`).
+4. Builds the static export (`npm run build`).
+5. Connects via SSH and prepares the remote directory.
+6. Uploads `out/` contents via SCP.
+7. Sets file permissions and performs a smoke test against https://arenibus.polascin.net/.
+
+### Required GitHub Secrets
+Configure the following secrets in the repository settings (`Settings > Secrets and variables > Actions`):
+- `WEBSUPPORT_SSH_KEY` — private SSH key for `uid58858@shell.r1.websupport.sk`.
+- `WEBSUPPORT_SSH_HOST` (optional, default: `shell.r1.websupport.sk`).
+- `WEBSUPPORT_SSH_PORT` (optional, default: `26650`).
+- `WEBSUPPORT_SSH_USER` (optional, default: `uid58858`).
+- `WEBSUPPORT_DEPLOY_DIR` (optional, default: `/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus`).
+
+### Manual deployment
+Local fallback scripts are still available:
+- `deploy.sh` — bash script for Linux/macOS/Git Bash.
+- `deploy.bat` — Windows helper that delegates to `deploy.sh` via Git Bash/WSL.
