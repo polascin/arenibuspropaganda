@@ -178,6 +178,9 @@ export default function Home() {
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             Nefrologický informačný systém
           </h1>
+          <p className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-warn-soft text-warn mb-6">
+            Stále vo fáze pokročilého vývoja
+          </p>
           <p className="text-xl md:text-2xl text-foreground-2 mb-8">
             Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom
           </p>
@@ -280,7 +283,7 @@ export default function Home() {
             Vyskúšajte Arenibus MVP
           </h2>
           <p className="text-xl text-brand-text mb-8">
-            Funkčné demo nefrologickej ambulancie s reálnou databázou. Fiktívne dáta sa každú noc obnovujú.
+            Funkčné demo nefrologickej ambulancie v pokročilej fáze vývoja. Fiktívne dáta sa každú noc obnovujú.
           </p>
           <a
             href="https://demo.arenibus.com/"
