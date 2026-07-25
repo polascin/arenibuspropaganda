@@ -45,6 +45,15 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Check required secrets
+        run: |
+          if [ -z "${{ secrets.WEBSUPPORT_SSH_KEY }}" ]; then
+            echo "Error: GitHub secret WEBSUPPORT_SSH_KEY is not set."
+            echo "Add the private SSH key for uid58858@shell.r1.websupport.sk under"
+            echo "Settings > Secrets and variables > Actions > Repository secrets."
+            exit 1
+          fi
+
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
