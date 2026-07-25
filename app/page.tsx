@@ -119,7 +119,7 @@ export default function Home() {
                 type="button"
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
-                aria-label="Toggle dark mode"
+                aria-label="Prepnúť tmavý režim"
               >
                 {darkMode ? (
                   <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -136,7 +136,7 @@ export default function Home() {
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
-                aria-label="Menu"
+                aria-label="Otvoriť alebo zavrieť menu"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-menu"
               >

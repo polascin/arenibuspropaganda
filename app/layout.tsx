@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://arenibus.polascin.net"),
   title: "Arenibus – Informačný systém pre nefrologické ambulancie",
   description:
-    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom. Spravujte pacientov, návštevy, dialyzačný predpis a laboratórne výsledky efektívne s Arenibus.",
+    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
   keywords: [
     "Arenibus",
     "nefrologický informačný systém",
