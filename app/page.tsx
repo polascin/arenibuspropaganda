@@ -291,7 +291,7 @@ export default function Home() {
             Spustiť Demo Verziu
           </a>
           <p className="text-brand-text mt-4 text-sm">
-            Demo verzia je k dispozícii na https://demo.arenibus.com/ (kontá: demo-lekar / demo-sestra)
+            Demo beží na https://demo.arenibus.com/ — prihlásenie cez Keycloak (OIDC). Kontá: demo-lekar / Demo.Lekar.2026 alebo demo-sestra / Demo.Sestra.2026.
           </p>
         </div>
       </section>
