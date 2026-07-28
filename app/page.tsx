@@ -161,7 +161,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section id="main-content" className="flex-1 flex items-center justify-center py-20 px-4">
+      <section id="main-content" className="flex-1 flex items-start justify-center pt-10 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8 relative w-96 h-96 mx-auto">
             <Image
