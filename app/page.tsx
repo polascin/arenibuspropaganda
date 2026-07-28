@@ -181,7 +181,7 @@ export default function Home() {
           <p className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-warn-soft text-warn mb-6">
             Stále vo fáze pokročilého vývoja
           </p>
-          <p className="text-xl md:text-2xl text-foreground-2 mb-8">
+          <p className="text-lg md:text-xl text-foreground-2 mb-8">
             Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
