@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 
 function getDarkModeSnapshot() {
@@ -294,7 +295,7 @@ export default function Home() {
             Spustiť Demo Verziu
           </a>
           <p className="text-brand-text mt-4 text-sm">
-            Demo beží na https://demo.arenibus.com/ — prihlásenie cez Keycloak (OIDC). Kontá: demo-lekar / Demo.Lekar.2026 alebo demo-sestra / Demo.Sestra.2026.
+            Demo beží na https://demo.arenibus.com/ — prihlásenie cez Keycloak (OIDC). Prístupové údaje k demo kontám vám radi poskytneme e-mailom na arenibus@polascin.net.
           </p>
         </div>
       </section>
@@ -389,6 +390,14 @@ export default function Home() {
           <p className="text-muted mt-1 text-sm">
             IČO 57646856
           </p>
+          <div className="mt-4 flex justify-center gap-6 text-sm">
+            <Link href="/privacy/" className="text-muted hover:text-brand transition-colors">
+              Ochrana osobných údajov
+            </Link>
+            <Link href="/terms/" className="text-muted hover:text-brand transition-colors">
+              Podmienky používania
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
