@@ -3,13 +3,16 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arenibus.polascin.net"),
-  title: "Arenibus – Informačný systém pre nefrologické ambulancie",
+  title: "Arenibus – Nefrologický a dialyzačný informačný systém",
   description:
-    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
+    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
   keywords: [
     "Arenibus",
     "nefrologický informačný systém",
+    "dialyzačný informačný systém",
     "dialyzačné stredisko",
+    "hemodialýza",
+    "peritoneálna dialýza",
     "ezdravotníctvo",
     "MVP",
     "nefrologická ambulancia",
@@ -33,23 +36,23 @@ export const metadata: Metadata = {
     locale: "sk_SK",
     url: "https://arenibus.polascin.net/",
     siteName: "Arenibus",
-    title: "Arenibus – Informačný systém pre nefrologické ambulancie",
+    title: "Arenibus – Nefrologický a dialyzačný informačný systém",
     description:
-      "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
+      "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arenibus – informačný systém pre nefrologické ambulancie",
+        alt: "Arenibus – nefrologický a dialyzačný informačný systém",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arenibus – Informačný systém pre nefrologické ambulancie",
+    title: "Arenibus – Nefrologický a dialyzačný informačný systém",
     description:
-      "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
+      "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
     images: ["/og-image.png"],
   },
   icons: {
