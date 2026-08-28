@@ -22,7 +22,7 @@
   /* Semantic Colors */
   --danger: #b91c1c;
   --danger-soft: #fde4e4;
-  --warn: #b45309;
+  --warn: #ae5009;
   --warn-soft: #fdeccb;
   --ok: #15803d;
   --ok-soft: #d8f2e0;
@@ -52,7 +52,7 @@
   --border-strong: #3a5f58;
   --foreground: #f0faf6;
   --foreground-2: #d1e8e0;
-  --muted: #8fa8a0;
+  --muted: #92aba3;
 
   --brand: #2dd4bf;
   --brand-strong: #5eead4;
@@ -89,7 +89,7 @@
     --border-strong: #3a5f58;
     --foreground: #f0faf6;
     --foreground-2: #d1e8e0;
-    --muted: #8fa8a0;
+    --muted: #92aba3;
 
     --brand: #2dd4bf;
     --brand-strong: #5eead4;

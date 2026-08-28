@@ -38,10 +38,10 @@ export const metadata: Metadata = {
       "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
     images: [
       {
-        url: "/ArenibusLogo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arenibus logo",
+        alt: "Arenibus – informačný systém pre nefrologické ambulancie",
       },
     ],
   },
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     title: "Arenibus – Informačný systém pre nefrologické ambulancie",
     description:
       "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
-    images: ["/ArenibusLogo.png"],
+    images: ["/og-image.png"],
   },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: "/ArenibusLogo.png",
+    apple: "/apple-touch-icon.png",
   },
 };
 

@@ -98,7 +98,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
                 <Image
-                  src="/ArenibusLogo.png"
+                  src="/logo-96.webp"
                   alt="Arenibus logo"
                   fill
                   className="object-cover"
@@ -154,9 +154,9 @@ export default function Home() {
       {mobileMenuOpen && (
         <div id="mobile-menu" className="md:hidden bg-surface border-b border-border">
           <div className="px-4 py-3 space-y-2">
-            <a href="#features" className="block text-foreground-2 hover:text-brand transition-colors py-2">Funkcie</a>
-            <a href="#demo" className="block text-foreground-2 hover:text-brand transition-colors py-2">Demo</a>
-            <a href="#contact" className="block text-foreground-2 hover:text-brand transition-colors py-2">Kontakt</a>
+            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Funkcie</a>
+            <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Demo</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Kontakt</a>
           </div>
         </div>
       )}
@@ -164,9 +164,9 @@ export default function Home() {
       {/* Hero Section */}
       <section id="main-content" className="flex-1 flex items-start justify-center pt-10 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 relative w-96 h-96 mx-auto">
+          <div className="mb-8 relative w-full max-w-96 aspect-square mx-auto">
             <Image
-              src="/ArenibusLogo.png"
+              src="/logo-768.webp"
               alt="Arenibus logo"
               fill
               className="rounded-xl shadow-brand-lg object-cover"
@@ -365,12 +365,21 @@ export default function Home() {
                   >
                     {formStatus === "submitting" ? "Odosielam..." : "Odoslať Správu"}
                   </button>
-                  {formStatus === "success" && (
-                    <p role="status" className="text-ok font-medium text-center">Správa bola úspešne odoslaná. Čoskoro sa vám ozveme.</p>
-                  )}
-                  {formStatus === "error" && (
-                    <p role="alert" className="text-danger font-medium text-center">Správu sa nepodarilo odoslať. Skúste to prosím znova alebo nám napíšte e-mail.</p>
-                  )}
+                  {/* Persistent live region so async outcomes are announced reliably */}
+                  <p
+                    role="status"
+                    aria-live="polite"
+                    className={
+                      formStatus === "success"
+                        ? "text-ok font-medium text-center"
+                        : formStatus === "error"
+                          ? "text-danger font-medium text-center"
+                          : "sr-only"
+                    }
+                  >
+                    {formStatus === "success" && "Správa bola úspešne odoslaná. Čoskoro sa vám ozveme."}
+                    {formStatus === "error" && "Správu sa nepodarilo odoslať. Skúste to prosím znova alebo nám napíšte e-mail."}
+                  </p>
                 </form>
               </div>
             </div>

@@ -2,20 +2,24 @@
   "name": "Arenibus - Nefrologický Informačný Systém",
   "short_name": "Arenibus",
   "description": "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko.",
+  "lang": "sk-SK",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#eef2f3",
   "theme_color": "#0f766e",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "256x256",
-      "type": "image/x-icon"
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/ArenibusLogo.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
