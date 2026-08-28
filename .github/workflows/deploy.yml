@@ -48,6 +48,9 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Check web links
+        run: npm run check:links
+
       - name: Check required secrets
         run: |
           if [ -z "${{ secrets.WEBSUPPORT_SSH_KEY }}" ]; then

@@ -67,7 +67,7 @@ Local fallback scripts are still available:
 
 ### Standard Task Completion Workflow
 Vždy na záver každej úlohy:
-1. Spustiť overovacie kontroly (`npm run lint`, `npm run build`, `npm run check:contrast`).
+1. Spustiť overovacie kontroly (`npm run lint`, `npm run build`, `npm run check:contrast`, `npm run check:links`).
 2. Zmeny commitnúť s jasnou správou.
 3. Pushnúť commit do `origin/main`.
 4. Počkať na automatický deployment cez GitHub Actions a verifikovať živú produkčnú stránku na https://arenibus.polascin.net/.
