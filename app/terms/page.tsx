@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+const TERMS_DESCRIPTION =
+  "Podmienky používania stránky a demo verzie Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.";
+
 export const metadata: Metadata = {
   title: "Podmienky používania – Arenibus",
-  description:
-    "Podmienky používania webovej stránky a demo verzie nefrologického informačného systému Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.",
+  description: TERMS_DESCRIPTION,
   alternates: {
     canonical: "/terms/",
   },
@@ -15,8 +17,7 @@ export const metadata: Metadata = {
     url: "/terms/",
     siteName: "Arenibus",
     title: "Podmienky používania – Arenibus",
-    description:
-      "Podmienky používania webovej stránky a demo verzie nefrologického informačného systému Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.",
+    description: TERMS_DESCRIPTION,
     images: [
       {
         url: "/og-image.png",
@@ -29,8 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Podmienky používania – Arenibus",
-    description:
-      "Podmienky používania webovej stránky a demo verzie nefrologického informačného systému Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.",
+    description: TERMS_DESCRIPTION,
     images: ["/og-image.png"],
   },
 };

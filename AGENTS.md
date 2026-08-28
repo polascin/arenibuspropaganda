@@ -20,10 +20,12 @@ This is a marketing website for the Arenibus nephrology information system (MVP 
 - Features section highlighting implemented MVP functions:
   - Správa Pacientov (registrácia, vyhľadávanie, alergie, medikácia, súhlasy)
   - Evidencia Návštev (klinický zápis, dispenzarizácia, výkony)
-  - Dialyzačný Predpis (39 polí, číselníky materiálu, mesačné kontroly)
-  - Objednávanie Termínov (kalendár, harmonogram)
-  - Audit a Bezpečnosť (audit log, OIDC autentifikácia)
-  - Laboratórne Výsledky (trendová matica, zápis panela)
+  - Hemodialýza a predpis (číselníky materiálu, mesačné kontroly)
+  - Peritoneálna dialýza (PD)
+  - Kalendár a harmonogram
+  - Laboratórne výsledky (trendová matica, zápis panela)
+  - Moje zoznamy a štatistiky
+  - Audit a bezpečnosť (audit log, OIDC autentifikácia)
 - Demo section linking to https://demo.arenibus.com/
 - Contact information with arenibus@polascin.net
 - Responsive design with dark mode support
@@ -47,10 +49,12 @@ The repository includes `.github/workflows/deploy.yml` that automatically builds
 1. Verifies the local checkout is in sync with `origin/main`.
 2. Installs Node.js dependencies (`npm ci`).
 3. Runs lint (`npm run lint`).
-4. Builds the static export (`npm run build`).
-5. Connects via SSH and prepares the remote directory.
-6. Uploads `out/` contents via SCP.
-7. Sets file permissions and performs a smoke test against https://arenibus.polascin.net/.
+4. Checks colour contrast (`npm run check:contrast`).
+5. Builds the static export (`npm run build`).
+6. Checks user-facing web links (`npm run check:links`).
+7. Connects via SSH and prepares the remote directory.
+8. Uploads `out/` contents via SCP.
+9. Sets file permissions and performs a smoke test against https://arenibus.polascin.net/.
 
 ### Required GitHub Secrets
 Configure the following secrets in the repository settings (`Settings > Secrets and variables > Actions`):

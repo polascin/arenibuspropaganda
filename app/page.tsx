@@ -222,8 +222,14 @@ export default function Home() {
       <section id="features" className="py-20 px-4 bg-surface">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-            Funkcie systému Arenibus v aktuálnej verzii (v0.16.17)
+            Funkcie nefrologického a dialyzačného informačného systému Arenibus v aktuálnej verzii
           </h2>
+          <p className="text-center text-foreground-2 text-sm mb-1">
+            (MVP = Minimum Viable Product)
+          </p>
+          <p className="text-center text-foreground-2 text-sm mb-4">
+            (Minimálny životaschopný produkt)
+          </p>
           <p className="text-center text-foreground-2 text-lg mb-12 max-w-2xl mx-auto">
             Kompletný prehľad modulov implementovaných v živom demo prostredí.
           </p>
@@ -378,7 +384,7 @@ export default function Home() {
               Demo heslá nie sú verejné. Pošlite žiadosť na{" "}
               <a
                 href={DEMO_ACCESS_MAILTO}
-                className="underline font-medium text-brand-text hover:text-white transition-colors"
+                className="underline font-medium text-brand-text hover:underline-offset-2 transition-colors"
               >
                 arenibus@nephroctor.com
               </a>
@@ -479,8 +485,8 @@ export default function Home() {
                   </button>
                   {/* Persistent live region so async outcomes are announced reliably */}
                   <p
-                    role="status"
-                    aria-live="polite"
+                    role={formStatus === "error" ? "alert" : "status"}
+                    aria-live={formStatus === "error" ? "assertive" : "polite"}
                     className={
                       formStatus === "success"
                         ? "text-ok font-medium text-center"
