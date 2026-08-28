@@ -42,9 +42,19 @@ fi
 if [ -n "$(ls -A . 2>/dev/null)" ]; then
     mkdir -p "$BACKUP_DIR"
     BACKUP_FILE="$BACKUP_DIR/backup_$(date +%Y%m%d_%H%M%S).tar.gz"
-    echo "Creating backup at $BACKUP_FILE..."
+    SOURCE_COUNT=$(find "$DEPLOY_DIR" -mindepth 1 | wc -l)
+    echo "Creating backup at $BACKUP_FILE ($SOURCE_COUNT entries to archive)..."
     tar -czf "$BACKUP_FILE" -C "$DEPLOY_DIR" .
-    echo "Backup size: $(du -h "$BACKUP_FILE" | cut -f1)"
+
+    # A backup that silently archives nothing is worse than no backup,
+    # so verify the archive before the directory is wiped.
+    BACKUP_BYTES=$(wc -c < "$BACKUP_FILE")
+    BACKUP_ENTRIES=$(tar -tzf "$BACKUP_FILE" | wc -l)
+    echo "Backup: $BACKUP_BYTES bytes, $BACKUP_ENTRIES entries"
+    if [ "$BACKUP_ENTRIES" -lt "$SOURCE_COUNT" ]; then
+        echo "Backup verification failed: archived $BACKUP_ENTRIES entries but $SOURCE_COUNT exist. Aborting before cleanup."
+        exit 1
+    fi
 
     # Keep only the most recent BACKUP_KEEP archives.
     { ls -1t "$BACKUP_DIR"/backup_*.tar.gz 2>/dev/null || true; } | tail -n +$((BACKUP_KEEP + 1)) | while read -r old; do
