@@ -64,3 +64,11 @@ Configure the following secrets in the repository settings (`Settings > Secrets 
 Local fallback scripts are still available:
 - `deploy.sh` — bash script for Linux/macOS/Git Bash.
 - `deploy.bat` — Windows helper that delegates to `deploy.sh` via Git Bash/WSL.
+
+### Standard Task Completion Workflow
+Vždy na záver každej úlohy:
+1. Spustiť overovacie kontroly (`npm run lint`, `npm run build`, `npm run check:contrast`).
+2. Zmeny commitnúť s jasnou správou.
+3. Pushnúť commit do `origin/main`.
+4. Počkať na automatický deployment cez GitHub Actions a verifikovať živú produkčnú stránku na https://arenibus.polascin.net/.
+
