@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       "Podmienky používania webovej stránky a demo verzie nefrologického informačného systému Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.",
     images: [
       {
-        url: "/ArenibusLogo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Arenibus logo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Podmienky používania – Arenibus",
     description:
       "Podmienky používania webovej stránky a demo verzie nefrologického informačného systému Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.",
-    images: ["/ArenibusLogo.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -45,7 +45,7 @@ export default function TermsPage() {
             <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
                 <Image
-                  src="/ArenibusLogo.png"
+                  src="/logo-96.webp"
                   alt="Arenibus logo"
                   fill
                   className="object-cover"

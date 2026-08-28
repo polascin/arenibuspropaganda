@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.",
     images: [
       {
-        url: "/ArenibusLogo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Arenibus logo",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Zásady ochrany osobných údajov – Arenibus",
     description:
       "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.",
-    images: ["/ArenibusLogo.png"],
+    images: ["/og-image.png"],
   },
 };
 
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
                 <Image
-                  src="/ArenibusLogo.png"
+                  src="/logo-96.webp"
                   alt="Arenibus logo"
                   fill
                   className="object-cover"

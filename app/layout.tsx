@@ -78,7 +78,7 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: "Arenibus",
   description:
-    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko, integrovaný s ezdravotníctvom.",
+    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
   url: "https://arenibus.polascin.net/",
   applicationCategory: "HealthApplication",
   operatingSystem: "Any",

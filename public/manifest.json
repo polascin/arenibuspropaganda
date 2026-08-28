@@ -1,7 +1,7 @@
 {
-  "name": "Arenibus - Nefrologický Informačný Systém",
+  "name": "Arenibus – Nefrologický a dialyzačný informačný systém",
   "short_name": "Arenibus",
-  "description": "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko.",
+  "description": "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza).",
   "lang": "sk-SK",
   "start_url": "/",
   "scope": "/",
