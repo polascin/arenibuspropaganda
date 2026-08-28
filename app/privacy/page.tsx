@@ -87,6 +87,12 @@ export default function PrivacyPage() {
                     arenibus@polascin.net
                   </a>
                 </p>
+                <p className="text-foreground-2 mt-1">
+                  Demo prístup:{" "}
+                  <a href="mailto:arenibus@nephroctor.com" className="text-brand hover:text-brand-strong transition-colors">
+                    arenibus@nephroctor.com
+                  </a>
+                </p>
               </div>
             </section>
 
@@ -103,7 +109,8 @@ export default function PrivacyPage() {
                 </li>
                 <li>
                   <span className="font-semibold text-foreground">E-mailová korešpondencia</span> — údaje,
-                  ktoré nám sami zašlete e-mailom na adresu arenibus@polascin.net.
+                  ktoré nám sami zašlete e-mailom na adresu arenibus@polascin.net
+                  alebo arenibus@nephroctor.com (žiadosti o prístup do demo prostredia).
                 </li>
               </ul>
             </section>

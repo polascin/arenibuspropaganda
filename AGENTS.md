@@ -37,7 +37,7 @@ This is a marketing website for the Arenibus nephrology information system (MVP 
 - SEO optimized with proper metadata
 
 ## Demo Integration
-The main demo version is available at https://demo.arenibus.com/ and is prominently featured throughout the site. Demo accounts: demo-lekar / demo-sestra.
+The main demo version is available at https://demo.arenibus.com/ and is prominently featured throughout the site. Demo passwords are not published; access is provided on request via arenibus@nephroctor.com.
 
 ## Deployment
 Deployment uses SSH to websupport server with static export build files. Target directory: /data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus

@@ -15,6 +15,15 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
+const DEMO_ACCESS_MAILTO =
+  "mailto:arenibus@nephroctor.com" +
+  "?subject=" +
+  encodeURIComponent("Žiadosť o prístupové údaje k demo Arenibus") +
+  "&body=" +
+  encodeURIComponent(
+    "Dobrý deň,\n\nprosím o zaslanie hesiel k demo kontám Arenibus (lekár / sestra).\n\nĎakujem."
+  );
+
 function subscribeDarkMode(callback: () => void) {
   if (typeof window === "undefined") return () => {};
   const handler = (e: StorageEvent) => {
@@ -44,16 +53,6 @@ export default function Home() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-  const [copiedField, setCopiedField] = useState<string | null>(null);
-
-  const copyToClipboard = (text: string, fieldId: string) => {
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(text);
-      setCopiedField(fieldId);
-      setTimeout(() => setCopiedField(null), 2000);
-    }
-  };
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -342,54 +341,58 @@ export default function Home() {
             Plne funkčná verzia pre nefrologickú ambulanciu a dialýzu. Všetky fiktívne dáta sa automaticky obnovujú každú noc o 03:00.
           </p>
 
-          {/* Interactive Demo Credentials Box */}
+          {/* Demo access — passwords on request */}
           <div className="bg-surface/10 backdrop-blur-md rounded-xl p-6 mb-8 border border-white/20 max-w-2xl mx-auto text-left shadow-lg">
             <h3 className="text-lg font-semibold text-brand-text mb-4 text-center">
-              Prihlasovacie údaje pre demo kontá:
+              Prístup do demo prostredia
             </h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {/* Doctor Credentials Card */}
-              <div className="bg-surface/20 p-4 rounded-lg border border-white/10 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-brand-text text-sm">Rola: LEKÁR</span>
-                    <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-lekar</span>
-                  </div>
-                  <div className="text-xs space-y-1.5 text-brand-text/90">
-                    <p><span className="opacity-75">Prihlasovacie meno:</span> <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">demo-lekar</code></p>
-                    <p><span className="opacity-75">Heslo:</span> <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">lekar</code></p>
-                  </div>
+            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+              <div className="bg-surface/20 p-4 rounded-lg border border-white/10">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-bold text-brand-text text-sm">Rola: LEKÁR</span>
+                  <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-lekar</span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard("demo-lekar / lekar", "lekar")}
-                  className="mt-3 text-xs w-full py-1.5 px-3 bg-surface/30 hover:bg-surface/40 text-brand-text rounded transition-colors flex items-center justify-center gap-1.5 font-medium cursor-pointer"
-                >
-                  {copiedField === "lekar" ? "✓ Skopírované!" : "Kopírovať údaje lekára"}
-                </button>
+                <div className="text-xs space-y-1.5 text-brand-text/90">
+                  <p>
+                    <span className="opacity-75">Prihlasovacie meno:</span>{" "}
+                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">demo-lekar</code>
+                  </p>
+                  <p><span className="opacity-75">Heslo:</span> na vyžiadanie</p>
+                </div>
               </div>
-
-              {/* Nurse Credentials Card */}
-              <div className="bg-surface/20 p-4 rounded-lg border border-white/10 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-brand-text text-sm">Rola: SESTRA</span>
-                    <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-sestra</span>
-                  </div>
-                  <div className="text-xs space-y-1.5 text-brand-text/90">
-                    <p><span className="opacity-75">Prihlasovacie meno:</span> <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">demo-sestra</code></p>
-                    <p><span className="opacity-75">Heslo:</span> <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">sestra</code></p>
-                  </div>
+              <div className="bg-surface/20 p-4 rounded-lg border border-white/10">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-bold text-brand-text text-sm">Rola: SESTRA</span>
+                  <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-sestra</span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => copyToClipboard("demo-sestra / sestra", "sestra")}
-                  className="mt-3 text-xs w-full py-1.5 px-3 bg-surface/30 hover:bg-surface/40 text-brand-text rounded transition-colors flex items-center justify-center gap-1.5 font-medium cursor-pointer"
-                >
-                  {copiedField === "sestra" ? "✓ Skopírované!" : "Kopírovať údaje sestry"}
-                </button>
+                <div className="text-xs space-y-1.5 text-brand-text/90">
+                  <p>
+                    <span className="opacity-75">Prihlasovacie meno:</span>{" "}
+                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">demo-sestra</code>
+                  </p>
+                  <p><span className="opacity-75">Heslo:</span> na vyžiadanie</p>
+                </div>
               </div>
             </div>
+            <p className="text-sm text-brand-text/90 text-center mb-4">
+              Demo heslá nie sú verejné. Pošlite žiadosť na{" "}
+              <a
+                href={DEMO_ACCESS_MAILTO}
+                className="underline font-medium text-brand-text hover:text-white transition-colors"
+              >
+                arenibus@nephroctor.com
+              </a>
+              {" "}a zašleme vám ich.
+            </p>
+            <a
+              href={DEMO_ACCESS_MAILTO}
+              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-surface text-brand rounded-lg font-semibold hover:bg-surface-2 transition-colors"
+            >
+              Požiadať o demo heslo
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
           </div>
 
           <a
