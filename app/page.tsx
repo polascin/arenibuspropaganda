@@ -15,6 +15,8 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
+const DEMO_VERSION = "v0.17.37";
+
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
   "?subject=" +
@@ -190,14 +192,14 @@ export default function Home() {
           </h1>
           <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
             <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand-strong border border-brand/20 shadow-sm">
-              Verzia v0.16.17 (MVP)
+              Verzia {DEMO_VERSION} (MVP)
             </span>
             <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold bg-warn-soft text-warn shadow-sm">
               Stále vo fáze pokročilého vývoja
             </span>
           </div>
           <p className="text-lg md:text-xl text-foreground-2 mb-8 max-w-3xl mx-auto">
-            Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza HD &amp; peritoneálna dialýza PD), integrovaný s ezdravotníctvom.
+            Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza HD a peritoneálna dialýza PD): dokumentácia návštev a ošetrení, registre podľa slovenskej legislatívy, vykazovanie poisťovniam a integrácia s ezdravotníctvom.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -267,7 +269,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Hemodialýza &amp; Predpis</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné predpisy podľa prevádzkových tabuliek, číselníky materiálu (dialyzátory, kanyly, koncentráty), rozpis ošetrení HD a mesačné kontroly.
+                Dialyzačné predpisy, hemodialyzačné záznamy, číselníky materiálu, register prístrojov a cievnych prístupov, dáta z monitorov a mesačné kontroly.
               </p>
             </div>
 
@@ -279,7 +281,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Peritoneálna Dialýza (PD)</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Špecializovaný program pre pacientov na peritoneálnej dialýze, evidencia PD predpisov, výmen a zaradenia pacientov do programu.
+                Program PD (CAPD a APD), predpisy a záznamy výmen, cyklovač, použité roztoky a zaradenie pacientov do programu.
               </p>
             </div>
 
@@ -315,7 +317,31 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Moje Zoznamy &amp; Štatistiky</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Vlastné zoznamy pacientov podľa diagnóz a skupín, prevádzkové štatistiky a sledovanie indikátorov kvality.
+                Vlastné zoznamy pacientov podľa diagnóz a skupín, prevádzkové štatistiky ambulancie a dialýzy a tlač registrov pracoviska.
+              </p>
+            </div>
+
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Vykazovanie poisťovniam</h3>
+              <p className="text-foreground-2 text-sm leading-relaxed">
+                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a (dispenzarizácia), eFaktúra UBL 2.1, cenník výkonov a oznámenia poisťovniam.
+              </p>
+            </div>
+
+            <div className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border">
+              <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-brand-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Prevádzka dialýzy</h3>
+              <p className="text-foreground-2 text-sm leading-relaxed">
+                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, register epidemiologicky závažných skutočností a správa prístrojov.
               </p>
             </div>
 
@@ -327,7 +353,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Audit &amp; Bezpečnosť</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Append-only audit log, evidencia prístupov k pacientskym záznamom, prihlásenie cez Keycloak (OIDC / ePZP simulácia).
+                Append-only audit log, evidencia prístupov k pacientskym záznamom, lehota uchovávania dokumentácie a prihlásenie cez Keycloak (OIDC / ePZP).
               </p>
             </div>
           </div>
@@ -338,7 +364,7 @@ export default function Home() {
       <section id="demo" className="py-20 px-4 bg-gradient-to-r from-brand-strong to-brand text-brand-text">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-surface/20 text-brand-text mb-4 backdrop-blur-xs">
-            Živé demo prostredie v0.16.17
+            Živé demo prostredie {DEMO_VERSION}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-6">
             Vyskúšajte Arenibus v praxi
@@ -413,7 +439,7 @@ export default function Home() {
             </svg>
           </a>
           <p className="text-brand-text/80 mt-4 text-sm max-w-xl mx-auto">
-            Prihlásenie v spustenom deme prebieha cez autentifikačný server Keycloak (OIDC simulácia ePZP).
+            Prihlásenie v spustenom deme prebieha cez ePZP / OIDC (Keycloak).
           </p>
         </div>
       </section>
@@ -509,7 +535,7 @@ export default function Home() {
       <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-foreground-2">
-            Arenibus © 2026 Ľubomír Polaščín
+            Arenibus © 2024–2026 Ľubomír Polaščín
           </p>
           <p className="text-muted mt-2 text-sm">
             MUDr. Ľubomír Polaščín — Nephroctor

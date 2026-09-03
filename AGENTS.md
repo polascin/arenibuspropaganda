@@ -20,12 +20,14 @@ This is a marketing website for the Arenibus nephrology information system (MVP 
 - Features section highlighting implemented MVP functions:
   - Správa Pacientov (registrácia, vyhľadávanie, alergie, medikácia, súhlasy)
   - Evidencia Návštev (klinický zápis, dispenzarizácia, výkony)
-  - Hemodialýza a predpis (číselníky materiálu, mesačné kontroly)
-  - Peritoneálna dialýza (PD)
+  - Hemodialýza a predpis (záznamy, prístroje, cievne prístupy, mesačné kontroly)
+  - Peritoneálna dialýza (PD — CAPD a APD)
   - Kalendár a harmonogram
   - Laboratórne výsledky (trendová matica, zápis panela)
   - Moje zoznamy a štatistiky
-  - Audit a bezpečnosť (audit log, OIDC autentifikácia)
+  - Vykazovanie poisťovniam (dávky 751a/799a, eFaktúra)
+  - Prevádzka dialýzy (zmeny, rozpis, epidemiologický register)
+  - Audit a bezpečnosť (audit log, uchovávanie, OIDC autentifikácia)
 - Demo section linking to https://demo.arenibus.com/
 - Contact information with arenibus@polascin.net
 - Responsive design with dark mode support

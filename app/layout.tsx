@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const SITE_TITLE = "Arenibus – Nefrologický a dialyzačný informačný systém";
+const SITE_DESCRIPTION =
+  "Moderný .NET systém pre nefrologickú ambulanciu a dialýzu (HD, PD) s registrami, vykazovaním poisťovniam a integráciou na ezdravotníctvo.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://arenibus.polascin.net"),
-  title: "Arenibus – Nefrologický a dialyzačný informačný systém",
-  description:
-    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: [
     "Arenibus",
     "nefrologický informačný systém",
@@ -13,6 +16,7 @@ export const metadata: Metadata = {
     "dialyzačné stredisko",
     "hemodialýza",
     "peritoneálna dialýza",
+    "vykazovanie poisťovniam",
     "ezdravotníctvo",
     "MVP",
     "nefrologická ambulancia",
@@ -36,9 +40,8 @@ export const metadata: Metadata = {
     locale: "sk_SK",
     url: "https://arenibus.polascin.net/",
     siteName: "Arenibus",
-    title: "Arenibus – Nefrologický a dialyzačný informačný systém",
-    description:
-      "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: "/og-image.png",
@@ -50,9 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arenibus – Nefrologický a dialyzačný informačný systém",
-    description:
-      "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: ["/og-image.png"],
   },
   icons: {
@@ -77,8 +79,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "Arenibus",
-  description:
-    "Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza a peritoneálna dialýza), integrovaný s ezdravotníctvom.",
+  description: SITE_DESCRIPTION,
   url: "https://arenibus.polascin.net/",
   applicationCategory: "HealthApplication",
   operatingSystem: "Any",
