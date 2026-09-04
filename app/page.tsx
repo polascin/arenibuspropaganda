@@ -15,7 +15,7 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
-const DEMO_VERSION = "v0.17.41";
+const DEMO_VERSION = "v0.17.42";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -161,16 +161,18 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden bg-surface border-b border-border">
-          <div className="px-4 py-3 space-y-2">
-            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Funkcie</a>
-            <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Demo</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Kontakt</a>
-          </div>
+      {/* Mobile Menu — keep in DOM so aria-controls always resolves */}
+      <div
+        id="mobile-menu"
+        hidden={!mobileMenuOpen}
+        className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
+      >
+        <div className="px-4 py-3 space-y-2">
+          <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Funkcie</a>
+          <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Demo</a>
+          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Kontakt</a>
         </div>
-      )}
+      </div>
 
       {/* Hero Section */}
       <section id="main-content" className="flex-1 flex items-start justify-center pt-10 pb-20 px-4">
@@ -387,7 +389,7 @@ export default function Home() {
                 <div className="text-xs space-y-1.5 text-brand-text/90">
                   <p>
                     <span className="opacity-75">Prihlasovacie meno:</span>{" "}
-                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">demo-lekar</code>
+                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-brand-text">demo-lekar</code>
                   </p>
                   <p><span className="opacity-75">Heslo:</span> na vyžiadanie</p>
                 </div>
@@ -400,7 +402,7 @@ export default function Home() {
                 <div className="text-xs space-y-1.5 text-brand-text/90">
                   <p>
                     <span className="opacity-75">Prihlasovacie meno:</span>{" "}
-                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-white">demo-sestra</code>
+                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-brand-text">demo-sestra</code>
                   </p>
                   <p><span className="opacity-75">Heslo:</span> na vyžiadanie</p>
                 </div>
