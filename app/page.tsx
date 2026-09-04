@@ -15,7 +15,7 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
-const DEMO_VERSION = "v0.17.37";
+const DEMO_VERSION = "v0.17.41";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -245,7 +245,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Registrácia nového pacienta, rýchle vyhľadávanie, alergie, kompletná medikácia s históriou, poučenia a informované súhlasy.
+                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy, dohoda o poskytovaní ZS, očkovania, posudky, pracovná neschopnosť a výpis dokumentácie.
               </p>
             </div>
 
@@ -257,7 +257,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Evidencia Návštev</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Klinické zápisy (SOAP), klasifikácia CKD štádií (KDIGO CGA), epikríza, dispenzarizácia, meranie vitálnych funkcií a lekárske výkony.
+                Klinické zápisy (SOAP), klasifikácia CKD (KDIGO CGA), epikríza, dispenzarizácia, výkony, overenie poistného vzťahu (ÚDZS) a vzdialená starostlivosť.
               </p>
             </div>
 
@@ -269,7 +269,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Hemodialýza &amp; Predpis</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné predpisy, hemodialyzačné záznamy, číselníky materiálu, register prístrojov a cievnych prístupov, dáta z monitorov a mesačné kontroly.
+                Dialyzačné predpisy a záznamy, register prístrojov a cievnych prístupov, dáta z monitorov, overenie záznamu podpismi, revízie prístrojov a mesačné kontroly.
               </p>
             </div>
 
@@ -305,7 +305,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Laboratórne Výsledky</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Trendová matica výsledkov s časovým vývojom, zápis odberových panelov, referenčné rozsahy a výpočet korigovaných hodnôt.
+                Trendová matica výsledkov, žiadanky na SVLZ, zápis odberových panelov, referenčné rozsahy a korigované hodnoty.
               </p>
             </div>
 
@@ -317,7 +317,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Moje Zoznamy &amp; Štatistiky</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Vlastné zoznamy pacientov podľa diagnóz a skupín, prevádzkové štatistiky ambulancie a dialýzy a tlač registrov pracoviska.
+                Vlastné zoznamy pacientov, denný súhrn ambulancie a dialýzy, evidencie vyžiadanej dokumentácie a pracovných neschopností a tlač registrov.
               </p>
             </div>
 
@@ -329,7 +329,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vykazovanie poisťovniam</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a (dispenzarizácia), eFaktúra UBL 2.1, cenník výkonov a oznámenia poisťovniam.
+                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, reklamácie dávok, eFaktúra UBL 2.1, cenník výkonov a oznámenia poisťovniam.
               </p>
             </div>
 
@@ -341,7 +341,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Prevádzka dialýzy</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, register epidemiologicky závažných skutočností a správa prístrojov.
+                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, očkovania a kvalifikácie, register epidemiologicky závažných skutočností a správa prístrojov.
               </p>
             </div>
 
