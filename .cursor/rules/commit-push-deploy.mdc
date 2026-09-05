@@ -1,0 +1,16 @@
+---
+description: Always commit, push to main, and verify WebSupport deploy after changes
+alwaysApply: true
+---
+
+# Commit, push, deploy — vždy
+
+Po každej úlohe, ktorá mení súbory v tomto repozitári, **bez pýtania** dokonči celý release cyklus. Úloha nie je hotová, kým nie je overený živý deploy.
+
+1. Overovacie kontroly podľa rozsahu (`npm run lint`, `npm run build` / `npx next build --webpack` lokálne, `npm run check:contrast`, `npm run check:links` ak treba).
+2. **Commitni všetky relevantné zmeny** (kód, docs, assety, konfigurácia). Necommituj `.cursor/` (okrem pravidiel v `.cursor/rules/` ak majú byť v gite), tajomstvá, ani build artefakty.
+3. **Pushni** na `origin/main`.
+4. **Sleduj** GitHub Actions deploy (`gh run watch`) až do úspechu workflow na WebSupport.
+5. **Verifikuj** https://arenibus.polascin.net/ (HTTP 200 + relevantné funkčné kontroly podľa zmien).
+
+Toto platí aj po audite (`.doaudit.md`) a po bežných úpravách webu.

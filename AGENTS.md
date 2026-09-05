@@ -72,9 +72,9 @@ Local fallback scripts are still available:
 - `deploy.bat` — Windows helper that delegates to `deploy.sh` via Git Bash/WSL.
 
 ### Standard Task Completion Workflow
-Vždy na záver každej úlohy:
+Vždy na záver každej úlohy, **bez pýtania používateľa** (úloha nie je hotová, kým nie je overený živý deploy na WebSupport):
 1. Spustiť overovacie kontroly (`npm run lint`, `npm run build`, `npm run check:contrast`, `npm run check:links`).
-2. Zmeny commitnúť s jasnou správou.
+2. Commitnúť **všetky** relevantné zmeny s jasnou správou.
 3. Pushnúť commit do `origin/main`.
-4. Počkať na automatický deployment cez GitHub Actions a verifikovať živú produkčnú stránku na https://arenibus.polascin.net/.
+4. Sledovať GitHub Actions deploy a verifikovať živú produkciu na https://arenibus.polascin.net/ (HTTP 200 + relevantné kontroly).
 
