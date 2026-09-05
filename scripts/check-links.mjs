@@ -19,6 +19,12 @@ const SITE_ORIGIN = "https://arenibus.polascin.net";
 const MAILTO_ALLOW = new Set(["arenibus@polascin.net", "arenibus@nephroctor.com"]);
 const USER_AGENT = "ArenibusLinkCheck/1.0 (+https://arenibus.polascin.net/)";
 const FETCH_TIMEOUT_MS = 15_000;
+const FETCH_RETRIES = 3;
+const FETCH_RETRY_DELAY_MS = 2_000;
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function walk(dir) {
   const files = [];
@@ -201,28 +207,35 @@ async function checkExternal(where, url) {
     else fail(where, `${url} (cached failure: ${prev.detail})`);
     return;
   }
-  try {
-    const res = await fetch(url, {
-      method: "GET",
-      redirect: "follow",
-      headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/json,*/*" },
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-    });
-    const status = res.status;
-    const formspreeOk = status === 405 && url.includes("formspree.io");
-    if ((status >= 200 && status < 400) || formspreeOk) {
-      seenExternal.set(url, { ok: true, status });
-      pass(where, `${url} → ${status}`);
-    } else {
-      const detail = `HTTP ${status}`;
-      seenExternal.set(url, { ok: false, detail });
-      fail(where, `${url} → ${detail}`);
+
+  let lastDetail = "unknown error";
+  for (let attempt = 1; attempt <= FETCH_RETRIES; attempt++) {
+    try {
+      const res = await fetch(url, {
+        method: "GET",
+        redirect: "follow",
+        headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/json,*/*" },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      });
+      const status = res.status;
+      const formspreeOk = status === 405 && url.includes("formspree.io");
+      if ((status >= 200 && status < 400) || formspreeOk) {
+        seenExternal.set(url, { ok: true, status });
+        const retryNote = attempt > 1 ? ` (after ${attempt} attempts)` : "";
+        pass(where, `${url} → ${status}${retryNote}`);
+        return;
+      }
+      lastDetail = `HTTP ${status}`;
+      // Non-transient HTTP failures (404/5xx) do not retry.
+      if (status < 500) break;
+    } catch (err) {
+      lastDetail = err.name === "TimeoutError" || err.name === "AbortError" ? "timeout" : err.message;
     }
-  } catch (err) {
-    const detail = err.name === "TimeoutError" ? "timeout" : err.message;
-    seenExternal.set(url, { ok: false, detail });
-    fail(where, `${url} → ${detail}`);
+    if (attempt < FETCH_RETRIES) await sleep(FETCH_RETRY_DELAY_MS * attempt);
   }
+
+  seenExternal.set(url, { ok: false, detail: lastDetail });
+  fail(where, `${url} → ${lastDetail}`);
 }
 
 function resolveHref(tag, consts) {

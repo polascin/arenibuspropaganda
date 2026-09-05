@@ -42,3 +42,6 @@ next-env.d.ts
 
 # trunk.io local cache
 .trunk/
+
+# Cursor local IDE settings (project rules under .cursor/rules/ stay tracked)
+.cursor/settings.json
