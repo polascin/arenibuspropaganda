@@ -15,7 +15,7 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
-const DEMO_VERSION = "v0.17.42";
+const DEMO_VERSION = "v0.17.49";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -247,7 +247,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy, dohoda o poskytovaní ZS, očkovania, posudky, pracovná neschopnosť a výpis dokumentácie.
+                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy, dohoda o poskytovaní ZS, očkovania, posudky, pracovná neschopnosť, čakacia listina na transplantáciu, doklady o úhrade a výpis dokumentácie.
               </p>
             </div>
 
@@ -259,7 +259,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Evidencia Návštev</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Klinické zápisy (SOAP), klasifikácia CKD (KDIGO CGA), epikríza, dispenzarizácia, výkony, overenie poistného vzťahu (ÚDZS) a vzdialená starostlivosť.
+                Klinické zápisy (SOAP) so vzormi textov, vlastné typy návštev, klasifikácia CKD (KDIGO 2024 CGA), epikríza, dispenzarizácia, výkony a pripočítateľné položky, overenie poistného vzťahu (ÚDZS) a vzdialená starostlivosť.
               </p>
             </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Hemodialýza &amp; Predpis</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné predpisy a záznamy, register prístrojov a cievnych prístupov, dáta z monitorov, overenie záznamu podpismi, revízie prístrojov a mesačné kontroly.
+                Dialyzačné predpisy a záznamy, sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly.
               </p>
             </div>
 
@@ -283,7 +283,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Peritoneálna Dialýza (PD)</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Program PD (CAPD a APD), predpisy a záznamy výmen, cyklovač, použité roztoky a zaradenie pacientov do programu.
+                Program PD (CAPD a APD), predpisy, vyšetrenie PD, záznamy výmen, cyklovač, použité roztoky, zaškolenie pacienta a zaradenie do programu.
               </p>
             </div>
 
@@ -295,7 +295,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Kalendár &amp; Harmonogram</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Kalendár ambulancie a dialyzačných smien, dnešné termíny, čakajúce ošetrenia, denný rozpis a správa objednávok.
+                Kalendár ambulancie a dialyzačných smien, dnešné termíny, čakajúce ošetrenia, denný rozpis, správa objednávok a súhrn na odovzdanie služby.
               </p>
             </div>
 
@@ -331,7 +331,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vykazovanie poisťovniam</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, reklamácie dávok, eFaktúra UBL 2.1, cenník výkonov a oznámenia poisťovniam.
+                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, reklamácie dávok, eFaktúra UBL 2.1, cenník výkonov, doklady o úhrade a oznámenia o platenej starostlivosti.
               </p>
             </div>
 
@@ -343,7 +343,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Prevádzka dialýzy</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, očkovania a kvalifikácie, register epidemiologicky závažných skutočností a správa prístrojov.
+                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, očkovania a kvalifikácie, register epidemiologicky závažných skutočností, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
               </p>
             </div>
 

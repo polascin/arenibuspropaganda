@@ -18,15 +18,15 @@ This is a marketing website for the Arenibus nephrology information system (MVP 
 ## Key Features
 - Hero section with system overview (MVP - nefrologická ambulancia)
 - Features section highlighting implemented MVP functions:
-  - Správa Pacientov (registrácia, vyhľadávanie, alergie, medikácia, súhlasy, dohoda o ZS, očkovania, posudky, PN, výpis dokumentácie)
-  - Evidencia Návštev (klinický zápis, dispenzarizácia, výkony, ÚDZS, vzdialená starostlivosť)
-  - Hemodialýza a predpis (záznamy, prístroje, cievne prístupy, dáta z monitorov, podpisy, mesačné kontroly)
-  - Peritoneálna dialýza (PD — CAPD a APD)
-  - Kalendár a harmonogram
+  - Správa Pacientov (registrácia, vyhľadávanie, alergie, medikácia, súhlasy, dohoda o ZS, očkovania, posudky, PN, transplantácia, doklady o úhrade, výpis dokumentácie)
+  - Evidencia Návštev (klinický zápis so vzormi, vlastné typy, KDIGO 2024, dispenzarizácia, výkony a pripočítateľné položky, ÚDZS, vzdialená starostlivosť)
+  - Hemodialýza a predpis (záznamy, sprievodca zaradením, prístroje, cievne prístupy, Nexadia, materiál, podpisy, revízie a zaškolenia, mesačné kontroly)
+  - Peritoneálna dialýza (PD — CAPD a APD, vyšetrenie PD, zaškolenie pacienta)
+  - Kalendár a harmonogram (vrátane súhrnu na odovzdanie služby)
   - Laboratórne výsledky (trendová matica, žiadanky na SVLZ, zápis panela)
   - Moje zoznamy a štatistiky
-  - Vykazovanie poisťovniam (dávky 751a/799a, reklamácie, eFaktúra)
-  - Prevádzka dialýzy (zmeny, rozpis, očkovania a kvalifikácie, epidemiologický register)
+  - Vykazovanie poisťovniam (dávky 751a/799a, reklamácie, eFaktúra, doklady o úhrade, platená starostlivosť)
+  - Prevádzka dialýzy (zmeny, rozpis, očkovania a kvalifikácie, epidemiologický register, oznamy, odovzdanie dokumentácie)
   - Audit a bezpečnosť (audit log, uchovávanie, OIDC autentifikácia)
 - Demo section linking to https://demo.arenibus.com/
 - Contact information with arenibus@polascin.net
