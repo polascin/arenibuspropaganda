@@ -18,15 +18,15 @@ This is a marketing website for the Arenibus nephrology information system (MVP 
 ## Key Features
 - Hero section with system overview (MVP - nefrologická ambulancia)
 - Features section highlighting implemented MVP functions:
-  - Správa Pacientov (registrácia, vyhľadávanie, alergie, medikácia, súhlasy vrátane paliatívnej starostlivosti, dohoda o ZS, očkovania s plánom, posudky, PN, transplantácia, doklady o úhrade, sprístupňovanie dokumentácie, žiadosti o nápravu)
-  - Evidencia Návštev (klinický zápis so vzormi, vlastné typy, KDIGO 2024, dispenzarizácia, výkony a pripočítateľné položky, ÚDZS, vzdialená a domáca starostlivosť, doplnkové ordinačné hodiny, oprava zápisu)
+  - Správa Pacientov (registrácia, vyhľadávanie, alergie, medikácia, súhlasy vrátane paliatívnej starostlivosti, dohoda o ZS, očkovania s plánom, posudky, PN, osobná starostlivosť § 12b, lekárske predpisy, transplantácia vrátane poučenia o živom darcovi, sprístupňovanie so zákazmi nahliadnutia, žiadosti o nápravu, žiadosti Sociálnej poisťovne)
+  - Evidencia Návštev (klinický zápis so vzormi, vlastné typy, KDIGO 2024, dispenzarizácia, výkony eZápis a pripočítateľné položky, lekárske správy, odporúčania, konzultácie, ÚDZS, vzdialená a domáca starostlivosť, doplnkové ordinačné hodiny, oprava zápisu)
   - Hemodialýza a predpis (záznamy HD a HDF, sprievodca zaradením, prístroje, cievne prístupy, Nexadia, materiál, podpisy, revízie a zaškolenia, mesačné kontroly)
   - Peritoneálna dialýza (PD — CAPD a APD, vyšetrenie PD, PET a Kt/V, exit-site, zaškolenie pacienta)
   - Kalendár a harmonogram (vrátane súhrnu na odovzdanie služby)
   - Laboratórne výsledky (trendová matica, žiadanky na SVLZ, zápis panela)
-  - Moje zoznamy a štatistiky (vlastné diagnózy a výkony, žiadosti o nápravu, kniha eliminačných výkonov)
-  - Vykazovanie poisťovniam (dávky 751a/799a, reklamácie, eFaktúra, doklady o úhrade, platená starostlivosť, neodkladná starostlivosť, poistenci EÚ, oznámenia poisťovni)
-  - Prevádzka dialýzy (zmeny, rozpis, očkovania, kvalifikácie a vzdelávanie, epidemiologický register, nežiaduce udalosti, zmluvy, kniha prehliadok mŕtvych, oznamy, odovzdanie dokumentácie)
+  - Moje zoznamy a štatistiky (vlastné diagnózy a výkony, žiadosti o nápravu, kniha eliminačných výkonov, podklady pre kontrolu a dozor)
+  - Vykazovanie poisťovniam (dávky 751a/799a, reklamácie vrátane opravnej dávky O, eFaktúra, doklady o úhrade, súvisiace služby, platená starostlivosť, neodkladná starostlivosť, poistenci EÚ aj mimo EÚ, oznámenia poisťovni)
+  - Prevádzka dialýzy (zmeny, rozpis, očkovania, kvalifikácie a vzdelávanie, epidemiologický register, nežiaduce udalosti, zmluvy, kniha prehliadok mŕtvych, písomná forma, dokumenty kvality, oznamy, odovzdanie dokumentácie)
   - Audit a bezpečnosť (audit log, uchovávanie, OIDC autentifikácia)
 - Demo section linking to https://demo.arenibus.com/
 - Contact information with arenibus@polascin.net
