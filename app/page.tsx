@@ -15,7 +15,7 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
-const DEMO_VERSION = "v0.17.70";
+const DEMO_VERSION = "v0.17.74";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -247,7 +247,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy vrátane paliatívnej starostlivosti, dohoda o poskytovaní ZS, očkovania s individuálnym plánom, posudky, pracovná neschopnosť a osobná starostlivosť (§ 12b), lekárske predpisy a poukazy, čakacia listina na transplantáciu vrátane poučenia o živom darcovi, sprístupňovanie dokumentácie so zákazmi nahliadnutia, žiadosti o nápravu a žiadosti Sociálnej poisťovne.
+                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy vrátane paliatívnej starostlivosti, dohoda o poskytovaní ZS, očkovania s individuálnym plánom, posudky, pracovná neschopnosť a osobná starostlivosť (§ 12b), lekárske predpisy a poukazy, čakacia listina a návrh transplantácie pred dialýzou vrátane poučenia o živom darcovi, hlásenia prenosných ochorení, lekárske ožiarenia, preprava, biomedicínsky výskum, sprístupňovanie dokumentácie so zákazmi nahliadnutia, zbavenie mlčanlivosti, žiadosti o nápravu, žiadosti Sociálnej poisťovne a evidencia úmrtia s naložením s dokumentáciou.
               </p>
             </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Hemodialýza &amp; Predpis</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné predpisy a záznamy (HD a hemodiafiltrácia), sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly.
+                Dialyzačné predpisy a záznamy (HD a hemodiafiltrácia), sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, serologický status a prevádzkové určenie prístroja vrátane vyhradenia pre akútne stavy, hosťovské ošetrenia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly.
               </p>
             </div>
 
@@ -319,7 +319,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Moje Zoznamy &amp; Štatistiky</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Vlastné zoznamy diagnóz a výkonov, denný súhrn ambulancie a dialýzy, evidencie vyžiadanej dokumentácie, pracovných neschopností a žiadostí o nápravu, kniha eliminačných výkonov, podklady pre kontrolu a dozor a tlač registrov.
+                Vlastné zoznamy diagnóz a výkonov, denný súhrn ambulancie a dialýzy, evidencie vyžiadanej dokumentácie, pracovných neschopností a žiadostí o nápravu, kniha eliminačných výkonov, indikátory kvality, objednania a lehota poskytnutia, podklady pre kontrolu a dozor vrátane kontroly očkovania a tlač registrov.
               </p>
             </div>
 
@@ -331,7 +331,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vykazovanie poisťovniam</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, reklamácie dávok vrátane opravnej dávky O, eFaktúra UBL 2.1, cenník výkonov, doklady o úhrade, služby súvisiace so starostlivosťou, oznámenia o platenej starostlivosti, potvrdenie neodkladnej starostlivosti, poistenci EÚ aj mimo EÚ a oznámenia poisťovni (režim, alkohol, úrazy).
+                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, reklamácie dávok vrátane opravnej dávky O, eFaktúra UBL 2.1, cenník výkonov, doklady o úhrade, služby súvisiace so starostlivosťou, oznámenia o platenej starostlivosti, potvrdenie neodkladnej starostlivosti, poistenci EÚ aj mimo EÚ, poistenci bez verejného poistenia (I/J/K), lieky a pomôcky podľa pôvodu (§ 79a) a oznámenia poisťovni (režim, alkohol, úrazy).
               </p>
             </div>
 
@@ -343,7 +343,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Prevádzka dialýzy</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, očkovania, kvalifikácie a sústavné vzdelávanie, register epidemiologicky závažných skutočností a nežiaducich udalostí, zmluvy s poisťovňami, kniha prehliadok mŕtvych, písomná forma dokumentácie, dokumenty systému kvality, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
+                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, očkovania, kvalifikácie a sústavné vzdelávanie, register epidemiologicky závažných skutočností a nežiaducich udalostí, zmluvy s poisťovňami, kniha prehliadok mŕtvych, písomná forma dokumentácie, dokumenty systému kvality, karta zariadenia a personálne zabezpečenie, označenie zariadenia a informačný list, poistenie zodpovednosti za škodu, oznámenia zmien údajov v povolení, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
               </p>
             </div>
 
