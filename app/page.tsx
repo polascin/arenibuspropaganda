@@ -15,7 +15,7 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
-const DEMO_VERSION = "v0.17.76";
+const DEMO_VERSION = "v0.17.78";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -247,7 +247,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy vrátane paliatívnej starostlivosti, dohoda o poskytovaní ZS, očkovania s individuálnym plánom, posudky, pracovná neschopnosť a osobná starostlivosť (§ 12b), lekárske predpisy a poukazy, čakacia listina a návrh transplantácie pred dialýzou vrátane poučenia o živom darcovi, hlásenia prenosných ochorení, lekárske ožiarenia, preprava, biomedicínsky výskum, sprístupňovanie dokumentácie so zákazmi nahliadnutia, zbavenie mlčanlivosti, žiadosti o nápravu, žiadosti Sociálnej poisťovne a evidencia úmrtia s naložením s dokumentáciou.
+                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy vrátane paliatívnej starostlivosti, rozsahu starostlivosti a zmluvy s poisťovňou aj účasti na výučbe, dohoda o poskytovaní ZS, očkovania s individuálnym plánom, prekážkami, nežiaducimi účinkami a rozhodnutiami RÚVZ, posudky, pracovná neschopnosť a osobná starostlivosť (§ 12b), lekárske predpisy a poukazy, čakacia listina a návrh transplantácie pred dialýzou vrátane poučenia o živom darcovi, hlásenia prenosných ochorení, lekárske ožiarenia, preprava, biomedicínsky výskum, sprístupňovanie dokumentácie so zákazmi nahliadnutia, výpis dokumentácie, zbavenie mlčanlivosti, žiadosti o nápravu, žiadosti Sociálnej poisťovne a evidencia úmrtia s naložením s dokumentáciou.
               </p>
             </div>
 
@@ -259,7 +259,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Evidencia Návštev</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Klinické zápisy (SOAP) so vzormi textov, vlastné typy návštev, klasifikácia CKD (KDIGO 2024 CGA), epikríza, dispenzarizácia, výkony (eZápis) a pripočítateľné položky, lekárske správy s evidenciou doručenia, odporúčania na ďalšiu starostlivosť a konzultácie medzi pracovníkmi, overenie poistného vzťahu (ÚDZS), vzdialená a domáca starostlivosť, doplnkové ordinačné hodiny a oprava zápisu so zachovaním pôvodného znenia.
+                Klinické zápisy (SOAP) so vzormi textov, vlastné typy návštev, klasifikácia CKD (KDIGO 2024 CGA), epikríza, dispenzarizácia, výkony (eZápis) a pripočítateľné položky, lekárske správy s evidenciou doručenia, odporúčania na ďalšiu starostlivosť a konzultácie medzi pracovníkmi, overenie poistného vzťahu (ÚDZS), vzdialená a domáca starostlivosť, doplnkové ordinačné hodiny, poskytnutie počas krízovej situácie (§ 49k) a oprava zápisu so zachovaním pôvodného znenia.
               </p>
             </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Hemodialýza &amp; Predpis</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné predpisy a záznamy (HD a hemodiafiltrácia), sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, serologický status a prevádzkové určenie prístroja vrátane vyhradenia pre akútne stavy, hosťovské ošetrenia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly.
+                Dialyzačné predpisy a záznamy (HD a hemodiafiltrácia) vrátane dialyzačnej vizity a zrušenia záznamu s nahradením, sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, serologický status a prevádzkové určenie prístroja vrátane vyhradenia pre akútne stavy, hosťovské ošetrenia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly adekvátnosti, anémie a fosfo-kalciového metabolizmu.
               </p>
             </div>
 
@@ -283,7 +283,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Peritoneálna Dialýza (PD)</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Program PD (CAPD a APD), predpisy, vyšetrenie PD, záznamy výmen, cyklovač, použité roztoky, PET a Kt/V, ošetrovanie exit-site, zaškolenie pacienta a zaradenie do programu.
+                Program PD (CAPD a APD), predpisy, vyšetrenie PD, záznamy výmen, cyklovač, použité roztoky, PET a Kt/V, bilancia tekutín, ošetrovanie exit-site, liečba peritonitídy a komplikácií, zaškolenie pacienta, zaradenie do programu a zrušenie záznamu s nahradením.
               </p>
             </div>
 
@@ -331,7 +331,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vykazovanie poisťovniam</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, dispenzárne dávky, reklamácie dávok vrátane opravnej dávky O, eFaktúra UBL 2.1, cenník výkonov, doklady o úhrade, služby súvisiace so starostlivosťou, oznámenia o platenej starostlivosti, potvrdenie neodkladnej starostlivosti, poistenci EÚ aj mimo EÚ, poistenci bez verejného poistenia (I/J/K), lieky a pomôcky podľa pôvodu (§ 79a) a oznámenia poisťovni (režim, alkohol, úrazy).
+                Dávky 751a (ambulancia a dialyzačný stacionár) a 799a, dispenzárne dávky, reklamácie dávok vrátane opravnej dávky O a revíznych nálezov, eFaktúra UBL 2.1, cenník výkonov, doklady o úhrade, služby súvisiace so starostlivosťou, oznámenia o platenej starostlivosti, potvrdenie neodkladnej starostlivosti, poistenci EÚ aj mimo EÚ, poistenci bez verejného poistenia (I/J/K), lieky a pomôcky podľa pôvodu (§ 79a) a oznámenia poisťovni (režim, alkohol, úrazy).
               </p>
             </div>
 
@@ -343,7 +343,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Prevádzka dialýzy</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, zoznam pracovníkov vrátane oznámení a exportu do 65 rokov, očkovania, kvalifikácie a sústavné vzdelávanie, register epidemiologicky závažných skutočností a nežiaducich udalostí, zmluvy s poisťovňami, kniha prehliadok mŕtvych, písomná forma dokumentácie, dokumenty systému kvality, karta zariadenia a personálne zabezpečenie, označenie zariadenia a informačný list, poistenie zodpovednosti za škodu, oznámenia zmien údajov v povolení, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
+                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, zoznam pracovníkov vrátane oznámení a exportu do 65 rokov, očkovania, kvalifikácie a sústavné vzdelávanie, register epidemiologicky závažných skutočností a nežiaducich udalostí, zmluvy s poisťovňami, kniha prehliadok mŕtvych, písomná forma dokumentácie, dokumenty systému kvality, evidencia záložných kópií, klinické audity, rozpis ordinačných hodín s predložením kraju, karta zariadenia a personálne zabezpečenie, označenie zariadenia a informačný list, poistenie zodpovednosti za škodu, oznámenia zmien údajov v povolení, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
               </p>
             </div>
 
