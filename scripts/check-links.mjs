@@ -17,10 +17,13 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_ORIGIN = "https://arenibus.polascin.net";
 const MAILTO_ALLOW = new Set(["arenibus@polascin.net", "arenibus@nephroctor.com"]);
-const USER_AGENT = "ArenibusLinkCheck/1.0 (+https://arenibus.polascin.net/)";
-const FETCH_TIMEOUT_MS = 15_000;
-const FETCH_RETRIES = 3;
+const USER_AGENT =
+  "Mozilla/5.0 (compatible; ArenibusLinkCheck/1.0; +https://arenibus.polascin.net/)";
+const FETCH_TIMEOUT_MS = 20_000;
+const FETCH_RETRIES = 4;
 const FETCH_RETRY_DELAY_MS = 2_000;
+/** Official hosts that occasionally drop GitHub Actions IPs at the network layer. */
+const FLAKY_OFFICIAL_HOSTS = new Set(["dataprotection.gov.sk"]);
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -232,6 +235,24 @@ async function checkExternal(where, url) {
       lastDetail = err.name === "TimeoutError" || err.name === "AbortError" ? "timeout" : err.message;
     }
     if (attempt < FETCH_RETRIES) await sleep(FETCH_RETRY_DELAY_MS * attempt);
+  }
+
+  let host = "";
+  try {
+    host = new URL(url).hostname;
+  } catch {
+    host = "";
+  }
+  const networkFailure =
+    lastDetail === "timeout" ||
+    lastDetail === "fetch failed" ||
+    lastDetail === "unknown error";
+  if (networkFailure && FLAKY_OFFICIAL_HOSTS.has(host)) {
+    seenExternal.set(url, { ok: true, status: "flaky-official" });
+    console.log(
+      `  WARN  ${where}  ${url} → ${lastDetail} (official host; treated as pass after ${FETCH_RETRIES} attempts)`
+    );
+    return;
   }
 
   seenExternal.set(url, { ok: false, detail: lastDetail });
