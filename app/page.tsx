@@ -15,7 +15,7 @@ function getDarkModeServerSnapshot() {
   return false;
 }
 
-const DEMO_VERSION = "v0.17.78";
+const DEMO_VERSION = "v0.17.96";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -247,7 +247,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Správa Pacientov</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy vrátane paliatívnej starostlivosti, rozsahu starostlivosti a zmluvy s poisťovňou aj účasti na výučbe, dohoda o poskytovaní ZS, očkovania s individuálnym plánom, prekážkami, nežiaducimi účinkami a rozhodnutiami RÚVZ, posudky, pracovná neschopnosť a osobná starostlivosť (§ 12b), lekárske predpisy a poukazy, čakacia listina a návrh transplantácie pred dialýzou vrátane poučenia o živom darcovi, hlásenia prenosných ochorení, lekárske ožiarenia, preprava, biomedicínsky výskum, sprístupňovanie dokumentácie so zákazmi nahliadnutia, výpis dokumentácie, zbavenie mlčanlivosti, žiadosti o nápravu, žiadosti Sociálnej poisťovne a evidencia úmrtia s naložením s dokumentáciou.
+                Registrácia a vyhľadávanie, alergie, medikácia, poučenia a súhlasy vrátane paliatívnej starostlivosti, rozsahu starostlivosti a zmluvy s poisťovňou aj účasti na výučbe, dohoda o poskytovaní ZS vrátane odstúpenia, očkovania s individuálnym plánom, prekážkami, nežiaducimi účinkami a rozhodnutiami RÚVZ, posudky, pracovná neschopnosť a osobná starostlivosť (§ 12b), lekárske predpisy a poukazy, čakacia listina a návrh transplantácie pred dialýzou vrátane poučenia o živom darcovi, hlásenia prenosných ochorení a oznámenia podozrenia (§ 79 ods. 4), lekárske ožiarenia, preprava, biomedicínsky výskum, sprístupňovanie dokumentácie so zákazmi nahliadnutia, výpis dokumentácie, zbavenie mlčanlivosti, žiadosti o nápravu, žiadosti Sociálnej poisťovne a evidencia úmrtia s naložením s dokumentáciou.
               </p>
             </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Hemodialýza &amp; Predpis</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné predpisy a záznamy (HD a hemodiafiltrácia) vrátane dialyzačnej vizity a zrušenia záznamu s nahradením, sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, serologický status a prevádzkové určenie prístroja vrátane vyhradenia pre akútne stavy, hosťovské ošetrenia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly adekvátnosti, anémie a fosfo-kalciového metabolizmu.
+                Dialyzačné predpisy a záznamy (HD a hemodiafiltrácia) vrátane dialyzačnej vizity, osobitných komentárov aj po overení a zrušenia záznamu s nahradením, sprievodca zaradením do programu, register prístrojov a cievnych prístupov, dáta z monitorov Nexadia, serologický status a prevádzkové určenie prístroja vrátane vyhradenia pre akútne stavy, hosťovské ošetrenia, spotrebný materiál, overenie záznamu podpismi, revízie a zaškolenia na prístrojoch a mesačné kontroly adekvátnosti, anémie a fosfo-kalciového metabolizmu.
               </p>
             </div>
 
@@ -307,7 +307,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Laboratórne Výsledky</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Trendová matica výsledkov, žiadanky na SVLZ, zápis odberových panelov s evidenciou pôvodu (listinný výsledkový list, elektronický záznam SVLZ, rozhranie laboratória), referenčné rozsahy a korigované hodnoty.
+                Trendová matica výsledkov, žiadanky na SVLZ s identifikátormi žiadanky a vzorky (§ 19a) aj prehľadom nevybavených žiadaniek, zápis odberových panelov s evidenciou pôvodu (listinný výsledkový list, elektronický záznam SVLZ, rozhranie laboratória), referenčné rozsahy a korigované hodnoty.
               </p>
             </div>
 
@@ -319,7 +319,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Moje Zoznamy &amp; Štatistiky</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Vlastné zoznamy diagnóz a výkonov, denný súhrn ambulancie a dialýzy, evidencie vyžiadanej dokumentácie, pracovných neschopností a žiadostí o nápravu, kniha eliminačných výkonov, indikátory kvality, objednania a lehota poskytnutia, podklady pre revíznu kontrolu poisťovne, dozor orgánu a klinický audit (§ 9c) vrátane kontroly očkovania a tlač registrov.
+                Vlastné zoznamy diagnóz a výkonov, denný súhrn ambulancie a dialýzy, evidencie vyžiadanej dokumentácie, pracovných neschopností, žiadostí o nápravu a nevybavených žiadaniek na SVLZ, kniha eliminačných výkonov, indikátory kvality, objednania a lehota poskytnutia, podklady pre revíznu kontrolu poisťovne, dozor orgánu a klinický audit (§ 9c) vrátane kontroly očkovania a tlač registrov.
               </p>
             </div>
 
@@ -343,7 +343,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Prevádzka dialýzy</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, zoznam pracovníkov vrátane oznámení a exportu do 65 rokov, očkovania, kvalifikácie a sústavné vzdelávanie, register epidemiologicky závažných skutočností a nežiaducich udalostí, zmluvy s poisťovňami, kniha prehliadok mŕtvych, písomná forma dokumentácie, dokumenty systému kvality, evidencia záložných kópií, klinické audity, rozpis ordinačných hodín s predložením kraju, karta zariadenia a personálne zabezpečenie, označenie zariadenia a informačný list, poistenie zodpovednosti za škodu, oznámenia zmien údajov v povolení, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
+                Dialyzačné zmeny a miestnosti, týždenný rozpis personálu, zoznam pracovníkov vrátane oznámení, registrácie v komore, identifikátora NRZP a exportu do 65 rokov, očkovania, kvalifikácie a sústavné vzdelávanie, register epidemiologicky závažných skutočností a nežiaducich udalostí, zmluvy s poisťovňami, kniha prehliadok mŕtvych, písomná forma dokumentácie, dokumenty systému kvality, evidencia záložných kópií, klinické audity, rozpis ordinačných hodín s predložením kraju, karta zariadenia, vykazovacie jednotky a personálne zabezpečenie, označenie zariadenia, informačný list a informácie na webové sídlo, poistenie zodpovednosti za škodu, oznámenia zmien údajov v povolení, oznamy o zastupovaní a protokoly odovzdania dokumentácie.
               </p>
             </div>
 
@@ -355,7 +355,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Audit &amp; Bezpečnosť</h3>
               <p className="text-foreground-2 text-sm leading-relaxed">
-                Append-only audit log, evidencia prístupov k pacientskym záznamom, lehota uchovávania dokumentácie a prihlásenie cez Keycloak (OIDC / ePZP).
+                Append-only audit log, evidencia prístupov k pacientskym záznamom vrátane filtra pokusov o neoprávnený prístup (§ 22 ods. 6), lehota uchovávania dokumentácie a prihlásenie cez Keycloak (OIDC / ePZP).
               </p>
             </div>
           </div>
