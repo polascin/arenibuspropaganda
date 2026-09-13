@@ -477,6 +477,7 @@ export default function Home() {
                       id="contact-name"
                       type="text"
                       name="name"
+                      autoComplete="name"
                       placeholder="Vaše meno"
                       required
                       className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
@@ -488,6 +489,7 @@ export default function Home() {
                       id="contact-email"
                       type="email"
                       name="email"
+                      autoComplete="email"
                       placeholder="Váš email"
                       required
                       className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
