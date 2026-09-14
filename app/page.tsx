@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { DEMO_VERSION } from "@/lib/site";
 
 function getDarkModeSnapshot() {
   if (typeof window === "undefined") return false;
@@ -14,8 +15,6 @@ function getDarkModeSnapshot() {
 function getDarkModeServerSnapshot() {
   return false;
 }
-
-const DEMO_VERSION = "v0.17.107";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -132,6 +131,7 @@ export default function Home() {
                 onClick={toggleDarkMode}
                 className="p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
                 aria-label="Prepnúť tmavý režim"
+                aria-pressed={darkMode}
               >
                 {darkMode ? (
                   <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

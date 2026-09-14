@@ -37,6 +37,13 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
+    <>
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand focus:text-brand-text focus:rounded-lg"
+    >
+      Preskočiť na hlavný obsah
+    </a>
     <div className="flex flex-col min-h-screen bg-background">
       {/* Navigation */}
       <nav className="w-full bg-surface/80 backdrop-blur-sm border-b border-border sticky top-0 z-50">
@@ -64,7 +71,7 @@ export default function TermsPage() {
       </nav>
 
       {/* Content */}
-      <main className="flex-1 py-16 px-4 bg-surface">
+      <main id="main-content" className="flex-1 py-16 px-4 bg-surface">
         <article className="max-w-4xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Podmienky používania
@@ -190,5 +197,6 @@ export default function TermsPage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

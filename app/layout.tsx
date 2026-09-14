@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { DEMO_VERSION_PLAIN } from "@/lib/site";
 import "./globals.css";
 
 const SITE_TITLE = "Arenibus – Nefrologický a dialyzačný informačný systém";
@@ -83,6 +84,9 @@ const jsonLd = {
   url: "https://arenibus.polascin.net/",
   applicationCategory: "HealthApplication",
   operatingSystem: "Any",
+  softwareVersion: DEMO_VERSION_PLAIN,
+  inLanguage: "sk",
+  logo: "https://arenibus.polascin.net/og-image.png",
   offers: {
     "@type": "Offer",
     price: "0",
