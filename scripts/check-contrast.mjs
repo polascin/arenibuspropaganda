@@ -69,6 +69,13 @@ const PAIRS = [
   ["development badge (text-sm)", "warn", "warn-soft", 4.5],
   ["form success message", "ok", "surface-2", 4.5],
   ["form error message", "danger", "surface-2", 4.5],
+  ["version/role badge (text-xs)", "brand-strong", "brand-soft", 4.5],
+  ["brand link on surface card", "brand", "surface", 4.5],
+  ["brand hover on surface card", "brand-strong", "surface", 4.5],
+  ["footer hover / username code bg", "brand", "surface-3", 4.5],
+  ["username code", "foreground", "surface-3", 4.5],
+  ["theme toggle icon", "foreground-2", "surface-2", 4.5],
+  ["demo OIDC caption (text-sm)", "brand-text", "brand-strong", 4.5],
 ];
 
 const THEMES = [

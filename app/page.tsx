@@ -2,19 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { DEMO_VERSION } from "@/lib/site";
-
-function getDarkModeSnapshot() {
-  if (typeof window === "undefined") return false;
-  const saved = localStorage.getItem("darkMode");
-  if (saved !== null) return saved === "true";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-function getDarkModeServerSnapshot() {
-  return false;
-}
+import ThemeToggle from "./theme-toggle";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -25,33 +15,7 @@ const DEMO_ACCESS_MAILTO =
     "Dobrý deň,\n\nprosím o zaslanie hesiel k demo kontám Arenibus (lekár / sestra).\n\nĎakujem."
   );
 
-function subscribeDarkMode(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
-  const handler = (e: StorageEvent) => {
-    if (e.key === "darkMode") callback();
-  };
-  window.addEventListener("storage", handler);
-  return () => window.removeEventListener("storage", handler);
-}
-
 export default function Home() {
-  const darkMode = useSyncExternalStore(
-    subscribeDarkMode,
-    getDarkModeSnapshot,
-    getDarkModeServerSnapshot
-  );
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    localStorage.setItem("darkMode", newMode.toString());
-    document.documentElement.setAttribute("data-theme", newMode ? "dark" : "light");
-    window.dispatchEvent(new StorageEvent("storage", { key: "darkMode" }));
-  };
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -126,23 +90,7 @@ export default function Home() {
                 <a href="#demo" className="text-foreground-2 hover:text-brand transition-colors">Demo</a>
                 <a href="#contact" className="text-foreground-2 hover:text-brand transition-colors">Kontakt</a>
               </div>
-              <button
-                type="button"
-                onClick={toggleDarkMode}
-                className="p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
-                aria-label="Prepnúť tmavý režim"
-                aria-pressed={darkMode}
-              >
-                {darkMode ? (
-                  <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                  </svg>
-                )}
-              </button>
+              <ThemeToggle />
               {/* Mobile menu button */}
               <button
                 type="button"
@@ -371,48 +319,48 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-6">
             Vyskúšajte Arenibus v praxi
           </h2>
-          <p className="text-lg md:text-xl text-brand-text/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-brand-text mb-8 max-w-2xl mx-auto">
             Plne funkčná verzia pre nefrologickú ambulanciu a dialýzu. Všetky fiktívne dáta sa automaticky obnovujú každú noc o 03:00.
           </p>
 
-          {/* Demo access — passwords on request */}
-          <div className="bg-surface/10 backdrop-blur-md rounded-xl p-6 mb-8 border border-white/20 max-w-2xl mx-auto text-left shadow-lg">
-            <h3 className="text-lg font-semibold text-brand-text mb-4 text-center">
+          {/* Demo access — passwords on request. Solid surface cards so small text meets WCAG AA. */}
+          <div className="bg-surface rounded-xl p-6 mb-8 border border-border max-w-2xl mx-auto text-left shadow-lg">
+            <h3 className="text-lg font-semibold text-foreground mb-4 text-center">
               Prístup do demo prostredia
             </h3>
             <div className="grid sm:grid-cols-2 gap-4 mb-5">
-              <div className="bg-surface/20 p-4 rounded-lg border border-white/10">
+              <div className="bg-surface-2 p-4 rounded-lg border border-border">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold text-brand-text text-sm">Rola: LEKÁR</span>
+                  <span className="font-bold text-foreground text-sm">Rola: LEKÁR</span>
                   <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-lekar</span>
                 </div>
-                <div className="text-xs space-y-1.5 text-brand-text/90">
+                <div className="text-xs space-y-1.5 text-foreground-2">
                   <p>
-                    <span className="opacity-75">Prihlasovacie meno:</span>{" "}
-                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-brand-text">demo-lekar</code>
+                    <span>Prihlasovacie meno:</span>{" "}
+                    <code className="bg-surface-3 px-1.5 py-0.5 rounded font-mono text-foreground">demo-lekar</code>
                   </p>
-                  <p><span className="opacity-75">Heslo:</span> na vyžiadanie</p>
+                  <p><span>Heslo:</span> na vyžiadanie</p>
                 </div>
               </div>
-              <div className="bg-surface/20 p-4 rounded-lg border border-white/10">
+              <div className="bg-surface-2 p-4 rounded-lg border border-border">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold text-brand-text text-sm">Rola: SESTRA</span>
+                  <span className="font-bold text-foreground text-sm">Rola: SESTRA</span>
                   <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-sestra</span>
                 </div>
-                <div className="text-xs space-y-1.5 text-brand-text/90">
+                <div className="text-xs space-y-1.5 text-foreground-2">
                   <p>
-                    <span className="opacity-75">Prihlasovacie meno:</span>{" "}
-                    <code className="bg-black/20 px-1.5 py-0.5 rounded font-mono text-brand-text">demo-sestra</code>
+                    <span>Prihlasovacie meno:</span>{" "}
+                    <code className="bg-surface-3 px-1.5 py-0.5 rounded font-mono text-foreground">demo-sestra</code>
                   </p>
-                  <p><span className="opacity-75">Heslo:</span> na vyžiadanie</p>
+                  <p><span>Heslo:</span> na vyžiadanie</p>
                 </div>
               </div>
             </div>
-            <p className="text-sm text-brand-text/90 text-center mb-4">
+            <p className="text-sm text-foreground-2 text-center mb-4">
               Demo heslá nie sú verejné. Pošlite žiadosť na{" "}
               <a
                 href={DEMO_ACCESS_MAILTO}
-                className="underline font-medium text-brand-text hover:underline-offset-2 transition-colors"
+                className="underline font-medium text-brand hover:text-brand-strong transition-colors"
               >
                 arenibus@nephroctor.com
               </a>
@@ -420,7 +368,7 @@ export default function Home() {
             </p>
             <a
               href={DEMO_ACCESS_MAILTO}
-              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-surface text-brand rounded-lg font-semibold hover:bg-surface-2 transition-colors"
+              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors"
             >
               Požiadať o demo heslo
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -440,7 +388,7 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
-          <p className="text-brand-text/80 mt-4 text-sm max-w-xl mx-auto">
+          <p className="text-brand-text mt-4 text-sm max-w-xl mx-auto">
             Prihlásenie v spustenom deme prebieha cez ePZP / OIDC (Keycloak).
           </p>
         </div>

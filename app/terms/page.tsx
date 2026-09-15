@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ThemeToggle from "../theme-toggle";
 
 const TERMS_DESCRIPTION =
   "Podmienky používania stránky a demo verzie Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.";
@@ -63,9 +64,12 @@ export default function TermsPage() {
               </div>
               <p className="text-2xl font-bold text-brand-strong">Arenibus</p>
             </Link>
-            <Link href="/" className="text-foreground-2 hover:text-brand transition-colors">
-              Späť na úvod
-            </Link>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <Link href="/" className="text-foreground-2 hover:text-brand transition-colors">
+                Späť na úvod
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
