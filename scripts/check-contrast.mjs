@@ -76,6 +76,7 @@ const PAIRS = [
   ["username code", "foreground", "surface-3", 4.5],
   ["theme toggle icon", "foreground-2", "surface-2", 4.5],
   ["demo OIDC caption (text-sm)", "brand-text", "brand-strong", 4.5],
+  ["form input text", "foreground", "surface", 4.5],
 ];
 
 const THEMES = [
