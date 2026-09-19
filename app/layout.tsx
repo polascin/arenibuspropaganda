@@ -87,6 +87,18 @@ const jsonLd = {
   softwareVersion: DEMO_VERSION_PLAIN,
   inLanguage: "sk",
   logo: "https://arenibus.polascin.net/og-image.png",
+  featureList: [
+    "Správa pacientov",
+    "Evidencia návštev",
+    "Hemodialýza a predpis",
+    "Peritoneálna dialýza",
+    "Kalendár a harmonogram",
+    "Laboratórne výsledky",
+    "Moje zoznamy a štatistiky",
+    "Vykazovanie poisťovniam",
+    "Prevádzka dialýzy",
+    "Audit a bezpečnosť",
+  ],
   offers: {
     "@type": "Offer",
     price: "0",

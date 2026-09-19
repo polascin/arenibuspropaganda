@@ -176,6 +176,18 @@ function checkInternalPath(where, pathname) {
   return true;
 }
 
+function importingPages(islandFile) {
+  const base = islandFile.replaceAll("\\", "/").split("/").pop().replace(/\.tsx$/, "");
+  const importRe = new RegExp(`from\\s+['"][^'"]*${base}['"]`);
+  const pages = [];
+  for (const file of walk(join(root, "app"))) {
+    if (!file.replaceAll("\\", "/").endsWith("/page.tsx")) continue;
+    const src = readFileSync(file, "utf8");
+    if (importRe.test(src)) pages.push(file);
+  }
+  return pages;
+}
+
 function checkFragment(where, file, pathname, fragment) {
   const source = sourceFileForFragment(file, pathname);
   if (!existsSync(source)) {
@@ -183,11 +195,19 @@ function checkFragment(where, file, pathname, fragment) {
     return;
   }
   const ids = idsIn(readFileSync(source, "utf8"));
-  if (!ids.has(fragment)) {
-    fail(where, `missing id="${fragment}" in ${rel(source)}`);
+  if (ids.has(fragment)) {
+    pass(where, `#${fragment} in ${rel(source)}`);
     return;
   }
-  pass(where, `#${fragment} in ${rel(source)}`);
+  // Client islands (header, form) declare hashes that live on the importing route.
+  for (const page of importingPages(file)) {
+    const pageIds = idsIn(readFileSync(page, "utf8"));
+    if (pageIds.has(fragment)) {
+      pass(where, `#${fragment} in ${rel(page)} (via ${rel(file)})`);
+      return;
+    }
+  }
+  fail(where, `missing id="${fragment}" in ${rel(source)}`);
 }
 
 function checkMailto(where, href) {
