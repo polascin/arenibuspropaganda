@@ -1,12 +1,36 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Breadcrumbs from "../breadcrumbs";
+import SiteFooter from "../site-footer";
 import ThemeToggle from "../theme-toggle";
 
+const PRIVACY_TITLE = "Zásady ochrany osobných údajov – Arenibus";
+const PRIVACY_DESCRIPTION =
+  "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.";
+
+const privacyBreadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Arenibus",
+      item: "https://arenibus.polascin.net/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Ochrana osobných údajov",
+      item: "https://arenibus.polascin.net/privacy/",
+    },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "Zásady ochrany osobných údajov – Arenibus",
-  description:
-    "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.",
+  title: PRIVACY_TITLE,
+  description: PRIVACY_DESCRIPTION,
   alternates: {
     canonical: "/privacy/",
   },
@@ -15,23 +39,21 @@ export const metadata: Metadata = {
     locale: "sk_SK",
     url: "/privacy/",
     siteName: "Arenibus",
-    title: "Zásady ochrany osobných údajov – Arenibus",
-    description:
-      "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.",
+    title: PRIVACY_TITLE,
+    description: PRIVACY_DESCRIPTION,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arenibus logo",
+        alt: "Arenibus – nefrologický a dialyzačný informačný systém",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zásady ochrany osobných údajov – Arenibus",
-    description:
-      "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.",
+    title: PRIVACY_TITLE,
+    description: PRIVACY_DESCRIPTION,
     images: ["/og-image.png"],
   },
 };
@@ -76,9 +98,15 @@ export default function PrivacyPage() {
       </nav>
       </header>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyBreadcrumbLd) }}
+      />
+
       {/* Content */}
       <main id="main-content" className="flex-1 py-16 px-4 bg-surface">
         <article className="max-w-4xl mx-auto">
+          <Breadcrumbs currentLabel="Ochrana osobných údajov" />
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Zásady ochrany osobných údajov
           </h1>
@@ -207,7 +235,15 @@ export default function PrivacyPage() {
                 <li>právo namietať proti spracúvaniu na základe oprávneného záujmu (čl. 21).</li>
               </ul>
               <p className="text-foreground-2 mt-3">
-                Svoje práva si môžete uplatniť e-mailom na arenibus@polascin.net. Ak sa domnievate, že
+                Svoje práva si môžete uplatniť e-mailom na arenibus@polascin.net. Bezpečnostný kontakt
+                podľa RFC 9116 je uvedený v súbore{" "}
+                <a
+                  href="/.well-known/security.txt"
+                  className="text-brand hover:text-brand-strong transition-colors"
+                >
+                  security.txt
+                </a>
+                . Ak sa domnievate, že
                 vaše osobné údaje spracúvame v rozpore s právnymi predpismi, máte právo podať sťažnosť
                 dozornému orgánu, ktorým je{" "}
                 <a
@@ -233,28 +269,7 @@ export default function PrivacyPage() {
         </article>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-foreground-2">
-            Arenibus © 2024–2026 Ľubomír Polaščín
-          </p>
-          <p className="text-muted mt-2 text-sm">
-            MUDr. Ľubomír Polaščín — Nephroctor
-          </p>
-          <p className="text-muted mt-1 text-sm">
-            IČO 57646856
-          </p>
-          <div className="mt-4 flex justify-center gap-6 text-sm">
-            <Link href="/privacy/" className="text-muted hover:text-brand transition-colors">
-              Ochrana osobných údajov
-            </Link>
-            <Link href="/terms/" className="text-muted hover:text-brand transition-colors">
-              Podmienky používania
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter current="privacy" />
     </div>
     </>
   );

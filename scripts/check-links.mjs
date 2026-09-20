@@ -360,15 +360,37 @@ for (const file of appFiles) {
     findings.push({ file, tag, href, isAnchor: false, where: `${whereFile} <Link href>` });
   }
 
-  const fetchRe = /\bfetch\s*\(\s*("([^"]+)"|'([^']+)')/g;
+  const fetchRe = /\bfetch\s*\(\s*("([^"]+)"|'([^']+)'|(\w+))/g;
   let fm;
   while ((fm = fetchRe.exec(src))) {
+    const href = fm[2] ?? fm[3] ?? consts.get(fm[4] ?? "") ?? null;
+    if (!href) {
+      fail(whereFile, "could not resolve fetch() URL");
+      continue;
+    }
     findings.push({
       file,
       tag: null,
-      href: fm[2] ?? fm[3],
+      href,
       isAnchor: false,
       where: `${whereFile} fetch()`,
+    });
+  }
+
+  for (const tag of extractOpenTags(src, "form")) {
+    const action = attr(tag, "action");
+    if (!action) continue;
+    const href = action.ident ? consts.get(action.ident) ?? null : action.value;
+    if (!href) {
+      fail(whereFile, "could not resolve <form> action");
+      continue;
+    }
+    findings.push({
+      file,
+      tag,
+      href,
+      isAnchor: false,
+      where: `${whereFile} <form action>`,
     });
   }
 }

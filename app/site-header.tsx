@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./theme-toggle";
 
@@ -22,7 +23,7 @@ export default function SiteHeader() {
       <nav className="w-full bg-surface/80 backdrop-blur-sm border-b border-border" aria-label="Hlavná navigácia">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
                 <Image
                   src="/logo-96.webp"
@@ -36,7 +37,7 @@ export default function SiteHeader() {
                 />
               </div>
               <p className="text-2xl font-bold text-brand-strong">Arenibus</p>
-            </div>
+            </Link>
             <div className="flex items-center space-x-4 md:space-x-8">
               <div className="hidden md:flex space-x-8">
                 <a href="#features" className="text-foreground-2 hover:text-brand transition-colors">Funkcie</a>
@@ -53,7 +54,11 @@ export default function SiteHeader() {
                 aria-controls="mobile-menu"
               >
                 <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
                 </svg>
               </button>
             </div>

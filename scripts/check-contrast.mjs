@@ -79,6 +79,10 @@ const PAIRS = [
   ["demo OIDC caption (text-sm)", "brand-text", "brand-strong", 4.5],
   ["form input text", "foreground", "surface", 4.5],
   ["legal effective-date (text-sm)", "muted", "surface", 4.5],
+  ["breadcrumb current (text-sm)", "foreground-2", "surface", 4.5],
+  ["404 status (text-sm)", "brand-strong", "surface", 4.5],
+  ["form fallback link", "brand", "surface-2", 4.5],
+  ["form fallback link hover", "brand-strong", "surface-2", 4.5],
 ];
 
 const THEMES = [

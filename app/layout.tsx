@@ -8,6 +8,11 @@ const SITE_DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arenibus.polascin.net"),
+  applicationName: "Arenibus",
+  category: "healthcare",
+  formatDetection: {
+    telephone: false,
+  },
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   keywords: [
@@ -110,6 +115,20 @@ const jsonLd = {
     name: "MUDr. Ľubomír Polaščín",
   },
   sameAs: ["https://demo.arenibus.com/"],
+  installUrl: "https://demo.arenibus.com/",
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Arenibus",
+  url: "https://arenibus.polascin.net/",
+  inLanguage: "sk",
+  description: SITE_DESCRIPTION,
+  publisher: {
+    "@type": "Person",
+    name: "MUDr. Ľubomír Polaščín",
+  },
 };
 
 export default function RootLayout({
@@ -130,6 +149,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>

@@ -15,11 +15,19 @@ function getDarkModeServerSnapshot() {
 
 function subscribeDarkMode(callback: () => void) {
   if (typeof window === "undefined") return () => {};
-  const handler = (e: StorageEvent) => {
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const onStorage = (e: StorageEvent) => {
     if (e.key === "darkMode") callback();
   };
-  window.addEventListener("storage", handler);
-  return () => window.removeEventListener("storage", handler);
+  const onMedia = () => {
+    if (localStorage.getItem("darkMode") === null) callback();
+  };
+  window.addEventListener("storage", onStorage);
+  mq.addEventListener("change", onMedia);
+  return () => {
+    window.removeEventListener("storage", onStorage);
+    mq.removeEventListener("change", onMedia);
+  };
 }
 
 export default function ThemeToggle() {

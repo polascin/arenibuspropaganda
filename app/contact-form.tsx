@@ -2,8 +2,18 @@
 
 import { useState } from "react";
 
+const CONTACT_MAILTO = "mailto:arenibus@polascin.net";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzebqzj";
+
+function buildMailto(name: string, email: string, message: string) {
+  const subject = encodeURIComponent("Správa z webu Arenibus");
+  const body = encodeURIComponent(`Meno: ${name}\nE-mail: ${email}\n\n${message}`);
+  return `${CONTACT_MAILTO}?subject=${subject}&body=${body}`;
+}
+
 export default function ContactForm() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [fallbackMailto, setFallbackMailto] = useState(CONTACT_MAILTO);
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -11,9 +21,14 @@ export default function ContactForm() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+    const mailto = buildMailto(name, email, message);
+    setFallbackMailto(mailto);
 
     try {
-      const response = await fetch("https://formspree.io/f/mvzebqzj", {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         body: formData,
         headers: {
@@ -24,16 +39,26 @@ export default function ContactForm() {
       if (response.ok) {
         setFormStatus("success");
         form.reset();
-      } else {
-        setFormStatus("error");
+        return;
       }
     } catch {
-      setFormStatus("error");
+      // Parent-host CSP may block Formspree; fall through to the mailto fallback.
     }
+
+    setFormStatus("error");
   };
 
   return (
     <form onSubmit={handleContactSubmit} className="space-y-4" aria-label="Kontaktný formulár">
+      <noscript>
+        <p className="text-sm text-foreground-2">
+          Bez JavaScriptu nám napíšte na{" "}
+          <a href={CONTACT_MAILTO} className="text-brand hover:text-brand-strong transition-colors">
+            arenibus@polascin.net
+          </a>
+          .
+        </p>
+      </noscript>
       <div>
         <label htmlFor="contact-name" className="block text-sm font-medium text-foreground-2 mb-1">Vaše meno</label>
         <input
@@ -43,6 +68,7 @@ export default function ContactForm() {
           autoComplete="name"
           placeholder="Vaše meno"
           required
+          maxLength={200}
           className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
         />
       </div>
@@ -55,6 +81,7 @@ export default function ContactForm() {
           autoComplete="email"
           placeholder="vas@email.sk"
           required
+          maxLength={254}
           className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
         />
       </div>
@@ -66,9 +93,19 @@ export default function ContactForm() {
           placeholder="Vaša správa"
           rows={4}
           required
+          maxLength={5000}
+          autoComplete="off"
           className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
         ></textarea>
       </div>
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <button
         type="submit"
         disabled={formStatus === "submitting"}
@@ -88,7 +125,24 @@ export default function ContactForm() {
         }
       >
         {formStatus === "success" && "Správa bola úspešne odoslaná. Čoskoro sa vám ozveme."}
-        {formStatus === "error" && "Správu sa nepodarilo odoslať. Skúste to prosím znova alebo nám napíšte e-mail."}
+        {formStatus === "error" && (
+          <>
+            Správu sa nepodarilo odoslať cez formulár. Napíšte nám na{" "}
+            <a
+              href={CONTACT_MAILTO}
+              onClick={(event) => {
+                if (fallbackMailto !== CONTACT_MAILTO) {
+                  event.preventDefault();
+                  window.location.href = fallbackMailto;
+                }
+              }}
+              className="underline text-brand hover:text-brand-strong transition-colors"
+            >
+              arenibus@polascin.net
+            </a>
+            .
+          </>
+        )}
       </p>
     </form>
   );
