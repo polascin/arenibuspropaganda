@@ -238,7 +238,7 @@ export default function PrivacyPage() {
                 Svoje práva si môžete uplatniť e-mailom na arenibus@polascin.net. Bezpečnostný kontakt
                 podľa RFC 9116 je uvedený v súbore{" "}
                 <a
-                  href="/.well-known/security.txt"
+                  href="/security.txt"
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   security.txt
