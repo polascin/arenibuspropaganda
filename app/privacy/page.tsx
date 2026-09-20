@@ -235,14 +235,11 @@ export default function PrivacyPage() {
                 <li>právo namietať proti spracúvaniu na základe oprávneného záujmu (čl. 21).</li>
               </ul>
               <p className="text-foreground-2 mt-3">
-                Svoje práva si môžete uplatniť e-mailom na arenibus@polascin.net. Bezpečnostný kontakt
-                podľa RFC 9116 je uvedený v súbore{" "}
-                <a
-                  href="/security.txt"
-                  className="text-brand hover:text-brand-strong transition-colors"
-                >
-                  security.txt
-                </a>
+                Svoje práva si môžete uplatniť e-mailom na arenibus@polascin.net. Bezpečnostné hlásenia
+                posielajte na rovnakú adresu; podrobnosti sú na stránke{" "}
+                <Link href="/security/" className="text-brand hover:text-brand-strong transition-colors">
+                  Bezpečnostný kontakt
+                </Link>
                 . Ak sa domnievate, že
                 vaše osobné údaje spracúvame v rozpore s právnymi predpismi, máte právo podať sťažnosť
                 dozornému orgánu, ktorým je{" "}
