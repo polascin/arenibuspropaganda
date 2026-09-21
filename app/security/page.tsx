@@ -139,7 +139,7 @@ export default function SecurityPage() {
           </article>
         </main>
 
-        <SiteFooter />
+        <SiteFooter current="security" />
       </div>
     </>
   );

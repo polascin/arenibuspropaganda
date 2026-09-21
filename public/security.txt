@@ -1,5 +1,5 @@
 Contact: mailto:arenibus@polascin.net
 Expires: 2027-03-20T00:00:00.000Z
 Preferred-Languages: sk, en
-Canonical: https://arenibus.polascin.net/security.txt
+Canonical: https://arenibus.polascin.net/security/
 Policy: https://arenibus.polascin.net/privacy/
