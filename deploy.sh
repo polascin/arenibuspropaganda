@@ -87,10 +87,18 @@ echo "Deployment completed successfully!"
 ENDSSH
 
 echo "Verifying live site..."
-STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://arenibus.polascin.net/)
-if [ "$STATUS" != "200" ]; then
-    echo "Warning: https://arenibus.polascin.net/ returned HTTP $STATUS"
+UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+fail=0
+for path in / /privacy/ /terms/ /security/ /robots.txt /sitemap.xml; do
+    STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "$UA" "https://arenibus.polascin.net${path}")
+    echo "https://arenibus.polascin.net${path} HTTP $STATUS"
+    if [ "$STATUS" != "200" ]; then
+        echo "Warning: https://arenibus.polascin.net${path} returned HTTP $STATUS"
+        fail=1
+    fi
+done
+if [ "$fail" != "0" ]; then
     exit 1
 fi
 
-echo "Deployment to https://arenibus.polascin.net/ completed! (HTTP $STATUS)"
+echo "Deployment to https://arenibus.polascin.net/ completed!"

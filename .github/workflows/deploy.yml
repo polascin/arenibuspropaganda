@@ -120,14 +120,23 @@ jobs:
 
       - name: Smoke test live site
         run: |
-          for i in 1 2 3; do
-            sleep 5
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://arenibus.polascin.net/)
-            if [ "$STATUS" = "200" ]; then
-              echo "Live site responded with HTTP $STATUS"
-              exit 0
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+          sleep 5
+          fail=0
+          for path in / /privacy/ /terms/ /security/ /robots.txt /sitemap.xml; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "$UA" "https://arenibus.polascin.net${path}")
+            echo "https://arenibus.polascin.net${path} HTTP $STATUS"
+            if [ "$STATUS" != "200" ]; then
+              sleep 5
+              STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "$UA" "https://arenibus.polascin.net${path}")
+              echo "retry ${path} HTTP $STATUS"
             fi
-            echo "Attempt $i: site returned HTTP $STATUS, retrying..."
+            if [ "$STATUS" != "200" ]; then
+              echo "Smoke test failed: ${path} did not return HTTP 200"
+              fail=1
+            fi
           done
-          echo "Smoke test failed: site did not return HTTP 200"
-          exit 1
+          if [ "$fail" != "0" ]; then
+            exit 1
+          fi
+          echo "Live routes responded with HTTP 200"

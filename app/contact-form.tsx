@@ -104,6 +104,7 @@ export default function ContactForm() {
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"
+        hidden
         className="hidden"
       />
       <button
