@@ -7,7 +7,7 @@ import ThemeToggle from "../theme-toggle";
 
 const PRIVACY_TITLE = "Zásady ochrany osobných údajov – Arenibus";
 const PRIVACY_DESCRIPTION =
-  "Informácie o spracúvaní osobných údajov na webovej stránke Arenibus – prevádzkovateľ, účely, právne základy, doba uchovávania a vaše práva podľa GDPR.";
+  "Ako spracúvame osobné údaje na stránke Arenibus a v demo prostredí demo.arenibus.com – prevádzkovateľ, účely, právne základy, uchovávanie a vaše práva.";
 
 const privacyBreadcrumbLd = {
   "@context": "https://schema.org",
@@ -110,7 +110,41 @@ export default function PrivacyPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Zásady ochrany osobných údajov
           </h1>
-          <p className="text-muted text-sm mb-10">Účinné od 25. augusta 2026</p>
+          <p className="text-muted text-sm mb-6">Účinné od 2. októbra 2026</p>
+
+          <div className="bg-surface-2 p-6 rounded-lg border border-border mb-10">
+            <p className="text-foreground font-semibold mb-2">Rozsah týchto zásad</p>
+            <p className="text-foreground-2">
+              Tieto zásady pokrývajú dve samostatné prostredia s odlišným spracúvaním údajov:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-foreground-2 mt-3">
+              <li>
+                <span className="font-semibold text-foreground">marketingovú webovú stránku</span>{" "}
+                arenibus.polascin.net — články 1 až 6 nižšie,
+              </li>
+              <li>
+                <span className="font-semibold text-foreground">demo prostredie</span>{" "}
+                <a
+                  href="https://demo.arenibus.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand hover:text-brand-strong transition-colors"
+                >
+                  demo.arenibus.com
+                </a>{" "}
+                — samostatný{" "}
+                <a href="#demo" className="text-brand hover:text-brand-strong transition-colors">
+                  článok 7
+                </a>
+                , ktorý platí výhradne preň.
+              </li>
+            </ul>
+            <p className="text-foreground-2 mt-3">
+              Demo prostredie beží na inej doméne, inom serveri a s vlastným prihlasovaním, preto sa
+              naň články 1 až 6 nevzťahujú — platí pre neho článok 7. Prevádzkovateľ je pre obidve
+              prostredia ten istý (článok 1).
+            </p>
+          </div>
 
           <div className="space-y-10">
             <section>
@@ -138,7 +172,9 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mb-3">2. Aké údaje spracúvame</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">
+                2. Aké údaje spracúvame na webovej stránke
+              </h2>
               <p className="text-foreground-2 mb-3">
                 Túto webovú stránku si môžete prezerať bez toho, aby ste nám poskytli akékoľvek osobné
                 údaje. Osobné údaje spracúvame iba vtedy, ak nás sami kontaktujete:
@@ -184,7 +220,9 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mb-3">5. Cookies a analytika</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">
+                5. Cookies a analytika na webovej stránke
+              </h2>
               <p className="text-foreground-2">
                 Táto webová stránka nepoužíva cookies ani žiadne analytické či marketingové nástroje.
                 Jedinou informáciou, ktorú si váš prehliadač ukladá (localStorage), je vaša voľba svetlého
@@ -208,7 +246,21 @@ export default function PrivacyPage() {
                 </li>
               </ul>
               <p className="text-foreground-2 mt-3">
-                Demo verzia systému beží na samostatnej doméne{" "}
+                Príjemcovia uvedení v tomto článku sa týkajú výhradne webovej stránky. Demo prostredie
+                má vlastný hosting aj vlastných príjemcov — sú opísaní v{" "}
+                <a href="#demo" className="text-brand hover:text-brand-strong transition-colors">
+                  článku 7
+                </a>
+                .
+              </p>
+            </section>
+
+            <section id="demo">
+              <h2 className="text-2xl font-semibold text-foreground mb-3">
+                7. Demo prostredie (demo.arenibus.com)
+              </h2>
+              <p className="text-foreground-2 mb-3">
+                Tento článok platí výhradne pre demonštračnú inštanciu systému Arenibus na adrese{" "}
                 <a
                   href="https://demo.arenibus.com/"
                   target="_blank"
@@ -216,13 +268,171 @@ export default function PrivacyPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   demo.arenibus.com
-                </a>{" "}
-                s vlastným spracúvaním údajov, na ktoré sa tieto zásady nevzťahujú.
+                </a>
+                . Prevádzkovateľom je ten istý subjekt ako podľa článku 1. Demo obsahuje výhradne{" "}
+                <span className="font-semibold text-foreground">fiktívnych pacientov a fiktívne údaje</span>{" "}
+                — nie sú to údaje skutočných osôb a demo sa nesmie používať na skutočnú zdravotnú
+                dokumentáciu.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">7.1 Prihlasovanie</h3>
+              <p className="text-foreground-2">
+                Demo je prístupné len po prihlásení. Prihlasovanie zabezpečuje Keycloak na tej istej
+                doméne (cesta <code className="text-sm">/auth</code>) protokolom OpenID Connect
+                (Authorization Code s PKCE). Demo kontá sú vopred vytvorené a{" "}
+                <span className="font-semibold text-foreground">zdieľané</span> — vydáva ich
+                prevádzkovateľ na vyžiadanie, nezakladáte si vlastné konto a pri vstupe neuvádzate svoje
+                meno ani e-mail. V prihlasovacom systéme sa tak spracúvajú len údaje týchto
+                demonštračných kont (prihlasovacie meno, overovací údaj, časy a stav relácií), nie vaša
+                identita.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">
+                7.2 Čo si ukladá váš prehliadač
+              </h3>
+              <p className="text-foreground-2 mb-3">
+                Samotná demo aplikácia{" "}
+                <span className="font-semibold text-foreground">nepoužíva cookies</span> a neobsahuje
+                žiadne analytické, reklamné ani sledovacie nástroje. Ukladá len tieto položky:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-foreground-2">
+                <li>
+                  <span className="font-semibold text-foreground">sessionStorage</span> — prihlasovacie
+                  tokeny a jednorazové hodnoty prihlasovacieho toku (
+                  <code className="text-sm">arenibus.oidc.tokens</code>,{" "}
+                  <code className="text-sm">arenibus.oidc.verifier</code>,{" "}
+                  <code className="text-sm">arenibus.oidc.state</code>). Prehliadač ich zahodí pri
+                  zatvorení karty.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">localStorage</span> — len vaše
+                  zobrazovacie predvoľby: svetlý alebo tmavý režim (
+                  <code className="text-sm">arenibus.theme</code>), skryté úvodné sprievodcovia
+                  a naposledy zvolený filter či rozbalená sekcia. Žiadna z nich neobsahuje údaje
+                  o pacientoch a nikam sa neodosiela.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">Cookies prihlasovacieho servera</span>{" "}
+                  — Keycloak si počas prihlásenia nastaví vlastné technické cookies relácie na ceste{" "}
+                  <code className="text-sm">/auth</code>. Sú nevyhnutné na prihlásenie a neslúžia na
+                  sledovanie.
+                </li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">7.3 Logy a audit</h3>
+              <ul className="list-disc pl-6 space-y-2 text-foreground-2">
+                <li>
+                  <span className="font-semibold text-foreground">Audit log v aplikácii</span> — demo
+                  vedie rovnaký audit ako ostrá prevádzka: identifikátor prihláseného konta, čas, druh
+                  úkonu, typ a identifikátor záznamu a voliteľný technický kontext. Zapisujú sa aj
+                  neúspešné pokusy o prístup (zamietnutie prístupu, neexistujúci záznam) — s metódou,
+                  stavovým kódom a cestou volania.{" "}
+                  <span className="font-semibold text-foreground">IP adresy sa do auditu nezapisujú</span>{" "}
+                  a neukladá sa ani telo požiadavky.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">IP adresa</span> — spracúva sa len
+                  prechodne v pamäti servera na ochranu pred zahltením (limit počtu volaní za minútu).
+                  Neukladá sa do databázy a webový server nemá zapnutý prístupový log.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">Technické logy služieb</span> —
+                  chybové a prevádzkové výpisy jednotlivých služieb na serveri, rotované (najviac 5
+                  súborov po 10 MB na službu, staršie sa prepisujú). Slúžia na diagnostiku poruchy.
+                </li>
+              </ul>
+              <p className="text-foreground-2 mt-3">
+                Právnym základom pre audit a bezpečnostné logy je čl. 6 ods. 1 písm. f) GDPR — náš
+                oprávnený záujem na bezpečnosti a dostupnosti demo prostredia.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">
+                7.4 Hosting a príjemcovia
+              </h3>
+              <ul className="list-disc pl-6 space-y-2 text-foreground-2">
+                <li>
+                  <span className="font-semibold text-foreground">Hosting</span> — demo beží na jednom
+                  virtuálnom serveri spoločnosti{" "}
+                  <span className="font-semibold text-foreground">Hetzner Online GmbH</span>{" "}
+                  (Industriestrasse 25, 91710 Gunzenhausen, Nemecko), v dátovom centre v Norimbergu,
+                  teda v Európskej únii. Hetzner vystupuje ako sprostredkovateľ poskytujúci
+                  infraštruktúru.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">Žiadni ďalší príjemcovia</span> —
+                  databáza, prihlasovací server aj aplikácia bežia na tom istom serveri a nie sú priamo
+                  dostupné z internetu. Demo neodosiela údaje do žiadnej analytickej, telemetrickej ani
+                  e-mailovej služby.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">
+                    Štátne systémy (NZIS, ÚDZS) sú v demo vypnuté
+                  </span>{" "}
+                  — demo s nimi nekomunikuje a nič do nich neodosiela.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">Formspree sa dema netýka</span> — táto
+                  služba doručuje len správy z kontaktného formulára na webovej stránke (článok 6).
+                </li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">
+                7.5 Prenosy do tretích krajín
+              </h3>
+              <p className="text-foreground-2">
+                Z demo prostredia{" "}
+                <span className="font-semibold text-foreground">neprebiehajú žiadne prenosy</span>{" "}
+                osobných údajov mimo Európskej únie a Európskeho hospodárskeho priestoru. Prenos do USA
+                opísaný v článku 6 sa vzťahuje výhradne na kontaktný formulár webovej stránky.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">
+                7.6 Nočná obnova demo dát a doba uchovávania
+              </h3>
+              <p className="text-foreground-2 mb-3">
+                Databáza demo aplikácie sa každú noc o 03:00 (čas Európa/Bratislava){" "}
+                <span className="font-semibold text-foreground">obnoví zo vzorovej snímky</span>{" "}
+                fiktívnych dát a termíny sa posunú na aktuálne dni. Čokoľvek, čo návštevníci počas dňa
+                v demo zadali alebo zmenili, je tým prepísané obsahom snímky — vrátane záznamov auditu
+                vytvorených počas dňa. Demo preto nie je dôkazný ani archívny systém.
+              </p>
+              <p className="text-foreground-2 mb-3">
+                Táto obnova{" "}
+                <span className="font-semibold text-foreground">
+                  nie je mazaním prihlasovacích kont ani prevádzkových logov
+                </span>
+                : prihlasovacie kontá a ich databáza sa neobnovujú a zostávajú zachované, technické logy
+                služieb sa zahadzujú až rotáciou podľa článku 7.3 a log samotnej nočnej obnovy zostáva
+                na serveri.
+              </p>
+              <p className="text-foreground-2">
+                Zálohy demo databázy sú šifrované a uchovávané v Európskej únii. Lehoty podľa článku 4 sa
+                na obsah dema nevzťahujú; e-mailová korešpondencia so žiadosťou o demo prístup sa riadi
+                článkom 4.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">
+                7.7 Čo do dema nezadávajte
+              </h3>
+              <p className="text-foreground-2">
+                Demo slúži na ukážku funkcií. Nezadávajte do neho{" "}
+                <span className="font-semibold text-foreground">
+                  žiadne skutočné údaje o pacientoch ani iné skutočné osobné údaje
+                </span>
+                . Ak takéto údaje do dema zadáte, prepíše ich najbližšia nočná obnova; o skoršie
+                odstránenie môžete požiadať na{" "}
+                <a
+                  href="mailto:arenibus@nephroctor.com"
+                  className="text-brand hover:text-brand-strong transition-colors"
+                >
+                  arenibus@nephroctor.com
+                </a>
+                .
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mb-3">7. Vaše práva</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">8. Vaše práva</h2>
               <p className="text-foreground-2 mb-3">
                 V súvislosti so spracúvaním osobných údajov máte podľa GDPR najmä tieto práva:
               </p>
@@ -256,10 +466,11 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mb-3">8. Záverečné ustanovenia</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">9. Záverečné ustanovenia</h2>
               <p className="text-foreground-2">
                 Tieto zásady môžeme priebežne aktualizovať; aktuálne znenie je vždy zverejnené na tejto
-                stránke. Tieto zásady sú účinné od 25. augusta 2026.
+                stránke. Tieto zásady sú účinné od 2. októbra 2026 a od tohto dátumu výslovne
+                pokrývajú aj demo prostredie demo.arenibus.com (článok 7).
               </p>
             </section>
           </div>
