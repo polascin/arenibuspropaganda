@@ -7,7 +7,7 @@ import ThemeToggle from "../theme-toggle";
 
 const SECURITY_TITLE = "Bezpečnostný kontakt – Arenibus";
 const SECURITY_DESCRIPTION =
-  "Kontakt na hlásenie bezpečnostných zistení na webe Arenibus. Správy posielajte na arenibus@polascin.net.";
+  "Kontakt na hlásenie bezpečnostných zistení na webe Arenibus a v demo prostredí. Správy posielajte na arenibus@polascin.net.";
 
 const securityBreadcrumbLd = {
   "@context": "https://schema.org",
@@ -108,29 +108,60 @@ export default function SecurityPage() {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Bezpečnostný kontakt
             </h1>
-            <p className="text-muted text-sm mb-10">Aktualizované 20. septembra 2026</p>
+            <p className="text-muted text-sm mb-10">Aktualizované 3. októbra 2026</p>
 
             <div className="space-y-8">
               <section>
                 <h2 className="text-2xl font-semibold text-foreground mb-3">Hlásenie zistení</h2>
                 <p className="text-foreground-2 mb-3">
-                  Ak nájdete bezpečnostnú chybu na tejto marketingovej stránke, napíšte na{" "}
+                  Ak nájdete bezpečnostnú chybu na marketingovej stránke arenibus.polascin.net alebo v demo
+                  prostredí{" "}
+                  <a
+                    href="https://demo.arenibus.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand hover:text-brand-strong transition-colors"
+                  >
+                    demo.arenibus.com
+                  </a>
+                  , napíšte na{" "}
                   <a href="mailto:arenibus@polascin.net" className="text-brand hover:text-brand-strong transition-colors">
                     arenibus@polascin.net
                   </a>
                   . Preferované jazyky sú slovenčina a angličtina.
                 </p>
                 <p className="text-foreground-2">
-                  Táto stránka je verejný bezpečnostný kontakt pre arenibus.polascin.net.
+                  Táto stránka je verejný bezpečnostný kontakt pre obe prostredia. Hlásenia k demu prijíma
+                  tá istá adresa.
                 </p>
               </section>
               <section>
                 <h2 className="text-2xl font-semibold text-foreground mb-3">Rozsah</h2>
+                <p className="text-foreground-2 mb-3">Prijímame hlásenia, ktoré sa týkajú:</p>
+                <ul className="list-disc pl-6 space-y-2 text-foreground-2 mb-3">
+                  <li>webu arenibus.polascin.net,</li>
+                  <li>
+                    demo prostredia{" "}
+                    <a
+                      href="https://demo.arenibus.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand hover:text-brand-strong transition-colors"
+                    >
+                      demo.arenibus.com
+                    </a>
+                    .
+                  </li>
+                </ul>
                 <p className="text-foreground-2">
-                  Týka sa webu arenibus.polascin.net. Demo na demo.arenibus.com má vlastné spracúvanie údajov.
-                  Informácie o osobných údajoch sú v dokumente{" "}
+                  Do hlásenia nevkladajte skutočné údaje o pacientoch. Informácie o osobných údajoch sú v
+                  dokumente{" "}
                   <Link href="/privacy/" className="text-brand hover:text-brand-strong transition-colors">
                     Zásady ochrany osobných údajov
+                  </Link>
+                  ; pre demo platí{" "}
+                  <Link href="/privacy/#demo" className="text-brand hover:text-brand-strong transition-colors">
+                    článok 7
                   </Link>
                   .
                 </p>

@@ -1,3 +1,4 @@
+# Scope: arenibus.polascin.net and demo.arenibus.com
 Contact: mailto:arenibus@polascin.net
 Expires: 2027-03-20T00:00:00.000Z
 Preferred-Languages: sk, en
