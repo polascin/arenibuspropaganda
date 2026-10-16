@@ -22,7 +22,7 @@ const USER_AGENT =
 const FETCH_TIMEOUT_MS = 20_000;
 const FETCH_RETRIES = 4;
 const FETCH_RETRY_DELAY_MS = 2_000;
-/** Official hosts that occasionally drop GitHub Actions IPs at the network layer. */
+/** Official hosts that occasionally drop GitHub Actions IPs or return gateway 5xx. */
 const FLAKY_OFFICIAL_HOSTS = new Set(["dataprotection.gov.sk"]);
 
 function sleep(ms) {
@@ -249,7 +249,7 @@ async function checkExternal(where, url) {
         return;
       }
       lastDetail = `HTTP ${status}`;
-      // Non-transient HTTP failures (404/5xx) do not retry.
+      // Client errors (404/410) are not transient. Gateway 5xx may recover.
       if (status < 500) break;
     } catch (err) {
       lastDetail = err.name === "TimeoutError" || err.name === "AbortError" ? "timeout" : err.message;
@@ -267,7 +267,11 @@ async function checkExternal(where, url) {
     lastDetail === "timeout" ||
     lastDetail === "fetch failed" ||
     lastDetail === "unknown error";
-  if (networkFailure && FLAKY_OFFICIAL_HOSTS.has(host)) {
+  const transientOfficialOutage =
+    lastDetail === "HTTP 502" ||
+    lastDetail === "HTTP 503" ||
+    lastDetail === "HTTP 504";
+  if ((networkFailure || transientOfficialOutage) && FLAKY_OFFICIAL_HOSTS.has(host)) {
     seenExternal.set(url, { ok: true, status: "flaky-official" });
     console.log(
       `  WARN  ${where}  ${url} → ${lastDetail} (official host; treated as pass after ${FETCH_RETRIES} attempts)`
