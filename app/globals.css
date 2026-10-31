@@ -42,6 +42,28 @@
 
   --hero-glow: rgba(15, 118, 110, 0.12);
   --section-pattern: rgba(15, 118, 110, 0.045);
+
+  /* Feature cards: soft medical tints + distinct titles (light) */
+  --feature-patients-bg: #dff3ef;
+  --feature-patients-title: #0d5c54;
+  --feature-visits-bg: #e3f1e8;
+  --feature-visits-title: #1a5c3a;
+  --feature-hd-bg: #dceef5;
+  --feature-hd-title: #0a5570;
+  --feature-pd-bg: #e2f4f0;
+  --feature-pd-title: #0b6b5a;
+  --feature-calendar-bg: #e4ecf4;
+  --feature-calendar-title: #1e4568;
+  --feature-labs-bg: #e0eef8;
+  --feature-labs-title: #155e75;
+  --feature-lists-bg: #e8f0eb;
+  --feature-lists-title: #2d5a45;
+  --feature-billing-bg: #edf2e8;
+  --feature-billing-title: #3d5c28;
+  --feature-ops-bg: #e6edef;
+  --feature-ops-title: #334e56;
+  --feature-audit-bg: #e0ecea;
+  --feature-audit-title: #0a4a44;
 }
 
 /* Dark mode with higher specificity - always takes precedence over media query */
@@ -81,6 +103,28 @@
 
   --hero-glow: rgba(45, 212, 191, 0.1);
   --section-pattern: rgba(45, 212, 191, 0.05);
+
+  /* Feature cards: unique dark tones + readable titles */
+  --feature-patients-bg: #123530;
+  --feature-patients-title: #5eead4;
+  --feature-visits-bg: #143528;
+  --feature-visits-title: #86efac;
+  --feature-hd-bg: #122e38;
+  --feature-hd-title: #67e8f9;
+  --feature-pd-bg: #123a32;
+  --feature-pd-title: #6ee7b7;
+  --feature-calendar-bg: #1a2c3c;
+  --feature-calendar-title: #93c5fd;
+  --feature-labs-bg: #152a38;
+  --feature-labs-title: #7dd3fc;
+  --feature-lists-bg: #1a322c;
+  --feature-lists-title: #a7f3d0;
+  --feature-billing-bg: #1e3220;
+  --feature-billing-title: #bef264;
+  --feature-ops-bg: #1a2e32;
+  --feature-ops-title: #99f6e4;
+  --feature-audit-bg: #0f2e2a;
+  --feature-audit-title: #2dd4bf;
 }
 
 /* System preference dark mode - only applies when no data-theme is set */
@@ -121,6 +165,28 @@
 
     --hero-glow: rgba(45, 212, 191, 0.1);
     --section-pattern: rgba(45, 212, 191, 0.05);
+
+    /* Feature cards: unique dark tones + readable titles */
+    --feature-patients-bg: #123530;
+    --feature-patients-title: #5eead4;
+    --feature-visits-bg: #143528;
+    --feature-visits-title: #86efac;
+    --feature-hd-bg: #122e38;
+    --feature-hd-title: #67e8f9;
+    --feature-pd-bg: #123a32;
+    --feature-pd-title: #6ee7b7;
+    --feature-calendar-bg: #1a2c3c;
+    --feature-calendar-title: #93c5fd;
+    --feature-labs-bg: #152a38;
+    --feature-labs-title: #7dd3fc;
+    --feature-lists-bg: #1a322c;
+    --feature-lists-title: #a7f3d0;
+    --feature-billing-bg: #1e3220;
+    --feature-billing-title: #bef264;
+    --feature-ops-bg: #1a2e32;
+    --feature-ops-title: #99f6e4;
+    --feature-audit-bg: #0f2e2a;
+    --feature-audit-title: #2dd4bf;
   }
 }
 
@@ -149,6 +215,26 @@
   --color-info-soft: var(--info-soft);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-feature-patients-bg: var(--feature-patients-bg);
+  --color-feature-patients-title: var(--feature-patients-title);
+  --color-feature-visits-bg: var(--feature-visits-bg);
+  --color-feature-visits-title: var(--feature-visits-title);
+  --color-feature-hd-bg: var(--feature-hd-bg);
+  --color-feature-hd-title: var(--feature-hd-title);
+  --color-feature-pd-bg: var(--feature-pd-bg);
+  --color-feature-pd-title: var(--feature-pd-title);
+  --color-feature-calendar-bg: var(--feature-calendar-bg);
+  --color-feature-calendar-title: var(--feature-calendar-title);
+  --color-feature-labs-bg: var(--feature-labs-bg);
+  --color-feature-labs-title: var(--feature-labs-title);
+  --color-feature-lists-bg: var(--feature-lists-bg);
+  --color-feature-lists-title: var(--feature-lists-title);
+  --color-feature-billing-bg: var(--feature-billing-bg);
+  --color-feature-billing-title: var(--feature-billing-title);
+  --color-feature-ops-bg: var(--feature-ops-bg);
+  --color-feature-ops-title: var(--feature-ops-title);
+  --color-feature-audit-bg: var(--feature-audit-bg);
+  --color-feature-audit-title: var(--feature-audit-title);
   --radius-brand: var(--radius);
   --radius-brand-sm: var(--radius-sm);
   --radius-brand-lg: var(--radius-lg);
@@ -330,6 +416,76 @@ a:not([class]) {
   border-color: color-mix(in srgb, var(--brand) 35%, var(--border));
   box-shadow: var(--shadow);
   transform: translateY(-2px);
+}
+
+.feature-card--patients {
+  background-color: var(--feature-patients-bg);
+}
+.feature-card--patients .feature-card-title {
+  color: var(--feature-patients-title);
+}
+
+.feature-card--visits {
+  background-color: var(--feature-visits-bg);
+}
+.feature-card--visits .feature-card-title {
+  color: var(--feature-visits-title);
+}
+
+.feature-card--hd {
+  background-color: var(--feature-hd-bg);
+}
+.feature-card--hd .feature-card-title {
+  color: var(--feature-hd-title);
+}
+
+.feature-card--pd {
+  background-color: var(--feature-pd-bg);
+}
+.feature-card--pd .feature-card-title {
+  color: var(--feature-pd-title);
+}
+
+.feature-card--calendar {
+  background-color: var(--feature-calendar-bg);
+}
+.feature-card--calendar .feature-card-title {
+  color: var(--feature-calendar-title);
+}
+
+.feature-card--labs {
+  background-color: var(--feature-labs-bg);
+}
+.feature-card--labs .feature-card-title {
+  color: var(--feature-labs-title);
+}
+
+.feature-card--lists {
+  background-color: var(--feature-lists-bg);
+}
+.feature-card--lists .feature-card-title {
+  color: var(--feature-lists-title);
+}
+
+.feature-card--billing {
+  background-color: var(--feature-billing-bg);
+}
+.feature-card--billing .feature-card-title {
+  color: var(--feature-billing-title);
+}
+
+.feature-card--ops {
+  background-color: var(--feature-ops-bg);
+}
+.feature-card--ops .feature-card-title {
+  color: var(--feature-ops-title);
+}
+
+.feature-card--audit {
+  background-color: var(--feature-audit-bg);
+}
+.feature-card--audit .feature-card-title {
+  color: var(--feature-audit-title);
 }
 
 /* Respect reduced motion preference */
