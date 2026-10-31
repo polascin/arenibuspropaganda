@@ -72,8 +72,18 @@ echo "Ready for file upload..."
 ENDSSH
 
 echo "Uploading built files..."
-if ! scp -P "$SSH_PORT" -r out/* "$SSH_USER@$SSH_HOST:$DEPLOY_DIR/"; then
+# Use out/. so hidden files (.htaccess, .well-known) are included;
+# a bare out/* glob skips dotfiles and leaves parent CSP unbroken.
+if [ ! -f out/.htaccess ]; then
+    echo "Build output is missing out/.htaccess (required for Next.js CSP). Aborting."
+    exit 1
+fi
+if ! scp -P "$SSH_PORT" -r out/. "$SSH_USER@$SSH_HOST:$DEPLOY_DIR/"; then
     echo "File upload failed."
+    exit 1
+fi
+if ! ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "test -f '$DEPLOY_DIR/.htaccess'"; then
+    echo "Remote .htaccess missing after upload. Aborting."
     exit 1
 fi
 
@@ -97,6 +107,17 @@ for path in / /privacy/ /terms/ /security/ /robots.txt /sitemap.xml; do
         fail=1
     fi
 done
+CSP=$(curl -sI -A "$UA" "https://arenibus.polascin.net/" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-security-policy"{print $2}')
+echo "CSP: $CSP"
+case "$CSP" in
+    *"script-src"*"'unsafe-inline'"*)
+        echo "CSP allows Next.js inline hydration scripts"
+        ;;
+    *)
+        echo "Smoke test failed: CSP must include script-src 'unsafe-inline' for Next.js hydration"
+        fail=1
+        ;;
+esac
 if [ "$fail" != "0" ]; then
     exit 1
 fi

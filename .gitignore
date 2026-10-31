@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Cursor local IDE settings (project rules under .cursor/rules/ stay tracked)
 .cursor/settings.json
+
+# Added by ggshield
+.cache_ggshield
