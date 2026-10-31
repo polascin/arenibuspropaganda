@@ -1,0 +1,37 @@
+# Arenibus is a Next.js static export. Parent polascin.net CSP for *.html
+# allows only script-src 'self', which blocks the inline __next_f / Turbopack
+# bootstrap that hydration needs. Without hydration, client controls
+# (feature expand, theme toggle, mobile menu, contact form) stay inert.
+#
+# This directory .htaccess overrides the inherited HTML CSP for this vhost.
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set X-Permitted-Cross-Domain-Policies "none"
+    Header always unset X-Powered-By
+    Header unset X-Powered-By
+
+    <If "%{HTTPS} == 'on' || %{HTTP:X-Forwarded-Proto} == 'https'">
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    </If>
+
+    # Replace inherited parent CSP. Multiple CSP headers are AND-combined by
+    # browsers, so a looser child policy alone would not unblock hydration.
+    # 'unsafe-inline' in script-src is required for Next.js App Router static
+    # export flight data (self.__next_f.push) and the theme boot snippet.
+    # formspree.io is needed for the contact form fetch.
+    <FilesMatch "\.(html)$">
+        Header unset Content-Security-Policy
+        Header always unset Content-Security-Policy
+        Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://stats.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://formspree.io; upgrade-insecure-requests"
+    </FilesMatch>
+</IfModule>
+
+# Prefer index.html for directory URLs (trailingSlash export).
+DirectoryIndex index.html
+
+Options -Indexes
+ServerSignature Off
