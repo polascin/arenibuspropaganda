@@ -5,9 +5,9 @@ import Breadcrumbs from "../breadcrumbs";
 import SiteFooter from "../site-footer";
 import ThemeToggle from "../theme-toggle";
 
-const TERMS_TITLE = "Podmienky používania – Arenibus";
+const TERMS_TITLE = "Podmienky používania: Arenibus";
 const TERMS_DESCRIPTION =
-  "Podmienky používania stránky a demo verzie Arenibus – stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.";
+  "Podmienky používania stránky a demo verzie Arenibus: stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.";
 
 const termsBreadcrumbLd = {
   "@context": "https://schema.org",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arenibus – nefrologický a dialyzačný informačný systém",
+        alt: "Arenibus: nefrologický a dialyzačný informačný systém",
       },
     ],
   },
@@ -120,7 +120,7 @@ export default function TermsPage() {
             <ul className="list-disc pl-6 space-y-2 text-foreground-2 mt-3">
               <li>
                 <span className="font-semibold text-foreground">marketingovú webovú stránku</span>{" "}
-                arenibus.polascin.net — platia články 1 až 7,
+                arenibus.polascin.net: platia články 1 až 7,
               </li>
               <li>
                 <span className="font-semibold text-foreground">demo prostredie</span>{" "}
@@ -131,8 +131,8 @@ export default function TermsPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   demo.arenibus.com
-                </a>{" "}
-                — platia články 2, 3, 4, 5 a 6. Článok 7 (zmeny podmienok a kontakt) platí aj pre ne.
+                </a>
+                : platia články 2, 3, 4, 5 a 6. Článok 7 (zmeny podmienok a kontakt) platí aj pre ne.
               </li>
             </ul>
             <p className="text-foreground-2 mt-3">
@@ -145,7 +145,7 @@ export default function TermsPage() {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-3">1. Úvodné ustanovenia</h2>
               <p className="text-foreground-2">
-                Túto webovú stránku (arenibus.polascin.net) prevádzkuje MUDr. Ľubomír Polaščín –
+                Túto webovú stránku (arenibus.polascin.net) prevádzkuje MUDr. Ľubomír Polaščín,
                 Nephroctor (ďalej len „prevádzkovateľ“). Stránka slúži na prezentáciu nefrologického
                 informačného systému Arenibus a jeho demo verzie. Používaním stránky vyjadrujete súhlas
                 s článkami 1 až 7.
@@ -156,7 +156,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-semibold text-foreground mb-3">2. Stav vývoja a demo verzia</h2>
               <p className="text-foreground-2 mb-3">
                 Tento článok platí pre demo prostredie. Systém Arenibus je vo fáze aktívneho vývoja
-                (MVP — minimálny životaschopný produkt). Demo verzia dostupná na{" "}
+                (MVP: minimálny životaschopný produkt). Demo verzia dostupná na{" "}
                 <a
                   href="https://demo.arenibus.com/"
                   target="_blank"
@@ -180,7 +180,7 @@ export default function TermsPage() {
                 Databáza demo aplikácie sa každú noc o 03:00 (čas Európa/Bratislava){" "}
                 <span className="font-semibold text-foreground">obnoví zo vzorovej snímky</span>{" "}
                 fiktívnych dát a termíny sa posunú na aktuálne dni. Čokoľvek, čo návštevníci počas dňa
-                v demo zadali alebo zmenili, je tým prepísané obsahom snímky — vrátane záznamov auditu
+                v demo zadali alebo zmenili, je tým prepísané obsahom snímky: vrátane záznamov auditu
                 vytvorených počas dňa. Demo preto nie je dôkazný ani archívny systém.
               </p>
               <p className="text-foreground-2 mb-3">
@@ -206,8 +206,8 @@ export default function TermsPage() {
                 Tento článok platí pre webovú stránku aj pre demo prostredie. Systém Arenibus je nástroj
                 určený pre zdravotníckych pracovníkov. Obsah tejto webovej
                 stránky ani demo verzie nepredstavuje zdravotné poradenstvo a má výlučne informačný
-                charakter. Nie je náhradou odbornej zdravotnej starostlivosti, diagnostiky ani liečby —
-                v zdravotných otázkach sa vždy obráťte na lekára alebo iného kvalifikovaného
+                charakter. Nie je náhradou odbornej zdravotnej starostlivosti, diagnostiky ani liečby.
+                V zdravotných otázkach sa vždy obráťte na lekára alebo iného kvalifikovaného
                 zdravotníckeho pracovníka.
               </p>
             </section>
@@ -216,7 +216,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-semibold text-foreground mb-3">4. Duševné vlastníctvo</h2>
               <p className="text-foreground-2">
                 Tento článok platí pre webovú stránku aj pre softvér sprístupnený v demo prostredí.
-                Obsah tejto webovej stránky — najmä texty, grafika a logo Arenibus — aj softvér systému
+                Obsah tejto webovej stránky (najmä texty, grafika a logo Arenibus) aj softvér systému
                 Arenibus vrátane demo prostredia sú chránené autorským právom a ďalšími právami duševného
                 vlastníctva prevádzkovateľa. Akékoľvek kopírovanie, rozširovanie alebo iné použitie nad
                 rámec bežného prezerania stránky a používania dema podľa týchto podmienok je bez

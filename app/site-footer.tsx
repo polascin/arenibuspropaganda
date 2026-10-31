@@ -7,10 +7,10 @@ export default function SiteFooter({ current = "home" }: { current?: FooterPage 
     <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
       <div className="max-w-7xl mx-auto text-center">
         <p className="text-foreground-2">
-          Arenibus © 2024–2026 Ľubomír Polaščín
+          Arenibus © 2024 až 2026 Ľubomír Polaščín
         </p>
         <p className="text-muted mt-2 text-sm">
-          MUDr. Ľubomír Polaščín — Nephroctor
+          MUDr. Ľubomír Polaščín, Nephroctor
         </p>
         <p className="text-muted mt-1 text-sm">
           IČO 57646856

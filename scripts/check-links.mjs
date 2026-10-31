@@ -188,21 +188,38 @@ function importingPages(islandFile) {
   return pages;
 }
 
+/** Route `id`s include those declared in directly imported local components. */
+function collectRouteIds(pageFile) {
+  const ids = idsIn(readFileSync(pageFile, "utf8"));
+  const src = readFileSync(pageFile, "utf8");
+  const importRe = /from\s+["'](\.\/[^"']+)["']/g;
+  let m;
+  while ((m = importRe.exec(src))) {
+    let imported = join(dirname(pageFile), m[1]);
+    if (!/\.(tsx|ts)$/.test(imported)) {
+      if (existsSync(`${imported}.tsx`)) imported = `${imported}.tsx`;
+      else if (existsSync(`${imported}.ts`)) imported = `${imported}.ts`;
+      else continue;
+    }
+    if (!existsSync(imported)) continue;
+    for (const id of idsIn(readFileSync(imported, "utf8"))) ids.add(id);
+  }
+  return ids;
+}
+
 function checkFragment(where, file, pathname, fragment) {
   const source = sourceFileForFragment(file, pathname);
   if (!existsSync(source)) {
     fail(where, `cannot resolve source for #${fragment} at ${pathname || "/"}`);
     return;
   }
-  const ids = idsIn(readFileSync(source, "utf8"));
-  if (ids.has(fragment)) {
+  if (collectRouteIds(source).has(fragment)) {
     pass(where, `#${fragment} in ${rel(source)}`);
     return;
   }
   // Client islands (header, form) declare hashes that live on the importing route.
   for (const page of importingPages(file)) {
-    const pageIds = idsIn(readFileSync(page, "utf8"));
-    if (pageIds.has(fragment)) {
+    if (collectRouteIds(page).has(fragment)) {
       pass(where, `#${fragment} in ${rel(page)} (via ${rel(file)})`);
       return;
     }

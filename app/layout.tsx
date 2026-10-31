@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { DEMO_VERSION_PLAIN } from "@/lib/site";
 import "./globals.css";
 
-const SITE_TITLE = "Arenibus – Nefrologický a dialyzačný informačný systém";
+const SITE_TITLE = "Arenibus: Nefrologický a dialyzačný informačný systém";
 const SITE_DESCRIPTION =
   "Moderný .NET systém pre nefrologickú ambulanciu a dialýzu (HD, PD) s registrami, vykazovaním poisťovniam a integráciou na ezdravotníctvo.";
 
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arenibus – nefrologický a dialyzačný informačný systém",
+        alt: "Arenibus: nefrologický a dialyzačný informačný systém",
       },
     ],
   },

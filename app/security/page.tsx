@@ -5,7 +5,7 @@ import Breadcrumbs from "../breadcrumbs";
 import SiteFooter from "../site-footer";
 import ThemeToggle from "../theme-toggle";
 
-const SECURITY_TITLE = "Bezpečnostný kontakt – Arenibus";
+const SECURITY_TITLE = "Bezpečnostný kontakt: Arenibus";
 const SECURITY_DESCRIPTION =
   "Kontakt na hlásenie bezpečnostných zistení na webe Arenibus a v demo prostredí. Správy posielajte na arenibus@polascin.net.";
 
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arenibus – nefrologický a dialyzačný informačný systém",
+        alt: "Arenibus: nefrologický a dialyzačný informačný systém",
       },
     ],
   },
