@@ -69,7 +69,7 @@ export default function ContactForm() {
           placeholder="Vaše meno"
           required
           maxLength={200}
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow"
         />
       </div>
       <div>
@@ -82,7 +82,7 @@ export default function ContactForm() {
           placeholder="vas@email.sk"
           required
           maxLength={254}
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow"
         />
       </div>
       <div>
@@ -95,7 +95,7 @@ export default function ContactForm() {
           required
           maxLength={5000}
           autoComplete="off"
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow"
         ></textarea>
       </div>
       <input
@@ -110,9 +110,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={formStatus === "submitting"}
-        className="w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+        className="btn-primary w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
       >
-        {formStatus === "submitting" ? "Odosielam..." : "Odoslať Správu"}
+        {formStatus === "submitting" ? "Odosielam..." : "Odoslať správu"}
       </button>
       <p
         role={formStatus === "error" ? "alert" : "status"}

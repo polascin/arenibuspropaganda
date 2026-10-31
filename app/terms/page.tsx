@@ -70,11 +70,11 @@ export default function TermsPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <header className="sticky top-0 z-50">
       {/* Navigation */}
-      <nav className="w-full bg-surface/80 backdrop-blur-sm border-b border-border" aria-label="Hlavná navigácia">
+      <nav className="w-full bg-surface/90 backdrop-blur-md border-b border-border" aria-label="Hlavná navigácia">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                 <Image
                   src="/logo-96.webp"
                   alt="Arenibus logo"
@@ -85,7 +85,9 @@ export default function TermsPage() {
                   priority
                 />
               </div>
-              <p className="text-2xl font-bold text-brand-strong">Arenibus</p>
+              <p className="text-2xl font-bold tracking-tight text-brand-strong group-hover:text-brand transition-colors">
+                Arenibus
+              </p>
             </Link>
             <div className="flex items-center gap-3">
               <ThemeToggle />
@@ -104,15 +106,15 @@ export default function TermsPage() {
       />
 
       {/* Content */}
-      <main id="main-content" className="flex-1 py-16 px-4 bg-surface">
-        <article className="max-w-4xl mx-auto">
+      <main id="main-content" className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
+        <article className="legal-prose max-w-3xl mx-auto">
           <Breadcrumbs currentLabel="Podmienky používania" />
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
             Podmienky používania
           </h1>
-          <p className="text-muted text-sm mb-6">Účinné od 3. októbra 2026</p>
+          <p className="text-muted text-sm mb-8">Účinné od 3. októbra 2026</p>
 
-          <div className="bg-surface-2 p-6 rounded-lg border border-border mb-10">
+          <div className="bg-surface-2/80 p-6 rounded-lg border border-border mb-12">
             <p className="text-foreground font-semibold mb-2">Rozsah týchto podmienok</p>
             <p className="text-foreground-2">
               Tieto podmienky rozlišujú dve prostredia:
@@ -141,9 +143,9 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <div className="space-y-10">
+          <div className="space-y-12">
             <section>
-              <h2 className="text-2xl font-semibold text-foreground mb-3">1. Úvodné ustanovenia</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-4">1. Úvodné ustanovenia</h2>
               <p className="text-foreground-2">
                 Túto webovú stránku (arenibus.polascin.net) prevádzkuje MUDr. Ľubomír Polaščín,
                 Nephroctor (ďalej len „prevádzkovateľ“). Stránka slúži na prezentáciu nefrologického

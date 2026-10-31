@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Trunk creates/deletes tmp dirs; scanning them races with ENOENT.
+    ".trunk/**",
   ]),
 ]);
 

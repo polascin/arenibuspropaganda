@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Source_Sans_3 } from "next/font/google";
 import { DEMO_VERSION_PLAIN } from "@/lib/site";
 import "./globals.css";
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-source-sans",
+});
 
 const SITE_TITLE = "Arenibus: Nefrologický a dialyzačný informačný systém";
 const SITE_DESCRIPTION =
@@ -137,7 +144,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sk" className="h-full antialiased scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="sk"
+      className={`${sourceSans.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="manifest" href="/manifest.json" />
         <script
@@ -155,7 +166,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }

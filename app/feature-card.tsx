@@ -96,10 +96,10 @@ export default function FeatureCard({ feature }: { feature: Feature }) {
   const needsToggle = feature.description.length > FEATURE_PREVIEW_CHAR_THRESHOLD;
 
   return (
-    <article className="bg-surface-2 p-6 rounded-lg shadow-brand hover:shadow-brand-lg transition-shadow border border-border flex flex-col">
-      <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4">
+    <article className="feature-card bg-surface p-6 rounded-lg border border-border flex flex-col shadow-brand-sm">
+      <div className="w-11 h-11 bg-brand rounded-lg flex items-center justify-center mb-4">
         <svg
-          className="w-6 h-6 text-brand-text"
+          className="w-5 h-5 text-brand-text"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -108,7 +108,7 @@ export default function FeatureCard({ feature }: { feature: Feature }) {
           {ICONS[feature.id]}
         </svg>
       </div>
-      <h3 className="text-xl font-semibold text-foreground mb-2">{feature.title}</h3>
+      <h3 className="text-lg font-semibold tracking-tight text-foreground mb-2">{feature.title}</h3>
       <p
         id={textId}
         className={`text-foreground-2 text-sm leading-relaxed${

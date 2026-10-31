@@ -20,11 +20,11 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50">
-      <nav className="w-full bg-surface/80 backdrop-blur-sm border-b border-border" aria-label="Hlavná navigácia">
+      <nav className="w-full bg-surface/90 backdrop-blur-md border-b border-border" aria-label="Hlavná navigácia">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                 <Image
                   src="/logo-96.webp"
                   alt="Arenibus logo"
@@ -36,13 +36,15 @@ export default function SiteHeader() {
                   priority
                 />
               </div>
-              <p className="text-2xl font-bold text-brand-strong">Arenibus</p>
+              <p className="text-2xl font-bold tracking-tight text-brand-strong group-hover:text-brand transition-colors">
+                Arenibus
+              </p>
             </Link>
             <div className="flex items-center space-x-4 md:space-x-8">
               <div className="hidden md:flex space-x-8">
-                <a href="#features" className="text-foreground-2 hover:text-brand transition-colors">Funkcie</a>
-                <a href="#demo" className="text-foreground-2 hover:text-brand transition-colors">Demo</a>
-                <a href="#contact" className="text-foreground-2 hover:text-brand transition-colors">Kontakt</a>
+                <a href="#features" className="nav-link text-foreground-2 hover:text-brand">Funkcie</a>
+                <a href="#demo" className="nav-link text-foreground-2 hover:text-brand">Demo</a>
+                <a href="#contact" className="nav-link text-foreground-2 hover:text-brand">Kontakt</a>
               </div>
               <ThemeToggle />
               <button
@@ -72,10 +74,10 @@ export default function SiteHeader() {
         hidden={!mobileMenuOpen}
         className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
       >
-        <div className="px-4 py-3 space-y-2">
-          <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Funkcie</a>
-          <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Demo</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand transition-colors py-2">Kontakt</a>
+        <div className="px-4 py-3 space-y-1">
+          <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Funkcie</a>
+          <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Demo</a>
+          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Kontakt</a>
         </div>
       </div>
     </header>

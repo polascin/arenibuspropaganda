@@ -27,46 +27,44 @@ export default function Home() {
       <SiteHeader />
 
       <main id="main-content" className="flex-1 flex flex-col">
-      {/* Hero Section */}
-      <section className="flex-1 flex items-start justify-center pt-10 pb-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8 relative w-full max-w-96 aspect-square mx-auto">
+      {/* Hero: brand first, one composition, full-bleed atmosphere */}
+      <section className="hero-atmosphere flex-1 flex items-center justify-center pt-12 pb-24 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto text-center w-full">
+          <div className="motion-fade-up mb-8 relative w-full max-w-[22rem] sm:max-w-md aspect-square mx-auto">
             <Image
               src="/logo-768.webp"
               alt="Arenibus logo"
               fill
-              className="rounded-xl shadow-brand-lg object-cover"
-              sizes="(max-width: 768px) 100vw, 384px"
+              className="object-cover rounded-brand-lg"
+              sizes="(max-width: 640px) 88vw, 448px"
               draggable={false}
               priority
             />
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Nefrologický a dialyzačný informačný systém
+          <h1 className="motion-fade-up-delay text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-strong mb-4">
+            Arenibus
           </h1>
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-            <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand-strong border border-brand/20 shadow-sm">
-              Verzia {DEMO_VERSION} (MVP)
-            </span>
-            <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold bg-warn-soft text-warn shadow-sm">
-              Stále vo fáze pokročilého vývoja
-            </span>
-          </div>
-          <p className="text-lg md:text-xl text-foreground-2 mb-8 max-w-3xl mx-auto">
-            Moderný .NET systém pre nefrologickú ambulanciu a dialyzačné stredisko (hemodialýza HD a peritoneálna dialýza PD): dokumentácia návštev a ošetrení, registre podľa slovenskej legislatívy, vykazovanie poisťovniam a integrácia s ezdravotníctvom.
+          <p className="motion-fade-up-delay text-xl md:text-2xl font-medium text-foreground mb-5 leading-snug max-w-2xl mx-auto">
+            Nefrologický a dialyzačný informačný systém
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <p className="motion-fade-up-delay-2 text-base md:text-lg text-foreground-2 mb-4 max-w-2xl mx-auto leading-relaxed">
+            Moderný .NET systém pre nefrologickú ambulanciu a dialýzu (HD, PD): dokumentácia, registre podľa slovenskej legislatívy, vykazovanie poisťovniam a ezdravotníctvo.
+          </p>
+          <p className="motion-fade-up-delay-2 text-sm text-muted mb-9">
+            Verzia {DEMO_VERSION} (MVP). Stále vo fáze pokročilého vývoja.
+          </p>
+          <div className="motion-fade-up-delay-2 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a
               href="https://demo.arenibus.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors shadow-brand"
+              className="btn-primary px-8 py-3.5 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong shadow-brand"
             >
               Vyskúšať demo verziu
             </a>
             <a
               href="#contact"
-              className="px-8 py-4 bg-transparent border-2 border-brand text-brand rounded-lg font-semibold hover:bg-brand hover:text-brand-text transition-colors"
+              className="btn-secondary px-8 py-3.5 bg-transparent border-2 border-brand text-brand rounded-lg font-semibold hover:bg-brand hover:text-brand-text"
             >
               Kontaktujte nás
             </a>
@@ -77,26 +75,26 @@ export default function Home() {
       <FeaturesSection />
 
       {/* Demo Section */}
-      <section id="demo" className="py-20 px-4 bg-gradient-to-r from-brand-strong to-brand text-brand-text">
+      <section id="demo" className="py-24 px-4 sm:px-6 bg-gradient-to-br from-brand-strong via-brand to-brand-strong text-brand-text">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-surface text-brand-strong mb-4 shadow-sm">
-            Živé demo prostredie {DEMO_VERSION}
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-6">
+          <p className="text-sm font-semibold tracking-wide uppercase text-brand-text mb-3">
+            Živé demo {DEMO_VERSION}
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-brand-text mb-5">
             Vyskúšajte Arenibus v praxi
           </h2>
-          <p className="text-lg md:text-xl text-brand-text mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-brand-text mb-10 max-w-2xl mx-auto leading-relaxed">
             Plne funkčná verzia pre nefrologickú ambulanciu a dialýzu. Všetky fiktívne dáta sa automaticky obnovujú každú noc o 03:00.
           </p>
 
-          {/* Demo access: passwords on request. Solid surface cards so small text meets WCAG AA. */}
-          <div className="bg-surface rounded-xl p-6 mb-8 border border-border max-w-2xl mx-auto text-left shadow-lg">
-            <h3 className="text-lg font-semibold text-foreground mb-4 text-center">
+          {/* Demo access: passwords on request. Solid surface so small text meets WCAG AA. */}
+          <div className="bg-surface rounded-brand-lg p-6 sm:p-8 mb-10 border border-border/60 max-w-2xl mx-auto text-left shadow-brand-lg">
+            <h3 className="text-lg font-semibold text-foreground mb-5 text-center tracking-tight">
               Prístup do demo prostredia
             </h3>
             <div className="grid sm:grid-cols-2 gap-4 mb-5">
               <div className="bg-surface-2 p-4 rounded-lg border border-border">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="font-bold text-foreground text-sm">Rola: LEKÁR</span>
                   <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-lekar</span>
                 </div>
@@ -109,7 +107,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="bg-surface-2 p-4 rounded-lg border border-border">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="font-bold text-foreground text-sm">Rola: SESTRA</span>
                   <span className="text-xs bg-brand-soft text-brand-strong px-2 py-0.5 rounded font-medium">demo-sestra</span>
                 </div>
@@ -122,7 +120,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-foreground-2 text-center mb-4">
+            <p className="text-sm text-foreground-2 text-center mb-4 leading-relaxed">
               Demo heslá nie sú verejné. Pošlite žiadosť na{" "}
               <a
                 href={DEMO_ACCESS_MAILTO}
@@ -134,11 +132,11 @@ export default function Home() {
             </p>
             <a
               href={DEMO_ACCESS_MAILTO}
-              className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong transition-colors"
+              className="btn-primary inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong"
             >
               Požiadať o demo heslo
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </a>
           </div>
@@ -147,43 +145,46 @@ export default function Home() {
             href="https://demo.arenibus.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-surface text-brand rounded-lg font-semibold hover:bg-surface-2 transition-colors shadow-brand-lg text-lg"
+            className="btn-primary inline-flex items-center gap-2 px-8 py-4 bg-surface text-brand rounded-lg font-semibold hover:bg-surface-2 shadow-brand-lg text-base md:text-lg"
           >
             Spustiť demo verziu (demo.arenibus.com)
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
-          <p className="text-brand-text mt-4 text-sm max-w-xl mx-auto">
+          <p className="text-brand-text mt-5 text-sm max-w-xl mx-auto">
             Prihlásenie v spustenom deme prebieha cez ePZP / OIDC (Keycloak).
           </p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-surface">
+      <section id="contact" className="section-soft py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center text-foreground mb-3">
             Kontaktujte nás
           </h2>
-          <div className="bg-surface-2 p-8 rounded-lg shadow-brand border border-border">
-            <div className="grid md:grid-cols-2 gap-8">
+          <p className="text-center text-foreground-2 mb-12 max-w-xl mx-auto">
+            Otázky o systéme Arenibus, cenách alebo demonštrácii.
+          </p>
+          <div className="border-t border-border pt-10">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-12">
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">Máte otázky?</h3>
-                <p className="text-foreground-2 mb-6">
-                  Kontaktujte nás pre viac informácií o systéme Arenibus, cenách alebo demonštrácii.
+                <h3 className="text-xl font-semibold tracking-tight text-foreground mb-3">Máte otázky?</h3>
+                <p className="text-foreground-2 mb-6 leading-relaxed">
+                  Napíšte nám na e-mail alebo použite formulár. Ozveme sa čo najskôr.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center">
-                    <svg className="w-6 h-6 text-brand mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <svg className="w-5 h-5 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <a href="mailto:arenibus@polascin.net" className="text-foreground-2 hover:text-brand transition-colors">arenibus@polascin.net</a>
                   </div>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">Pošlite správu</h3>
+                <h3 className="text-xl font-semibold tracking-tight text-foreground mb-4">Pošlite správu</h3>
                 <ContactForm />
               </div>
             </div>

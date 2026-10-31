@@ -4,9 +4,9 @@ type FooterPage = "home" | "privacy" | "terms" | "security";
 
 export default function SiteFooter({ current = "home" }: { current?: FooterPage }) {
   return (
-    <footer className="bg-surface-3 text-foreground py-8 px-4 border-t border-border">
+    <footer className="bg-surface-3 text-foreground py-10 px-4 sm:px-6 border-t border-border">
       <div className="max-w-7xl mx-auto text-center">
-        <p className="text-foreground-2">
+        <p className="text-foreground-2 font-medium tracking-tight">
           Arenibus © 2024 až 2026 Ľubomír Polaščín
         </p>
         <p className="text-muted mt-2 text-sm">
@@ -15,7 +15,7 @@ export default function SiteFooter({ current = "home" }: { current?: FooterPage 
         <p className="text-muted mt-1 text-sm">
           IČO 57646856
         </p>
-        <div className="mt-4 flex justify-center flex-wrap gap-6 text-sm">
+        <div className="mt-6 flex justify-center flex-wrap gap-x-8 gap-y-3 text-sm">
           <Link
             href="/privacy/"
             aria-current={current === "privacy" ? "page" : undefined}

@@ -69,11 +69,11 @@ export default function SecurityPage() {
       </a>
       <div className="flex flex-col min-h-screen bg-background">
         <header className="sticky top-0 z-50">
-          <nav className="w-full bg-surface/80 backdrop-blur-sm border-b border-border" aria-label="Hlavná navigácia">
+          <nav className="w-full bg-surface/90 backdrop-blur-md border-b border-border" aria-label="Hlavná navigácia">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-center h-16">
-                <Link href="/" className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg overflow-hidden shadow-sm relative">
+                <Link href="/" className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                     <Image
                       src="/logo-96.webp"
                       alt="Arenibus logo"
@@ -84,7 +84,9 @@ export default function SecurityPage() {
                       priority
                     />
                   </div>
-                  <p className="text-2xl font-bold text-brand-strong">Arenibus</p>
+                  <p className="text-2xl font-bold tracking-tight text-brand-strong group-hover:text-brand transition-colors">
+                    Arenibus
+                  </p>
                 </Link>
                 <div className="flex items-center gap-3">
                   <ThemeToggle />
@@ -102,17 +104,17 @@ export default function SecurityPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(securityBreadcrumbLd) }}
         />
 
-        <main id="main-content" className="flex-1 py-16 px-4 bg-surface">
-          <article className="max-w-4xl mx-auto">
+        <main id="main-content" className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
+          <article className="legal-prose max-w-3xl mx-auto">
             <Breadcrumbs currentLabel="Bezpečnostný kontakt" />
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
               Bezpečnostný kontakt
             </h1>
             <p className="text-muted text-sm mb-10">Aktualizované 3. októbra 2026</p>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               <section>
-                <h2 className="text-2xl font-semibold text-foreground mb-3">Hlásenie zistení</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-4">Hlásenie zistení</h2>
                 <p className="text-foreground-2 mb-3">
                   Ak nájdete bezpečnostnú chybu na marketingovej stránke arenibus.polascin.net alebo v demo
                   prostredí{" "}
@@ -136,7 +138,7 @@ export default function SecurityPage() {
                 </p>
               </section>
               <section>
-                <h2 className="text-2xl font-semibold text-foreground mb-3">Rozsah</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-4">Rozsah</h2>
                 <p className="text-foreground-2 mb-3">Prijímame hlásenia, ktoré sa týkajú:</p>
                 <ul className="list-disc pl-6 space-y-2 text-foreground-2 mb-3">
                   <li>webu arenibus.polascin.net,</li>
