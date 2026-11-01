@@ -227,9 +227,15 @@ export default function PrivacyPage() {
                 5. Cookies a analytika na webovej stránke
               </h2>
               <p className="text-foreground-2">
-                Táto webová stránka nepoužíva cookies ani žiadne analytické či marketingové nástroje.
-                Jedinou informáciou, ktorú si váš prehliadač ukladá (localStorage), je vaša voľba svetlého
-                alebo tmavého režimu zobrazenia: tá zostáva len vo vašom prehliadači a nikam sa neodosiela.
+                Po analytickom súhlase používame Microsoft Clarity na meranie návštevnosti,
+                kliknutí, posúvania a záznamov používania verejnej prezentácie s maskovaným textom.
+                Bez súhlasu sa Clarity nenačíta. Reklamný súhlas zostáva vypnutý.
+                Voľba sa ukladá v prehliadači na 180 dní a možno ju kedykoľvek zmeniť tlačidlom
+                Nastavenia analytiky. Cookies _clck a _clsk rozlišujú návštevníkov a spájajú
+                zobrazenia do relácií. Údaje prijíma Microsoft. Podrobnosti vrátane medzinárodných
+                prenosov obsahuje <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">vyhlásenie Microsoft o ochrane súkromia</a>.
+                Meranie sa nevzťahuje na demo ani klinickú aplikáciu.
+                Voľba svetlého alebo tmavého režimu zostáva samostatnou technickou predvoľbou.
               </p>
             </section>
 

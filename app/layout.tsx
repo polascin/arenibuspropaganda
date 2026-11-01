@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Source_Sans_3 } from "next/font/google";
 import { DEMO_VERSION_PLAIN } from "@/lib/site";
 import "./globals.css";
@@ -166,7 +167,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">{children}
+        <Script src="/clarity-consent.js?v=20261101" strategy="afterInteractive" data-project="z6sz54ayk0" data-paths="/,/privacy/,/terms/,/security/" data-privacy="/privacy/" />
+      </body>
     </html>
   );
 }
