@@ -28,9 +28,10 @@ def main():
   items=[]
   for name in args.file:
    q(name);p=source_root/name
-   if not p.is_file() or name.startswith(('.git/','private/')) or p.suffix not in ['.html','.php','.js','.css','.txt','.json','.map',''] and p.name!='.htaccess':raise ValueError('Not a public deploy file: '+name)
+   if not p.is_file() or name.startswith(('.git/','private/')) or p.name in ['.env','env.ini','db.config.php','db_config.php'] or p.suffix not in ['.html','.php','.js','.css','.txt','.json','.map',''] and p.name!='.htaccess':raise ValueError('Not a public deploy file: '+name)
    if p.suffix=='.php':run('php','-l',str(p))
-   items.append({'name':name,'old':remote_hash(remote+'/'+name),'new':digest(p)})
+   old_hash=remote_hash(remote+'/'+name);new_hash=digest(p)
+   if old_hash != new_hash: items.append({'name':name,'old':old_hash,'new':new_hash})
   if not items:raise ValueError('No files')
   args.plan.parent.mkdir(parents=True,exist_ok=True)
   args.plan.write_text(json.dumps({'root':str(root),'remote':remote,'url':url,'files':items},indent=2),encoding='utf-8')
@@ -56,7 +57,8 @@ def main():
   if item['old']!='missing':run(*SSH,'mkdir -p '+q(str(Path(backup+'/original/'+name).parent).replace('\\','/'))+' && cp -p '+q(target)+' '+q(backup+'/original/'+name))
  published=[]
  try:
-  for item in sorted(items,key=lambda i:i['name'].endswith('.htaccess')):
+  # Publish assets first, then CSP, then entry pages that reference them.
+  for item in sorted(items,key=lambda i: 1 if i['name'].endswith('.htaccess') else (2 if Path(i['name']).suffix in ['.html','.php'] else 0)):
    name=item['name'];target=remote+'/'+name;stage=backup+'/stage/'+name
    if remote_hash(target)!=item['old']:raise RuntimeError('Concurrent change: '+name)
    run(*SSH,'mkdir -p '+q(str(Path(target).parent).replace('\\','/'))+' && chmod 644 '+q(stage)+' && mv '+q(stage)+' '+q(target))
