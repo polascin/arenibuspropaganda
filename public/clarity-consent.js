@@ -62,11 +62,14 @@
     banner = document.createElement("section");
     banner.className = "clarity-consent";
     banner.setAttribute("role", "dialog");
+    banner.setAttribute("aria-modal", "true");
     banner.setAttribute("aria-labelledby", "clarity-consent-title");
+    banner.setAttribute("aria-describedby", "clarity-consent-text");
     const title = document.createElement("h2");
     title.id = "clarity-consent-title";
     title.textContent = sk ? "Voliteľná analytika" : "Optional analytics";
     const text = document.createElement("p");
+    text.id = "clarity-consent-text";
     text.textContent = sk
       ? "S vaším súhlasom používame Microsoft Clarity na meranie návštevnosti, kliknutí, posúvania a záznamov používania verejných stránok. Text je maskovaný. Bez súhlasu sa Clarity nenačíta. Reklamný súhlas zostáva vypnutý. Voľbu môžete kedykoľvek zmeniť v nastaveniach analytiky."
       : "With your consent, we use Microsoft Clarity for visits, clicks, scrolling and session recordings on public pages. Text is masked. Clarity does not load without consent. Advertising consent stays denied. You can change your choice in Analytics settings at any time.";
@@ -85,6 +88,16 @@
     document.body.appendChild(banner);
     if (focus) decline.focus();
   }
+  document.addEventListener("keydown", e => {
+    if (e.key !== "Escape" || !banner) return;
+    const storedChoice = read();
+    if (storedChoice && storedChoice.expires > Date.now() && typeof storedChoice.granted === "boolean") {
+      banner.remove();
+      banner = null;
+    } else {
+      apply(false);
+    }
+  });
   const stored = read();
   if (stored && stored.expires > Date.now() && typeof stored.granted === "boolean") apply(stored.granted, false);
   else show();

@@ -154,5 +154,25 @@ if (drift.length) {
   console.log("  PASS  both dark blocks define identical colour tokens");
 }
 
+// Clarity consent banner uses standalone hex colours (not CSS variables).
+const CLARITY_PAIRS = [
+  ["clarity body (light)", "#0a1f1a", "#ffffff", 4.5],
+  ["clarity heading (light)", "#0b5f58", "#ffffff", 4.5],
+  ["clarity link (light)", "#0f766e", "#ffffff", 4.5],
+  ["clarity body (dark)", "#f0faf6", "#102a24", 4.5],
+  ["clarity heading (dark)", "#5eead4", "#102a24", 4.5],
+  ["clarity link (dark)", "#2dd4bf", "#102a24", 4.5],
+];
+console.log("\n=== CLARITY CONSENT BANNER — WCAG 2.1 AA ===");
+for (const [label, fg, bg, min] of CLARITY_PAIRS) {
+  const value = ratio(fg, bg);
+  const pass = value >= min;
+  if (!pass) failures++;
+  console.log(
+    `  ${pass ? "PASS" : "FAIL"}  ${label.padEnd(30)} ${value.toFixed(2).padStart(5)}:1  ` +
+      `(min ${min.toFixed(1)})  ${fg} on ${bg}`
+  );
+}
+
 console.log(`\n${failures === 0 ? "All contrast checks passed." : `${failures} contrast failure(s).`}`);
 process.exit(failures === 0 ? 0 : 1);

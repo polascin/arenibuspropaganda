@@ -253,6 +253,11 @@ export default function PrivacyPage() {
                   údajov do tretej krajiny je zabezpečený zárukami podľa kapitoly V GDPR (rámec EÚ-USA na
                   ochranu údajov, resp. štandardné zmluvné doložky).
                 </li>
+                <li>
+                  <span className="font-semibold text-foreground">Analytika</span>: po analytickom
+                  súhlase prijíma merania Microsoft Clarity (Microsoft Corporation). Bez súhlasu sa
+                  skript nenačíta. Podrobnosti sú v článku 5.
+                </li>
               </ul>
               <p className="text-foreground-2 mt-3">
                 Príjemcovia uvedení v tomto článku sa týkajú výhradne webovej stránky. Demo prostredie
