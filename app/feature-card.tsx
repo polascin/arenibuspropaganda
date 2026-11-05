@@ -91,12 +91,14 @@ const ICONS: Record<FeatureIconId, ReactNode> = {
 };
 
 export default function FeatureCard({ feature }: { feature: Feature }) {
+  const titleId = useId();
   const textId = useId();
   const [expanded, setExpanded] = useState(false);
   const needsToggle = feature.description.length > FEATURE_PREVIEW_CHAR_THRESHOLD;
 
   return (
     <article
+      aria-labelledby={titleId}
       className={`feature-card feature-card--${feature.id} p-6 rounded-lg border border-border flex flex-col shadow-brand-sm`}
     >
       <div className="w-11 h-11 bg-brand rounded-lg flex items-center justify-center mb-4">
@@ -110,7 +112,7 @@ export default function FeatureCard({ feature }: { feature: Feature }) {
           {ICONS[feature.id]}
         </svg>
       </div>
-      <h3 className="feature-card-title text-lg font-semibold tracking-tight mb-2">{feature.title}</h3>
+      <h3 id={titleId} className="feature-card-title text-lg font-semibold tracking-tight mb-2">{feature.title}</h3>
       <p
         id={textId}
         className={`text-foreground-2 text-sm leading-relaxed${

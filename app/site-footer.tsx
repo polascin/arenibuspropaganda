@@ -15,7 +15,10 @@ export default function SiteFooter({ current = "home" }: { current?: FooterPage 
         <p className="text-muted mt-1 text-sm">
           IČO 57646856
         </p>
-        <div className="mt-6 flex justify-center flex-wrap gap-x-8 gap-y-3 text-sm">
+        <nav
+          aria-label="Pätičkové odkazy"
+          className="mt-6 flex justify-center flex-wrap gap-x-8 gap-y-3 text-sm"
+        >
           <Link
             href="/privacy/"
             aria-current={current === "privacy" ? "page" : undefined}
@@ -37,7 +40,7 @@ export default function SiteFooter({ current = "home" }: { current?: FooterPage 
           >
             Bezpečnostný kontakt
           </Link>
-        </div>
+        </nav>
       </div>
     </footer>
   );
