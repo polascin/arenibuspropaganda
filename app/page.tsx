@@ -61,6 +61,7 @@ export default function Home() {
               className="btn-primary px-8 py-3.5 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong shadow-brand"
             >
               Vyskúšať demo verziu
+              <span className="sr-only"> (otvorí sa v novom okne)</span>
             </a>
             <a
               href="#contact"
@@ -148,6 +149,7 @@ export default function Home() {
             className="btn-primary inline-flex items-center gap-2 px-8 py-4 bg-surface text-brand rounded-lg font-semibold hover:bg-surface-2 shadow-brand-lg text-base md:text-lg"
           >
             Spustiť demo verziu (demo.arenibus.com)
+            <span className="sr-only"> (otvorí sa v novom okne)</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>

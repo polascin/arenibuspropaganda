@@ -53,7 +53,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleDarkMode}
       className="p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
-      aria-label="Prepnúť tmavý režim"
+      aria-label={darkMode ? "Zapnúť svetlý režim" : "Zapnúť tmavý režim"}
       aria-pressed={darkMode}
     >
       {darkMode ? (
