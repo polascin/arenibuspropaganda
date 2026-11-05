@@ -33,7 +33,7 @@ export default function Home() {
           <div className="motion-fade-up mb-8 relative w-full max-w-[22rem] sm:max-w-md aspect-square mx-auto">
             <Image
               src="/logo-768.webp"
-              alt="Arenibus logo"
+              alt=""
               fill
               className="object-cover rounded-brand-lg"
               sizes="(max-width: 640px) 88vw, 448px"
@@ -76,12 +76,16 @@ export default function Home() {
       <FeaturesSection />
 
       {/* Demo Section */}
-      <section id="demo" className="py-24 px-4 sm:px-6 bg-gradient-to-br from-brand-strong via-brand to-brand-strong text-brand-text">
+      <section
+        id="demo"
+        aria-labelledby="demo-heading"
+        className="py-24 px-4 sm:px-6 bg-gradient-to-br from-brand-strong via-brand to-brand-strong text-brand-text"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm font-semibold tracking-wide uppercase text-brand-text mb-3">
             Živé demo {DEMO_VERSION}
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-brand-text mb-5">
+          <h2 id="demo-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-brand-text mb-5">
             Vyskúšajte Arenibus v praxi
           </h2>
           <p className="text-lg md:text-xl text-brand-text mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -161,9 +165,9 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section-soft py-24 px-4 sm:px-6">
+      <section id="contact" aria-labelledby="contact-heading" className="section-soft py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center text-foreground mb-3">
+          <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-center text-foreground mb-3">
             Kontaktujte nás
           </h2>
           <p className="text-center text-foreground-2 mb-12 max-w-xl mx-auto">
