@@ -4,6 +4,7 @@ import ContactForm from "./contact-form";
 import FeaturesSection from "./features-section";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
+import SkipLink from "./skip-link";
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +
@@ -17,12 +18,7 @@ const DEMO_ACCESS_MAILTO =
 export default function Home() {
   return (
     <>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand focus:text-brand-text focus:rounded-lg"
-      >
-        Preskočiť na hlavný obsah
-      </a>
+      <SkipLink />
       <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
 

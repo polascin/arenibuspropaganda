@@ -3,6 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "../breadcrumbs";
 import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
+import SkipLink from "../skip-link";
 
 const SECURITY_TITLE = "Bezpečnostný kontakt: Arenibus";
 const SECURITY_DESCRIPTION =
@@ -60,12 +61,7 @@ export const metadata: Metadata = {
 export default function SecurityPage() {
   return (
     <>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand focus:text-brand-text focus:rounded-lg"
-      >
-        Preskočiť na hlavný obsah
-      </a>
+      <SkipLink />
       <div className="flex flex-col min-h-screen bg-background">
         <SiteHeader variant="subpage" />
 

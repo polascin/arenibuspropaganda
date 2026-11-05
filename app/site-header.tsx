@@ -38,7 +38,11 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
       <nav className="w-full bg-surface/90 backdrop-blur-md border-b border-border" aria-label="Hlavná navigácia">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link
+              href="/"
+              aria-current={isHome ? "page" : undefined}
+              className="flex items-center gap-3 group"
+            >
               <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                 <Image
                   src="/logo-96.webp"
@@ -51,9 +55,9 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
                   priority
                 />
               </div>
-              <p className="text-2xl font-bold tracking-tight text-brand-strong group-hover:text-brand transition-colors">
+              <span className="text-2xl font-bold tracking-tight text-brand-strong group-hover:text-brand transition-colors">
                 Arenibus
-              </p>
+              </span>
             </Link>
             {isHome ? (
               <div className="flex items-center space-x-4 md:space-x-8">
