@@ -133,6 +133,7 @@ export default function ContactForm() {
               : "sr-only"
         }
       >
+        {formStatus === "submitting" && "Odosielam správu."}
         {formStatus === "success" && "Správa bola úspešne odoslaná. Čoskoro sa vám ozveme."}
         {formStatus === "error" && (
           <>
