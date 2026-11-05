@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "../breadcrumbs";
 import SiteFooter from "../site-footer";
-import ThemeToggle from "../theme-toggle";
+import SiteHeader from "../site-header";
 
 const PRIVACY_TITLE = "Zásady ochrany osobných údajov: Arenibus";
 const PRIVACY_DESCRIPTION =
@@ -68,37 +67,7 @@ export default function PrivacyPage() {
       Preskočiť na hlavný obsah
     </a>
     <div className="flex flex-col min-h-screen bg-background">
-      <header className="sticky top-0 z-50">
-      {/* Navigation */}
-      <nav className="w-full bg-surface/90 backdrop-blur-md border-b border-border" aria-label="Hlavná navigácia">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
-                <Image
-                  src="/logo-96.webp"
-                  alt="Arenibus logo"
-                  fill
-                  className="object-cover"
-                  sizes="40px"
-                  draggable={false}
-                  priority
-                />
-              </div>
-              <p className="text-2xl font-bold tracking-tight text-brand-strong group-hover:text-brand transition-colors">
-                Arenibus
-              </p>
-            </Link>
-            <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <Link href="/" className="text-foreground-2 hover:text-brand transition-colors">
-                Späť na úvod
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      </header>
+      <SiteHeader variant="subpage" />
 
       <script
         type="application/ld+json"

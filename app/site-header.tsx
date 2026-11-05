@@ -5,10 +5,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./theme-toggle";
 
-export default function SiteHeader() {
+type SiteHeaderProps = {
+  /** Homepage: section anchors + mobile menu. Subpage: logo, theme toggle, back link. */
+  variant?: "home" | "subpage";
+};
+
+export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHome = variant === "home";
 
   useEffect(() => {
+    if (!isHome) return;
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && mobileMenuOpen) {
         setMobileMenuOpen(false);
@@ -16,7 +23,7 @@ export default function SiteHeader() {
     };
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
-  }, [mobileMenuOpen]);
+  }, [isHome, mobileMenuOpen]);
 
   return (
     <header className="sticky top-0 z-50">
@@ -40,46 +47,56 @@ export default function SiteHeader() {
                 Arenibus
               </p>
             </Link>
-            <div className="flex items-center space-x-4 md:space-x-8">
-              <div className="hidden md:flex space-x-8">
-                <a href="#features" className="nav-link text-foreground-2 hover:text-brand">Funkcie</a>
-                <a href="#demo" className="nav-link text-foreground-2 hover:text-brand">Demo</a>
-                <a href="#contact" className="nav-link text-foreground-2 hover:text-brand">Kontakt</a>
+            {isHome ? (
+              <div className="flex items-center space-x-4 md:space-x-8">
+                <div className="hidden md:flex space-x-8">
+                  <a href="#features" className="nav-link text-foreground-2 hover:text-brand">Funkcie</a>
+                  <a href="#demo" className="nav-link text-foreground-2 hover:text-brand">Demo</a>
+                  <a href="#contact" className="nav-link text-foreground-2 hover:text-brand">Kontakt</a>
+                </div>
+                <ThemeToggle />
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
+                  aria-label={mobileMenuOpen ? "Zavrieť menu" : "Otvoriť menu"}
+                  aria-expanded={mobileMenuOpen}
+                  aria-controls="mobile-menu"
+                >
+                  <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    {mobileMenuOpen ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
+                </button>
               </div>
-              <ThemeToggle />
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
-                aria-label={mobileMenuOpen ? "Zavrieť menu" : "Otvoriť menu"}
-                aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-menu"
-              >
-                <svg className="w-5 h-5 text-foreground-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  {mobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
-            </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                <ThemeToggle />
+                <Link href="/" className="text-foreground-2 hover:text-brand transition-colors">
+                  Späť na úvod
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </nav>
 
-      {/* Keep in DOM so aria-controls always resolves */}
-      <div
-        id="mobile-menu"
-        hidden={!mobileMenuOpen}
-        className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
-      >
-        <div className="px-4 py-3 space-y-1">
-          <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Funkcie</a>
-          <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Demo</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Kontakt</a>
+      {isHome ? (
+        <div
+          id="mobile-menu"
+          hidden={!mobileMenuOpen}
+          className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
+        >
+          <div className="px-4 py-3 space-y-1">
+            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Funkcie</a>
+            <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Demo</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Kontakt</a>
+          </div>
         </div>
-      </div>
+      ) : null}
     </header>
   );
 }
