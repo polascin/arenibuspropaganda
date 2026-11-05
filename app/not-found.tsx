@@ -6,6 +6,12 @@ import SkipLink from "./skip-link";
 export default function NotFound() {
   return (
     <>
+      <title>Stránka sa nenašla: Arenibus</title>
+      <meta
+        name="description"
+        content="Požadovaná adresa na webe Arenibus neexistuje. Vráťte sa na úvodnú stránku."
+      />
+      <meta name="robots" content="noindex, nofollow" />
       <SkipLink />
       <div className="flex flex-col min-h-screen bg-background">
         <SiteHeader variant="subpage" />

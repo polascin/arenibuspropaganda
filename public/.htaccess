@@ -33,5 +33,9 @@
 # Prefer index.html for directory URLs (trailingSlash export).
 DirectoryIndex index.html
 
+# Next.js static export writes branded out/404.html. Without this, unknown
+# paths fall through to the parent host ErrorDocument (generic server page).
+ErrorDocument 404 /404.html
+
 Options -Indexes
 ServerSignature Off
