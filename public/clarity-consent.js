@@ -57,6 +57,7 @@
     setPageInert(false);
     banner.remove();
     banner = null;
+    settings.setAttribute("aria-expanded", "false");
     const restore = lastFocus && document.contains(lastFocus) ? lastFocus : settings;
     lastFocus = null;
     try { restore.focus(); } catch { /* Settings may not be focusable yet. */ }
@@ -72,6 +73,8 @@
   const settings = document.createElement("button");
   settings.type = "button";
   settings.className = "clarity-settings";
+  settings.setAttribute("aria-haspopup", "dialog");
+  settings.setAttribute("aria-expanded", "false");
   settings.textContent = sk ? "Nastavenia analytiky" : "Analytics settings";
   settings.addEventListener("click", () => show(true));
   (document.querySelector("footer") || document.body).appendChild(settings);
@@ -90,6 +93,7 @@
     banner.setAttribute("aria-labelledby", "clarity-consent-title");
     banner.setAttribute("aria-describedby", "clarity-consent-text");
     banner.tabIndex = -1;
+    settings.setAttribute("aria-expanded", "true");
     const title = document.createElement("h2");
     title.id = "clarity-consent-title";
     title.textContent = sk ? "Voliteľná analytika" : "Optional analytics";

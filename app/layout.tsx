@@ -168,7 +168,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">{children}
-        <Script src="/clarity-consent.js?v=20261105b" strategy="afterInteractive" data-project="z6sz54ayk0" data-paths="/,/privacy/,/terms/,/security/" data-privacy="/privacy/" />
+        <Script src="/clarity-consent.js?v=20261105c" strategy="afterInteractive" data-project="z6sz54ayk0" data-paths="/,/privacy/,/terms/,/security/" data-privacy="/privacy/" />
       </body>
     </html>
   );

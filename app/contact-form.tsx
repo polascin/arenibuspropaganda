@@ -64,6 +64,8 @@ export default function ContactForm() {
           .
         </p>
       </noscript>
+      <fieldset disabled={formStatus === "submitting"} className="space-y-4 border-0 p-0 m-0 min-w-0">
+      <legend className="sr-only">Kontaktné údaje</legend>
       <div>
         <label htmlFor="contact-name" className="block text-sm font-medium text-foreground-2 mb-1">Vaše meno</label>
         <input
@@ -74,7 +76,7 @@ export default function ContactForm() {
           placeholder="Vaše meno"
           required
           maxLength={200}
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
         />
       </div>
       <div>
@@ -87,7 +89,7 @@ export default function ContactForm() {
           placeholder="vas@email.sk"
           required
           maxLength={254}
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
         />
       </div>
       <div>
@@ -100,9 +102,10 @@ export default function ContactForm() {
           required
           maxLength={5000}
           autoComplete="off"
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow"
+          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
         ></textarea>
       </div>
+      </fieldset>
       <input
         type="text"
         name="_gotcha"
