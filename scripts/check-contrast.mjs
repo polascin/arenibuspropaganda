@@ -169,9 +169,11 @@ const CLARITY_PAIRS = [
   ["clarity body (light)", "#0a1f1a", "#ffffff", 4.5],
   ["clarity heading (light)", "#0b5f58", "#ffffff", 4.5],
   ["clarity link (light)", "#0f766e", "#ffffff", 4.5],
+  ["clarity accept (light)", "#ffffff", "#0f766e", 4.5],
   ["clarity body (dark)", "#f0faf6", "#102a24", 4.5],
   ["clarity heading (dark)", "#5eead4", "#102a24", 4.5],
   ["clarity link (dark)", "#2dd4bf", "#102a24", 4.5],
+  ["clarity accept (dark)", "#04211d", "#2dd4bf", 4.5],
 ];
 console.log("\n=== CLARITY CONSENT BANNER — WCAG 2.1 AA ===");
 for (const [label, fg, bg, min] of CLARITY_PAIRS) {

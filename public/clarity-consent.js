@@ -12,8 +12,17 @@
   const sk = document.documentElement.lang.startsWith("sk");
   let loaded = false;
   let banner;
+  let lastFocus = null;
   const read = () => { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } };
   const save = granted => { try { localStorage.setItem(key, JSON.stringify({granted, expires: Date.now() + 180 * 86400000})); } catch { /* Consent still applies for this page. */ } };
+  const focusables = root => [...root.querySelectorAll('a[href], button:not([disabled])')].filter(el => !el.hasAttribute("disabled"));
+  function setPageInert(on) {
+    for (const el of document.body.children) {
+      if (el === banner) continue;
+      if (on) el.setAttribute("inert", "");
+      else el.removeAttribute("inert");
+    }
+  }
   function apply(granted, persist = true) {
     if (persist && !external) save(granted);
     if (granted) {
@@ -41,7 +50,16 @@
       // Stop the already loaded SDK, including its cookieless mode.
       if (loaded && persist) location.reload();
     }
-    if (banner) { banner.remove(); banner = null; }
+    dismissBanner();
+  }
+  function dismissBanner() {
+    if (!banner) return;
+    setPageInert(false);
+    banner.remove();
+    banner = null;
+    const restore = lastFocus && document.contains(lastFocus) ? lastFocus : settings;
+    lastFocus = null;
+    try { restore.focus(); } catch { /* Settings may not be focusable yet. */ }
   }
   if (external) {
     window.addEventListener("site:analytics-consent", e => apply(e.detail === true));
@@ -57,14 +75,21 @@
   settings.textContent = sk ? "Nastavenia analytiky" : "Analytics settings";
   settings.addEventListener("click", () => show(true));
   (document.querySelector("footer") || document.body).appendChild(settings);
-  function show(focus = false) {
-    if (banner) { if (focus) banner.querySelector("button").focus(); return; }
+  function show(fromSettings = false) {
+    if (banner) {
+      banner.focus();
+      return;
+    }
+    // Prefer a meaningful restore target: settings after auto-open, the opener after a click.
+    const active = document.activeElement;
+    lastFocus = fromSettings && active instanceof HTMLElement ? active : settings;
     banner = document.createElement("section");
     banner.className = "clarity-consent";
     banner.setAttribute("role", "dialog");
     banner.setAttribute("aria-modal", "true");
     banner.setAttribute("aria-labelledby", "clarity-consent-title");
     banner.setAttribute("aria-describedby", "clarity-consent-text");
+    banner.tabIndex = -1;
     const title = document.createElement("h2");
     title.id = "clarity-consent-title";
     title.textContent = sk ? "Voliteľná analytika" : "Optional analytics";
@@ -82,25 +107,45 @@
     decline.addEventListener("click", () => apply(false));
     const accept = document.createElement("button");
     accept.type = "button";
+    accept.className = "clarity-consent-accept";
     accept.textContent = sk ? "Povoliť analytiku" : "Allow analytics";
     accept.addEventListener("click", () => apply(true));
     banner.append(title, text, link, decline, accept);
     document.body.appendChild(banner);
-    if (focus) decline.focus();
+    setPageInert(true);
+    // Focus the dialog container so the accessible name is announced, then Tab reaches controls.
+    banner.focus();
   }
   document.addEventListener("keydown", e => {
-    if (e.key !== "Escape" || !banner) return;
-    const storedChoice = read();
-    if (storedChoice && storedChoice.expires > Date.now() && typeof storedChoice.granted === "boolean") {
-      banner.remove();
-      banner = null;
-    } else {
-      apply(false);
+    if (!banner) return;
+    if (e.key === "Escape") {
+      const storedChoice = read();
+      if (storedChoice && storedChoice.expires > Date.now() && typeof storedChoice.granted === "boolean") {
+        dismissBanner();
+      } else {
+        apply(false);
+      }
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const items = focusables(banner);
+    if (!items.length) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === banner)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    } else if (!e.shiftKey && document.activeElement === banner) {
+      e.preventDefault();
+      first.focus();
     }
   });
   const stored = read();
   if (stored && stored.expires > Date.now() && typeof stored.granted === "boolean") apply(stored.granted, false);
-  else show();
+  else show(false);
   window.addEventListener("storage", e => {
     if (e.key !== key) return;
     const value = read();

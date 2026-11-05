@@ -49,7 +49,12 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleContactSubmit} className="space-y-4" aria-label="Kontaktný formulár">
+    <form
+      onSubmit={handleContactSubmit}
+      className="space-y-4"
+      aria-label="Kontaktný formulár"
+      aria-busy={formStatus === "submitting"}
+    >
       <noscript>
         <p className="text-sm text-foreground-2">
           Bez JavaScriptu nám napíšte na{" "}

@@ -40,6 +40,12 @@
   font: inherit;
   cursor: pointer;
 }
+.clarity-consent button.clarity-consent-accept {
+  background: #0f766e;
+  color: #ffffff;
+  border-color: #0f766e;
+  font-weight: 600;
+}
 .clarity-consent button:focus-visible,
 .clarity-settings:focus-visible {
   outline: 3px solid #0f766e;
@@ -67,6 +73,11 @@ html[data-theme="dark"] .clarity-settings {
   color: #f0faf6;
   border-color: #2dd4bf;
 }
+html[data-theme="dark"] .clarity-consent button.clarity-consent-accept {
+  background: #2dd4bf;
+  color: #04211d;
+  border-color: #2dd4bf;
+}
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) .clarity-consent,
   html:not([data-theme="light"]) .clarity-settings {
@@ -85,6 +96,11 @@ html[data-theme="dark"] .clarity-settings {
   html:not([data-theme="light"]) .clarity-settings {
     background: #102a24;
     color: #f0faf6;
+    border-color: #2dd4bf;
+  }
+  html:not([data-theme="light"]) .clarity-consent button.clarity-consent-accept {
+    background: #2dd4bf;
+    color: #04211d;
     border-color: #2dd4bf;
   }
 }
