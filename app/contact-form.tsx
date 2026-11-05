@@ -73,10 +73,12 @@ export default function ContactForm() {
           type="text"
           name="name"
           autoComplete="name"
+          autoCapitalize="words"
+          enterKeyHint="next"
           placeholder="Vaše meno"
           required
           maxLength={200}
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
+          className="w-full px-4 py-3 border border-border rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
         />
       </div>
       <div>
@@ -86,10 +88,12 @@ export default function ContactForm() {
           type="email"
           name="email"
           autoComplete="email"
+          inputMode="email"
+          enterKeyHint="next"
           placeholder="vas@email.sk"
           required
           maxLength={254}
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
+          className="w-full px-4 py-3 border border-border rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
         />
       </div>
       <div>
@@ -102,7 +106,8 @@ export default function ContactForm() {
           required
           maxLength={5000}
           autoComplete="off"
-          className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
+          enterKeyHint="send"
+          className="w-full px-4 py-3 border border-border rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
         ></textarea>
       </div>
       </fieldset>
