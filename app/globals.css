@@ -263,18 +263,9 @@ a:not([class]) {
   color: var(--brand);
 }
 
-/* Visually hidden elements for accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
+/* Skip-link and live-region hiding use Tailwind `sr-only` / `focus:not-sr-only`.
+   Do not redefine `.sr-only` outside @layer — unlayered rules beat the utilities
+   and keep the skip link clipped at 1×1 px even when focused. */
 
 /* Focus visible for keyboard navigation */
 :focus-visible {
