@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -34,7 +34,7 @@ jobs:
           echo "Repository is in sync with origin/main ($LOCAL_SHA)."
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: 'npm'
@@ -62,6 +62,12 @@ jobs:
             echo "Settings > Secrets and variables > Actions > Repository secrets."
             exit 1
           fi
+          if [ -z "${{ secrets.WEBSUPPORT_DEPLOY_DIR }}" ]; then
+            echo "Error: GitHub secret WEBSUPPORT_DEPLOY_DIR is not set."
+            echo "Add the absolute remote path for the arenibus static site under"
+            echo "Settings > Secrets and variables > Actions > Repository secrets."
+            exit 1
+          fi
 
       - name: Setup SSH key
         run: |
@@ -73,7 +79,7 @@ jobs:
       - name: Prepare remote directory
         run: |
           ssh -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
-            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR || '/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus' }}"
+            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR }}"
             BACKUP_DIR="$HOME/arenibus-backups"
             BACKUP_KEEP=5
             cd "$DEPLOY_DIR" || exit 1
@@ -112,12 +118,12 @@ jobs:
             echo "Build output is missing out/.htaccess (required for Next.js CSP)."
             exit 1
           fi
-          scp -P "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" -r out/. "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}:${{ secrets.WEBSUPPORT_DEPLOY_DIR || '/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus' }}/"
+          scp -P "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" -r out/. "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}:${{ secrets.WEBSUPPORT_DEPLOY_DIR }}/"
 
       - name: Set permissions
         run: |
           ssh -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
-            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR || '/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus' }}"
+            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR }}"
             cd "$DEPLOY_DIR" || exit 1
             find . -type d -exec chmod 755 {} +
             find . -type f -exec chmod 644 {} +

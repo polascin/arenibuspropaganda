@@ -64,7 +64,7 @@ Configure the following secrets in the repository settings (`Settings > Secrets 
 - `WEBSUPPORT_SSH_HOST` (optional, default: `shell.r1.websupport.sk`).
 - `WEBSUPPORT_SSH_PORT` (optional, default: `26650`).
 - `WEBSUPPORT_SSH_USER` (optional, default: `uid58858`).
-- `WEBSUPPORT_DEPLOY_DIR` (optional, default: `/data/8/6/868f981d-e598-4e71-b7f5-246f2e180cef/polascin.net/arenibus`).
+- `WEBSUPPORT_DEPLOY_DIR` (required) — absolute remote path of the arenibus static site on WebSupport.
 
 ### Manual deployment
 Local fallback scripts are still available:
