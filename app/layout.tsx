@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Source_Sans_3 } from "next/font/google";
-import { DEMO_VERSION_PLAIN } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -9,10 +9,6 @@ const sourceSans = Source_Sans_3({
   display: "swap",
   variable: "--font-source-sans",
 });
-
-const SITE_TITLE = "Arenibus: Nefrologický a dialyzačný informačný systém";
-const SITE_DESCRIPTION =
-  "Moderný .NET systém pre nefrologickú ambulanciu a dialýzu (HD, PD) s registrami, vykazovaním poisťovniam a integráciou na ezdravotníctvo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arenibus.polascin.net"),
@@ -90,56 +86,6 @@ export const viewport: Viewport = {
   ],
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "Arenibus",
-  description: SITE_DESCRIPTION,
-  url: "https://arenibus.polascin.net/",
-  applicationCategory: "HealthApplication",
-  operatingSystem: "Any",
-  softwareVersion: DEMO_VERSION_PLAIN,
-  inLanguage: "sk",
-  // Square brand mark — not the 1200×630 Open Graph card.
-  logo: "https://arenibus.polascin.net/icon-512.png",
-  image: {
-    "@type": "ImageObject",
-    url: "https://arenibus.polascin.net/og-image.png",
-    width: 1200,
-    height: 630,
-  },
-  featureList: [
-    "Správa pacientov",
-    "Evidencia návštev",
-    "Hemodialýza a predpis",
-    "Peritoneálna dialýza",
-    "Kalendár a harmonogram",
-    "Laboratórne výsledky",
-    "Moje zoznamy a štatistiky",
-    "Vykazovanie poisťovniam",
-    "Prevádzka dialýzy",
-    "Audit a bezpečnosť",
-  ],
-  // No offers / isAccessibleForFree: demo access is on request, not a free product listing.
-  provider: {
-    "@type": "Person",
-    name: "MUDr. Ľubomír Polaščín",
-  },
-};
-
-const websiteLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Arenibus",
-  url: "https://arenibus.polascin.net/",
-  inLanguage: "sk",
-  description: SITE_DESCRIPTION,
-  publisher: {
-    "@type": "Person",
-    name: "MUDr. Ľubomír Polaščín",
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -157,14 +103,6 @@ export default function RootLayout({
             __html:
               'try{var m=localStorage.getItem("darkMode");if(m!==null)document.documentElement.setAttribute("data-theme",m==="true"?"dark":"light")}catch(e){}',
           }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">{children}

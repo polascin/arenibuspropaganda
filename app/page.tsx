@@ -4,6 +4,7 @@ import ContactForm from "./contact-form";
 import FeaturesSection from "./features-section";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
+import SiteJsonLd from "./site-json-ld";
 import SkipLink from "./skip-link";
 
 const DEMO_ACCESS_MAILTO =
@@ -18,6 +19,7 @@ const DEMO_ACCESS_MAILTO =
 export default function Home() {
   return (
     <>
+      <SiteJsonLd />
       <SkipLink />
       <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
