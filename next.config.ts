@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    // Own HTML shell + metadata for unmatched routes (avoids root layout index/OG).
+    globalNotFound: true,
+  },
 };
 
 export default nextConfig;
