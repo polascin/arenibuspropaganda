@@ -9,25 +9,6 @@ const PRIVACY_TITLE = "Zásady ochrany osobných údajov: Arenibus";
 const PRIVACY_DESCRIPTION =
   "Ako spracúvame osobné údaje na stránke Arenibus a v demo prostredí demo.arenibus.com: prevádzkovateľ, účely, právne základy, uchovávanie a vaše práva.";
 
-const privacyBreadcrumbLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Arenibus",
-      item: "https://arenibus.polascin.net/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Ochrana osobných údajov",
-      item: "https://arenibus.polascin.net/privacy/",
-    },
-  ],
-};
-
 export const metadata: Metadata = {
   title: PRIVACY_TITLE,
   description: PRIVACY_DESCRIPTION,
@@ -65,15 +46,10 @@ export default function PrivacyPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader variant="subpage" />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyBreadcrumbLd) }}
-      />
-
       {/* Content */}
       <main id="main-content" className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
         <article className="legal-prose max-w-3xl mx-auto">
-          <Breadcrumbs currentLabel="Ochrana osobných údajov" />
+          <Breadcrumbs currentLabel="Ochrana osobných údajov" currentPath="/privacy/" />
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
             Zásady ochrany osobných údajov
           </h1>

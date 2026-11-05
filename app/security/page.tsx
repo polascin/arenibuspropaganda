@@ -9,25 +9,6 @@ const SECURITY_TITLE = "Bezpečnostný kontakt: Arenibus";
 const SECURITY_DESCRIPTION =
   "Kontakt na hlásenie bezpečnostných zistení na webe Arenibus a v demo prostredí. Správy posielajte na arenibus@polascin.net.";
 
-const securityBreadcrumbLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Arenibus",
-      item: "https://arenibus.polascin.net/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Bezpečnostný kontakt",
-      item: "https://arenibus.polascin.net/security/",
-    },
-  ],
-};
-
 export const metadata: Metadata = {
   title: SECURITY_TITLE,
   description: SECURITY_DESCRIPTION,
@@ -65,14 +46,9 @@ export default function SecurityPage() {
       <div className="flex flex-col min-h-screen bg-background">
         <SiteHeader variant="subpage" />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(securityBreadcrumbLd) }}
-        />
-
         <main id="main-content" className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
           <article className="legal-prose max-w-3xl mx-auto">
-            <Breadcrumbs currentLabel="Bezpečnostný kontakt" />
+            <Breadcrumbs currentLabel="Bezpečnostný kontakt" currentPath="/security/" />
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
               Bezpečnostný kontakt
             </h1>

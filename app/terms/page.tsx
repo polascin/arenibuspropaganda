@@ -9,25 +9,6 @@ const TERMS_TITLE = "Podmienky používania: Arenibus";
 const TERMS_DESCRIPTION =
   "Podmienky používania stránky a demo verzie Arenibus: stav vývoja, vylúčenie záruk, duševné vlastníctvo a rozhodné právo.";
 
-const termsBreadcrumbLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Arenibus",
-      item: "https://arenibus.polascin.net/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Podmienky používania",
-      item: "https://arenibus.polascin.net/terms/",
-    },
-  ],
-};
-
 export const metadata: Metadata = {
   title: TERMS_TITLE,
   description: TERMS_DESCRIPTION,
@@ -65,15 +46,10 @@ export default function TermsPage() {
     <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader variant="subpage" />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(termsBreadcrumbLd) }}
-      />
-
       {/* Content */}
       <main id="main-content" className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
         <article className="legal-prose max-w-3xl mx-auto">
-          <Breadcrumbs currentLabel="Podmienky používania" />
+          <Breadcrumbs currentLabel="Podmienky používania" currentPath="/terms/" />
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
             Podmienky používania
           </h1>
