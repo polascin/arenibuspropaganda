@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./theme-toggle";
 
 type SiteHeaderProps = {
@@ -13,16 +13,24 @@ type SiteHeaderProps = {
 export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isHome = variant === "home";
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (!isHome) return;
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && mobileMenuOpen) {
         setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
       }
     };
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
+  }, [isHome, mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!isHome || !mobileMenuOpen) return;
+    firstMenuLinkRef.current?.focus();
   }, [isHome, mobileMenuOpen]);
 
   return (
@@ -34,7 +42,7 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
               <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                 <Image
                   src="/logo-96.webp"
-                  alt="Arenibus logo"
+                  alt=""
                   fill
                   className="object-cover"
                   sizes="40px"
@@ -56,6 +64,7 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
                 </div>
                 <ThemeToggle />
                 <button
+                  ref={menuButtonRef}
                   type="button"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
@@ -82,21 +91,28 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             )}
           </div>
         </div>
-      </nav>
 
-      {isHome ? (
-        <div
-          id="mobile-menu"
-          hidden={!mobileMenuOpen}
-          className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
-        >
-          <div className="px-4 py-3 space-y-1">
-            <a href="#features" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Funkcie</a>
-            <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Demo</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Kontakt</a>
+        {isHome ? (
+          <div
+            id="mobile-menu"
+            hidden={!mobileMenuOpen}
+            className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
+          >
+            <div className="px-4 py-3 space-y-1">
+              <a
+                ref={firstMenuLinkRef}
+                href="#features"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2"
+              >
+                Funkcie
+              </a>
+              <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Demo</a>
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Kontakt</a>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </nav>
     </header>
   );
 }
