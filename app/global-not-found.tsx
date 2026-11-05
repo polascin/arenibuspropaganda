@@ -21,10 +21,7 @@ export const metadata: Metadata = {
   title: NOT_FOUND_TITLE,
   description: NOT_FOUND_DESCRIPTION,
   applicationName: "Arenibus",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  // Next injects robots noindex for not-found; avoid a second conflicting robots meta.
 };
 
 export const viewport: Viewport = {

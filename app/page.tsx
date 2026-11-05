@@ -195,7 +195,7 @@ export default function Home() {
       </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter current="home" />
     </div>
     </>
   );

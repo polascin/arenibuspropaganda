@@ -88,7 +88,10 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             ) : (
               <div className="flex items-center gap-3">
                 <ThemeToggle />
-                <Link href="/" className="text-foreground-2 hover:text-brand transition-colors">
+                <Link
+                  href="/"
+                  className="text-foreground-2 hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded"
+                >
                   Späť na úvod
                 </Link>
               </div>

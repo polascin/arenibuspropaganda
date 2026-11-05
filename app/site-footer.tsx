@@ -2,7 +2,9 @@ import Link from "next/link";
 
 type FooterPage = "home" | "privacy" | "terms" | "security";
 
-export default function SiteFooter({ current = "home" }: { current?: FooterPage }) {
+const linkClass = "text-muted hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded";
+
+export default function SiteFooter({ current }: { current?: FooterPage }) {
   return (
     <footer className="bg-surface-3 text-foreground py-10 px-4 sm:px-6 border-t border-border">
       <div className="max-w-7xl mx-auto text-center">
@@ -20,23 +22,30 @@ export default function SiteFooter({ current = "home" }: { current?: FooterPage 
           className="mt-6 flex justify-center flex-wrap gap-x-8 gap-y-3 text-sm"
         >
           <Link
+            href="/"
+            aria-current={current === "home" ? "page" : undefined}
+            className={linkClass}
+          >
+            Úvod
+          </Link>
+          <Link
             href="/privacy/"
             aria-current={current === "privacy" ? "page" : undefined}
-            className="text-muted hover:text-brand transition-colors"
+            className={linkClass}
           >
             Ochrana osobných údajov
           </Link>
           <Link
             href="/terms/"
             aria-current={current === "terms" ? "page" : undefined}
-            className="text-muted hover:text-brand transition-colors"
+            className={linkClass}
           >
             Podmienky používania
           </Link>
           <Link
             href="/security/"
             aria-current={current === "security" ? "page" : undefined}
-            className="text-muted hover:text-brand transition-colors"
+            className={linkClass}
           >
             Bezpečnostný kontakt
           </Link>
