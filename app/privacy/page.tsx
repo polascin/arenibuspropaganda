@@ -102,6 +102,7 @@ export default function PrivacyPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   demo.arenibus.com
+                  <span className="sr-only"> (otvorí sa v novom okne)</span>
                 </a>
                 {" "}
                 (samostatný{" "}
@@ -202,7 +203,7 @@ export default function PrivacyPage() {
                 Voľba sa ukladá v prehliadači na 180 dní a možno ju kedykoľvek zmeniť tlačidlom
                 Nastavenia analytiky. Cookies _clck a _clsk rozlišujú návštevníkov a spájajú
                 zobrazenia do relácií. Údaje prijíma Microsoft. Podrobnosti vrátane medzinárodných
-                prenosov obsahuje <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">vyhlásenie Microsoft o ochrane súkromia</a>.
+                prenosov obsahuje <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">vyhlásenie Microsoft o ochrane súkromia<span className="sr-only"> (otvorí sa v novom okne)</span></a>.
                 Meranie sa nevzťahuje na demo ani klinickú aplikáciu.
                 Voľba svetlého alebo tmavého režimu zostáva samostatnou technickou predvoľbou.
               </p>
@@ -251,6 +252,7 @@ export default function PrivacyPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   demo.arenibus.com
+                  <span className="sr-only"> (otvorí sa v novom okne)</span>
                 </a>
                 . Prevádzkovateľom je ten istý subjekt ako podľa článku 1. Demo obsahuje výhradne{" "}
                 <span className="font-semibold text-foreground">fiktívnych pacientov a fiktívne údaje</span>
@@ -443,6 +445,7 @@ export default function PrivacyPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   Úrad na ochranu osobných údajov Slovenskej republiky
+                  <span className="sr-only"> (otvorí sa v novom okne)</span>
                 </a>
                 .
               </p>

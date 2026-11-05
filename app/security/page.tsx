@@ -95,6 +95,7 @@ export default function SecurityPage() {
                     className="text-brand hover:text-brand-strong transition-colors"
                   >
                     demo.arenibus.com
+                    <span className="sr-only"> (otvorí sa v novom okne)</span>
                   </a>
                   , napíšte na{" "}
                   <a href="mailto:arenibus@polascin.net" className="text-brand hover:text-brand-strong transition-colors">
@@ -121,6 +122,7 @@ export default function SecurityPage() {
                       className="text-brand hover:text-brand-strong transition-colors"
                     >
                       demo.arenibus.com
+                      <span className="sr-only"> (otvorí sa v novom okne)</span>
                     </a>
                     .
                   </li>

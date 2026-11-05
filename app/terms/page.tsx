@@ -102,6 +102,7 @@ export default function TermsPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   demo.arenibus.com
+                  <span className="sr-only"> (otvorí sa v novom okne)</span>
                 </a>
                 : platia články 2, 3, 4, 5 a 6. Článok 7 (zmeny podmienok a kontakt) platí aj pre ne.
               </li>
@@ -135,6 +136,7 @@ export default function TermsPage() {
                   className="text-brand hover:text-brand-strong transition-colors"
                 >
                   demo.arenibus.com
+                  <span className="sr-only"> (otvorí sa v novom okne)</span>
                 </a>{" "}
                 slúži výlučne na prezentačné účely. Prevádzkovateľ neposkytuje žiadne záruky týkajúce sa
                 jej funkčnosti, presnosti ani dostupnosti; demo verzia sa môže kedykoľvek zmeniť alebo byť
