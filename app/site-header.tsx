@@ -51,7 +51,7 @@ export default function SiteHeader() {
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors"
-                aria-label="Otvoriť alebo zavrieť menu"
+                aria-label={mobileMenuOpen ? "Zavrieť menu" : "Otvoriť menu"}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-menu"
               >

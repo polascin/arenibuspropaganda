@@ -125,6 +125,11 @@ export default function FeatureCard({ feature }: { feature: Feature }) {
           className="mt-3 self-start text-sm font-semibold text-brand hover:text-brand-strong transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded"
           aria-expanded={expanded}
           aria-controls={textId}
+          aria-label={
+            expanded
+              ? `Zobraziť menej: ${feature.title}`
+              : `Zobraziť viac: ${feature.title}`
+          }
           onClick={() => setExpanded((value) => !value)}
         >
           {expanded ? "Zobraziť menej" : "Zobraziť viac"}
