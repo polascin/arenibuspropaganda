@@ -307,7 +307,9 @@ function resolveHref(tag, consts) {
   return href.value;
 }
 
-function checkAnchorAttrs(where, tag, href) {
+const NEW_WINDOW_HINT = "otvorí sa v novom okne";
+
+function checkAnchorAttrs(where, tag, href, src) {
   if (!href.startsWith("http://") && !href.startsWith("https://")) return;
   if (href.startsWith(SITE_ORIGIN)) return;
   const target = attr(tag, "target");
@@ -318,6 +320,22 @@ function checkAnchorAttrs(where, tag, href) {
   if (targetVal !== "_blank") fail(where, `external <a> missing target="_blank": ${href}`);
   if (!relParts.has("noopener") || !relParts.has("noreferrer")) {
     fail(where, `external <a> missing rel="noopener noreferrer": ${href}`);
+  }
+  if (targetVal === "_blank" && typeof src === "string") {
+    const start = src.indexOf(tag);
+    if (start < 0) {
+      fail(where, `external <a> could not locate tag body for new-window hint: ${href}`);
+      return;
+    }
+    const after = src.slice(start + tag.length);
+    const close = after.search(/<\/a\s*>/i);
+    const body = close >= 0 ? after.slice(0, close) : "";
+    if (!body.includes(NEW_WINDOW_HINT)) {
+      fail(
+        where,
+        `external <a target="_blank"> missing sr-only hint „${NEW_WINDOW_HINT}“: ${href}`
+      );
+    }
   }
 }
 
@@ -370,7 +388,7 @@ for (const file of appFiles) {
       fail(whereFile, "could not resolve <a> href");
       continue;
     }
-    findings.push({ file, tag, href, isAnchor: true, where: `${whereFile} <a href>` });
+    findings.push({ file, tag, href, isAnchor: true, src, where: `${whereFile} <a href>` });
   }
   for (const tag of extractOpenTags(src, "Link")) {
     const href = resolveHref(tag, consts);
@@ -378,7 +396,7 @@ for (const file of appFiles) {
       fail(whereFile, "could not resolve <Link> href");
       continue;
     }
-    findings.push({ file, tag, href, isAnchor: false, where: `${whereFile} <Link href>` });
+    findings.push({ file, tag, href, isAnchor: false, src, where: `${whereFile} <Link href>` });
   }
 
   const fetchRe = /\bfetch\s*\(\s*("([^"]+)"|'([^']+)'|(\w+))/g;
@@ -446,7 +464,7 @@ if (!existsSync(sitemap)) {
 }
 
 for (const item of findings) {
-  const { href, file, tag, isAnchor, where } = item;
+  const { href, file, tag, isAnchor, where, src } = item;
   const c = classify(href);
 
   if (c.kind === "mailto") {
@@ -463,7 +481,7 @@ for (const item of findings) {
     continue;
   }
   if (c.kind === "external") {
-    if (isAnchor && tag) checkAnchorAttrs(where, tag, c.href);
+    if (isAnchor && tag) checkAnchorAttrs(where, tag, c.href, src);
     await checkExternal(where, c.href);
     continue;
   }
