@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fieldFocusClass, proseLinkClass } from "./link-styles";
 
 const CONTACT_MAILTO = "mailto:arenibus@polascin.net";
@@ -16,6 +16,12 @@ function buildMailto(name: string, email: string, message: string) {
 export default function ContactForm() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [fallbackMailto, setFallbackMailto] = useState(CONTACT_MAILTO);
+  const statusRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (formStatus !== "success" && formStatus !== "error") return;
+    statusRef.current?.focus();
+  }, [formStatus]);
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -130,13 +136,15 @@ export default function ContactForm() {
         {formStatus === "submitting" ? "Odosielam..." : "Odoslať správu"}
       </button>
       <p
+        ref={statusRef}
+        tabIndex={formStatus === "success" || formStatus === "error" ? -1 : undefined}
         role={formStatus === "error" ? "alert" : "status"}
         aria-live={formStatus === "error" ? "assertive" : "polite"}
         className={
           formStatus === "success"
-            ? "text-ok font-medium text-center"
+            ? "text-ok font-medium text-center outline-none"
             : formStatus === "error"
-              ? "text-danger font-medium text-center"
+              ? "text-danger font-medium text-center outline-none"
               : "sr-only"
         }
       >

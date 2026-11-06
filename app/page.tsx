@@ -144,7 +144,7 @@ export default function Home() {
               Demo heslá nie sú verejné. Pošlite žiadosť na{" "}
               <a
                 href={DEMO_ACCESS_MAILTO}
-                className={`underline font-medium ${proseLinkClass}`}
+                className={`font-medium ${proseLinkClass}`}
               >
                 arenibus@nephroctor.com
               </a>

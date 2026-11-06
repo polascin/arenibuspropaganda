@@ -3,6 +3,12 @@ import { footerLinkClass } from "./link-styles";
 
 type FooterPage = "home" | "privacy" | "terms" | "security";
 
+function footerItemClass(active: boolean) {
+  return active
+    ? `${footerLinkClass} font-semibold text-foreground`
+    : footerLinkClass;
+}
+
 export default function SiteFooter({ current }: { current?: FooterPage }) {
   return (
     <footer className="bg-surface-3 text-foreground py-10 px-4 sm:px-6 border-t border-border">
@@ -23,28 +29,28 @@ export default function SiteFooter({ current }: { current?: FooterPage }) {
           <Link
             href="/"
             aria-current={current === "home" ? "page" : undefined}
-            className={footerLinkClass}
+            className={footerItemClass(current === "home")}
           >
             Úvod
           </Link>
           <Link
             href="/privacy/"
             aria-current={current === "privacy" ? "page" : undefined}
-            className={footerLinkClass}
+            className={footerItemClass(current === "privacy")}
           >
             Ochrana osobných údajov
           </Link>
           <Link
             href="/terms/"
             aria-current={current === "terms" ? "page" : undefined}
-            className={footerLinkClass}
+            className={footerItemClass(current === "terms")}
           >
             Podmienky používania
           </Link>
           <Link
             href="/security/"
             aria-current={current === "security" ? "page" : undefined}
-            className={footerLinkClass}
+            className={footerItemClass(current === "security")}
           >
             Bezpečnostný kontakt
           </Link>
