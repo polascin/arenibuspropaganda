@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Source_Sans_3 } from "next/font/google";
-import { SITE_DESCRIPTION, SITE_ORIGIN, SITE_TITLE } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_ORIGIN, SITE_TITLE } from "@/lib/site";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme-bootstrap";
 import "./globals.css";
 
@@ -51,20 +51,13 @@ export const metadata: Metadata = {
     siteName: "Arenibus",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Arenibus: nefrologický a dialyzačný informačný systém",
-      },
-    ],
+    images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/og-image.png"],
+    images: [SITE_OG_IMAGE.url],
   },
   icons: {
     icon: [

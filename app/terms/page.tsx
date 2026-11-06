@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_OG_IMAGE } from "@/lib/site";
 import Breadcrumbs from "../breadcrumbs";
 import { proseLinkClass } from "../link-styles";
 import SiteFooter from "../site-footer";
@@ -23,20 +24,13 @@ export const metadata: Metadata = {
     siteName: "Arenibus",
     title: TERMS_TITLE,
     description: TERMS_DESCRIPTION,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Arenibus: nefrologický a dialyzačný informačný systém",
-      },
-    ],
+    images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: TERMS_TITLE,
     description: TERMS_DESCRIPTION,
-    images: ["/og-image.png"],
+    images: [SITE_OG_IMAGE.url],
   },
 };
 

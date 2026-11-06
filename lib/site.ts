@@ -13,6 +13,14 @@ export const SITE_DESCRIPTION =
 
 export const SITE_TITLE = "Arenibus: Nefrologický a dialyzačný informačný systém";
 
+/** Shared Open Graph / Twitter card image (relative to metadataBase). */
+export const SITE_OG_IMAGE = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Arenibus: nefrologický a dialyzačný informačný systém",
+} as const;
+
 export const NOT_FOUND_TITLE = "Stránka sa nenašla: Arenibus";
 
 export const NOT_FOUND_DESCRIPTION =

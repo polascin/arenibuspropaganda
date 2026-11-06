@@ -30,6 +30,18 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
     firstMenuLinkRef.current?.focus();
   }, [isHome, mobileMenuOpen]);
 
+  // md+ shows desktop section links; an open mobile menu would keep brand/theme inert.
+  useEffect(() => {
+    if (!isHome) return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    const closeOnDesktop = () => {
+      if (mq.matches) setMobileMenuOpen(false);
+    };
+    closeOnDesktop();
+    mq.addEventListener("change", closeOnDesktop);
+    return () => mq.removeEventListener("change", closeOnDesktop);
+  }, [isHome]);
+
   useEffect(() => {
     if (!isHome || !mobileMenuOpen) return;
 
