@@ -2,6 +2,13 @@
 export const focusRingClass =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40";
 
+/**
+ * Same ring for programmatic `.focus()` (mobile menu open), which does not
+ * set `:focus-visible` in every browser.
+ */
+export const programmaticFocusRingClass =
+  "focus:outline-none focus:ring-2 focus:ring-brand/40 focus-visible:ring-2 focus-visible:ring-brand/40";
+
 /** Inline brand links in legal copy, mailto, and in-page anchors. */
 export const proseLinkClass =
   `text-brand hover:text-brand-strong transition-colors ${focusRingClass} rounded`;

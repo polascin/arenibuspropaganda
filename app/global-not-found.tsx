@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3 } from "next/font/google";
-import { NOT_FOUND_DESCRIPTION, NOT_FOUND_TITLE } from "@/lib/site";
+import { NOT_FOUND_DESCRIPTION, NOT_FOUND_TITLE, SITE_ORIGIN } from "@/lib/site";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme-bootstrap";
 import NotFoundShell from "./not-found-shell";
 import "./globals.css";
@@ -12,7 +12,7 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arenibus.polascin.net"),
+  metadataBase: new URL(SITE_ORIGIN),
   title: NOT_FOUND_TITLE,
   description: NOT_FOUND_DESCRIPTION,
   applicationName: "Arenibus",

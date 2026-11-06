@@ -1,7 +1,6 @@
 import Link from "next/link";
+import { SITE_ORIGIN } from "@/lib/site";
 import { proseLinkClass } from "./link-styles";
-
-const SITE_ORIGIN = "https://arenibus.polascin.net";
 
 type BreadcrumbsProps = {
   currentLabel: string;

@@ -3,7 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { focusRingClass, mutedLinkClass } from "./link-styles";
+import {
+  focusRingClass,
+  mutedLinkClass,
+  programmaticFocusRingClass,
+} from "./link-styles";
 import ThemeToggle from "./theme-toggle";
 
 type SiteHeaderProps = {
@@ -11,13 +15,13 @@ type SiteHeaderProps = {
   variant?: "home" | "subpage";
 };
 
-/** `:focus` (not only `:focus-visible`) so the ring shows after programmatic focus on open. */
-const mobileMenuLinkClass =
-  "block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2 focus:outline-none focus:ring-2 focus:ring-brand/40 focus-visible:ring-2 focus-visible:ring-brand/40";
+const mobileMenuLinkClass = `block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2 ${programmaticFocusRingClass}`;
 
 export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isHome = variant === "home";
+  const brandRef = useRef<HTMLAnchorElement>(null);
+  const themeWrapRef = useRef<HTMLSpanElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
@@ -31,8 +35,13 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
 
     const main = document.getElementById("main-content");
     const footer = document.querySelector("footer");
+    const brand = brandRef.current;
+    const themeWrap = themeWrapRef.current;
+    // Dialog pattern: only the menu toggle + panel stay interactive.
     main?.setAttribute("inert", "");
     footer?.setAttribute("inert", "");
+    brand?.setAttribute("inert", "");
+    themeWrap?.setAttribute("inert", "");
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -69,6 +78,8 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
       document.removeEventListener("keydown", handleKeyDown);
       main?.removeAttribute("inert");
       footer?.removeAttribute("inert");
+      brand?.removeAttribute("inert");
+      themeWrap?.removeAttribute("inert");
     };
   }, [isHome, mobileMenuOpen]);
 
@@ -78,6 +89,7 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link
+              ref={brandRef}
               href="/"
               aria-current={isHome ? "page" : undefined}
               className={`flex items-center gap-3 group rounded ${focusRingClass}`}
@@ -105,7 +117,9 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
                   <a href="#demo" className={`nav-link ${mutedLinkClass}`}>Demo</a>
                   <a href="#contact" className={`nav-link ${mutedLinkClass}`}>Kontakt</a>
                 </div>
-                <ThemeToggle />
+                <span ref={themeWrapRef} className="inline-flex">
+                  <ThemeToggle />
+                </span>
                 <button
                   ref={menuButtonRef}
                   type="button"

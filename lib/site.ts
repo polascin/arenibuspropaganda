@@ -1,3 +1,6 @@
+/** Canonical marketing origin (no trailing path beyond `/`). */
+export const SITE_ORIGIN = "https://arenibus.polascin.net";
+
 /** Live demo footer / bundle version shown on https://demo.arenibus.com/. */
 export const DEMO_VERSION = "v0.17.264";
 

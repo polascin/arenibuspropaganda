@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { DEMO_VERSION } from "@/lib/site";
+import { DEMO_VERSION, SITE_ORIGIN } from "@/lib/site";
 import ContactForm from "./contact-form";
 import FeaturesSection from "./features-section";
 import { mutedLinkClass, proseLinkClass } from "./link-styles";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    url: "https://arenibus.polascin.net/",
+    url: `${SITE_ORIGIN}/`,
   },
 };
 

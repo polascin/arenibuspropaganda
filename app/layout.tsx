@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Source_Sans_3 } from "next/font/google";
-import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
+import { SITE_DESCRIPTION, SITE_ORIGIN, SITE_TITLE } from "@/lib/site";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme-bootstrap";
 import "./globals.css";
 
@@ -12,7 +12,7 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://arenibus.polascin.net"),
+  metadataBase: new URL(SITE_ORIGIN),
   applicationName: "Arenibus",
   category: "healthcare",
   formatDetection: {
