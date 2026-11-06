@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { mutedLinkClass } from "./link-styles";
 import ThemeToggle from "./theme-toggle";
 
 type SiteHeaderProps = {
@@ -100,9 +101,9 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             {isHome ? (
               <div className="flex items-center space-x-4 md:space-x-8">
                 <div className="hidden md:flex space-x-8">
-                  <a href="#features" className="nav-link text-foreground-2 hover:text-brand">Funkcie</a>
-                  <a href="#demo" className="nav-link text-foreground-2 hover:text-brand">Demo</a>
-                  <a href="#contact" className="nav-link text-foreground-2 hover:text-brand">Kontakt</a>
+                  <a href="#features" className={`nav-link ${mutedLinkClass}`}>Funkcie</a>
+                  <a href="#demo" className={`nav-link ${mutedLinkClass}`}>Demo</a>
+                  <a href="#contact" className={`nav-link ${mutedLinkClass}`}>Kontakt</a>
                 </div>
                 <ThemeToggle />
                 <button

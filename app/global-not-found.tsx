@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: NOT_FOUND_TITLE,
   description: NOT_FOUND_DESCRIPTION,
   applicationName: "Arenibus",
+  formatDetection: {
+    telephone: false,
+  },
   // Next injects robots noindex for not-found; avoid a second conflicting robots meta.
 };
 

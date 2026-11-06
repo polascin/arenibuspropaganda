@@ -56,7 +56,7 @@ export default function PrivacyPage() {
           </h1>
           <p className="text-muted text-sm mb-8">Účinné od 2. októbra 2026</p>
 
-          <div className="bg-surface-2/80 p-6 rounded-lg border border-border mb-12">
+          <div className="bg-surface-2 p-6 rounded-lg border border-border mb-12">
             <p className="text-foreground font-semibold mb-2">Rozsah týchto zásad</p>
             <p className="text-foreground-2">
               Tieto zásady pokrývajú dve samostatné prostredia s odlišným spracúvaním údajov:
