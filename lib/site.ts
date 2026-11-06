@@ -9,3 +9,8 @@ export const SITE_DESCRIPTION =
   "Moderný .NET systém pre nefrologickú ambulanciu a dialýzu (HD, PD) s registrami, vykazovaním poisťovniam a integráciou na ezdravotníctvo.";
 
 export const SITE_TITLE = "Arenibus: Nefrologický a dialyzačný informačný systém";
+
+export const NOT_FOUND_TITLE = "Stránka sa nenašla: Arenibus";
+
+export const NOT_FOUND_DESCRIPTION =
+  "Požadovaná adresa na webe Arenibus neexistuje. Vráťte sa na úvodnú stránku.";
