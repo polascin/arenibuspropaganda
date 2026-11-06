@@ -27,7 +27,10 @@ export default function Home() {
 
       <main id="main-content" className="flex-1 flex flex-col">
       {/* Hero: brand first, one composition, full-bleed atmosphere */}
-      <section className="hero-atmosphere flex-1 flex items-center justify-center pt-12 pb-24 px-4 sm:px-6">
+      <section
+        aria-labelledby="hero-heading"
+        className="hero-atmosphere flex-1 flex items-center justify-center pt-12 pb-24 px-4 sm:px-6"
+      >
         <div className="max-w-4xl mx-auto text-center w-full">
           <div className="motion-fade-up mb-8 relative w-full max-w-[22rem] sm:max-w-md aspect-square mx-auto">
             <Image
@@ -40,7 +43,10 @@ export default function Home() {
               priority
             />
           </div>
-          <h1 className="motion-fade-up-delay text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-strong mb-4">
+          <h1
+            id="hero-heading"
+            className="motion-fade-up-delay text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-strong mb-4"
+          >
             Arenibus
           </h1>
           <p className="motion-fade-up-delay text-xl md:text-2xl font-medium text-foreground mb-5 leading-snug max-w-2xl mx-auto">

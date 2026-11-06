@@ -21,20 +21,54 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    if (!isHome) return;
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-        menuButtonRef.current?.focus();
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
+    if (!isHome || !mobileMenuOpen) return;
+    firstMenuLinkRef.current?.focus();
   }, [isHome, mobileMenuOpen]);
 
   useEffect(() => {
     if (!isHome || !mobileMenuOpen) return;
-    firstMenuLinkRef.current?.focus();
+
+    const main = document.getElementById("main-content");
+    const footer = document.querySelector("footer");
+    main?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const toggle = menuButtonRef.current;
+      const menu = document.getElementById("mobile-menu");
+      if (!toggle || !menu) return;
+
+      const focusable = [toggle, ...menu.querySelectorAll<HTMLElement>("a[href]")];
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (e.shiftKey) {
+        if (active === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+    };
   }, [isHome, mobileMenuOpen]);
 
   return (

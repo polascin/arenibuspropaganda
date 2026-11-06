@@ -176,7 +176,17 @@ export default function PrivacyPage() {
                 Voľba sa ukladá v prehliadači na 180 dní a možno ju kedykoľvek zmeniť tlačidlom
                 Nastavenia analytiky. Cookies _clck a _clsk rozlišujú návštevníkov a spájajú
                 zobrazenia do relácií. Údaje prijíma Microsoft. Podrobnosti vrátane medzinárodných
-                prenosov obsahuje <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">vyhlásenie Microsoft o ochrane súkromia<span className="sr-only"> (otvorí sa v novom okne)</span></a>.
+                prenosov obsahuje{" "}
+                <a
+                  href="https://privacy.microsoft.com/privacystatement"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={proseLinkClass}
+                >
+                  vyhlásenie Microsoft o ochrane súkromia
+                  <span className="sr-only"> (otvorí sa v novom okne)</span>
+                </a>
+                .
                 Meranie sa nevzťahuje na demo ani klinickú aplikáciu.
                 Voľba svetlého alebo tmavého režimu zostáva samostatnou technickou predvoľbou.
               </p>
