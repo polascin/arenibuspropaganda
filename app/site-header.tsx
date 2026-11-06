@@ -10,6 +10,10 @@ type SiteHeaderProps = {
   variant?: "home" | "subpage";
 };
 
+/** `:focus` (not only `:focus-visible`) so the ring shows after programmatic focus on open. */
+const mobileMenuLinkClass =
+  "block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2 focus:outline-none focus:ring-2 focus:ring-brand/40 focus-visible:ring-2 focus-visible:ring-brand/40";
+
 export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isHome = variant === "home";
@@ -41,7 +45,7 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             <Link
               href="/"
               aria-current={isHome ? "page" : undefined}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
             >
               <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                 <Image
@@ -110,12 +114,24 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
                 ref={firstMenuLinkRef}
                 href="#features"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2"
+                className={mobileMenuLinkClass}
               >
                 Funkcie
               </a>
-              <a href="#demo" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Demo</a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2">Kontakt</a>
+              <a
+                href="#demo"
+                onClick={() => setMobileMenuOpen(false)}
+                className={mobileMenuLinkClass}
+              >
+                Demo
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className={mobileMenuLinkClass}
+              >
+                Kontakt
+              </a>
             </div>
           </div>
         ) : null}
