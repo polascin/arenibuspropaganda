@@ -17,6 +17,19 @@ type SiteHeaderProps = {
 
 const mobileMenuLinkClass = `block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2 ${programmaticFocusRingClass}`;
 
+/** Close the panel, then move focus into the hash target (links stay hidden otherwise). */
+function focusSectionAfterMenuClose(
+  setOpen: (open: boolean) => void,
+  href: string,
+) {
+  setOpen(false);
+  const id = href.startsWith("#") ? href.slice(1) : "";
+  if (!id) return;
+  window.setTimeout(() => {
+    document.getElementById(id)?.focus({ preventScroll: false });
+  }, 0);
+}
+
 export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isHome = variant === "home";
@@ -171,21 +184,21 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
               <a
                 ref={firstMenuLinkRef}
                 href="#features"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => focusSectionAfterMenuClose(setMobileMenuOpen, "#features")}
                 className={mobileMenuLinkClass}
               >
                 Funkcie
               </a>
               <a
                 href="#demo"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => focusSectionAfterMenuClose(setMobileMenuOpen, "#demo")}
                 className={mobileMenuLinkClass}
               >
                 Demo
               </a>
               <a
                 href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => focusSectionAfterMenuClose(setMobileMenuOpen, "#contact")}
                 className={mobileMenuLinkClass}
               >
                 Kontakt
