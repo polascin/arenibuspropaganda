@@ -273,10 +273,16 @@ a:not([class]) {
   outline-offset: 2px;
 }
 
-/* Skip-link target must be programmatically focusable (tabIndex=-1 on <main>).
+/* Skip / in-page hash targets must be programmatically focusable (tabIndex=-1).
    Do not paint a page-sized brand outline when focus lands there. */
 #main-content:focus,
-#main-content:focus-visible {
+#main-content:focus-visible,
+#features:focus,
+#features:focus-visible,
+#demo:focus,
+#demo:focus-visible,
+#contact:focus,
+#contact:focus-visible {
   outline: none;
 }
 

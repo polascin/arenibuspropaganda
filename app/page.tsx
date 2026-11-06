@@ -93,6 +93,7 @@ export default function Home() {
       {/* Demo Section */}
       <section
         id="demo"
+        tabIndex={-1}
         aria-labelledby="demo-heading"
         className="py-24 px-4 sm:px-6 bg-gradient-to-br from-brand-strong via-brand to-brand-strong text-brand-text"
       >
@@ -108,7 +109,7 @@ export default function Home() {
           </p>
 
           {/* Demo access: passwords on request. Solid surface so small text meets WCAG AA. */}
-          <div className="bg-surface rounded-brand-lg p-6 sm:p-8 mb-10 border border-border/60 max-w-2xl mx-auto text-left shadow-brand-lg">
+          <div className="bg-surface rounded-brand-lg p-6 sm:p-8 mb-10 border border-border max-w-2xl mx-auto text-left shadow-brand-lg">
             <h3 className="text-lg font-semibold text-foreground mb-5 text-center tracking-tight">
               Prístup do demo prostredia
             </h3>
@@ -180,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" aria-labelledby="contact-heading" className="section-soft py-24 px-4 sm:px-6">
+      <section id="contact" tabIndex={-1} aria-labelledby="contact-heading" className="section-soft py-24 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <h2 id="contact-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-center text-foreground mb-3">
             Kontaktujte nás

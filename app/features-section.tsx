@@ -5,6 +5,7 @@ export default function FeaturesSection() {
   return (
     <section
       id="features"
+      tabIndex={-1}
       aria-labelledby="features-heading"
       className="section-muted-pattern py-24 px-4 sm:px-6"
     >

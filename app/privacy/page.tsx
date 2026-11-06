@@ -216,7 +216,7 @@ export default function PrivacyPage() {
               </p>
             </section>
 
-            <section id="demo">
+            <section id="demo" tabIndex={-1}>
               <h2 className="text-2xl font-semibold text-foreground mb-3">
                 7. Demo prostredie (demo.arenibus.com)
               </h2>
