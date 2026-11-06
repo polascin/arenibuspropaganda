@@ -273,6 +273,13 @@ a:not([class]) {
   outline-offset: 2px;
 }
 
+/* Skip-link target must be programmatically focusable (tabIndex=-1 on <main>).
+   Do not paint a page-sized brand outline when focus lands there. */
+#main-content:focus,
+#main-content:focus-visible {
+  outline: none;
+}
+
 ::selection {
   background: var(--brand-soft);
   color: var(--foreground);

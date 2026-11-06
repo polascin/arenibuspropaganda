@@ -13,6 +13,7 @@ export default function NotFoundShell() {
 
         <main
           id="main-content"
+          tabIndex={-1}
           className="flex-1 flex items-center justify-center py-16 px-4 sm:px-6 section-soft"
         >
           <div className="max-w-xl mx-auto text-center">

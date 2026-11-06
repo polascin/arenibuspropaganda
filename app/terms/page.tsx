@@ -42,7 +42,7 @@ export default function TermsPage() {
       <SiteHeader variant="subpage" />
 
       {/* Content */}
-      <main id="main-content" className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
+      <main id="main-content" tabIndex={-1} className="flex-1 py-16 md:py-20 px-4 sm:px-6 section-soft">
         <article className="legal-prose max-w-3xl mx-auto">
           <Breadcrumbs currentLabel="Podmienky používania" currentPath="/terms/" />
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">

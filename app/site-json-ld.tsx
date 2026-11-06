@@ -1,4 +1,9 @@
-import { DEMO_VERSION_PLAIN, SITE_DESCRIPTION, SITE_ORIGIN } from "@/lib/site";
+import {
+  DEMO_VERSION_PLAIN,
+  SITE_DESCRIPTION,
+  SITE_OG_IMAGE,
+  SITE_ORIGIN,
+} from "@/lib/site";
 
 const softwareApplicationLd = {
   "@context": "https://schema.org",
@@ -14,9 +19,10 @@ const softwareApplicationLd = {
   logo: `${SITE_ORIGIN}/icon-512.png`,
   image: {
     "@type": "ImageObject",
-    url: `${SITE_ORIGIN}/og-image.png`,
-    width: 1200,
-    height: 630,
+    url: `${SITE_ORIGIN}${SITE_OG_IMAGE.url}`,
+    width: SITE_OG_IMAGE.width,
+    height: SITE_OG_IMAGE.height,
+    name: SITE_OG_IMAGE.alt,
   },
   featureList: [
     "Správa pacientov",

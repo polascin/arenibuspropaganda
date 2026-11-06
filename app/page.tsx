@@ -35,7 +35,7 @@ export default function Home() {
       <div className="flex flex-col min-h-screen bg-background">
       <SiteHeader />
 
-      <main id="main-content" className="flex-1 flex flex-col">
+      <main id="main-content" tabIndex={-1} className="flex-1 flex flex-col">
       {/* Hero: brand first, one composition, full-bleed atmosphere */}
       <section
         aria-labelledby="hero-heading"
