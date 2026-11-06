@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import { NOT_FOUND_DESCRIPTION, NOT_FOUND_TITLE } from "@/lib/site";
+import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme-bootstrap";
 import NotFoundShell from "./not-found-shell";
 import "./globals.css";
 
@@ -41,8 +42,7 @@ export default function GlobalNotFound() {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html:
-              'try{var m=localStorage.getItem("darkMode");if(m!==null)document.documentElement.setAttribute("data-theme",m==="true"?"dark":"light")}catch(e){}',
+            __html: THEME_BOOTSTRAP_SCRIPT,
           }}
         />
       </head>

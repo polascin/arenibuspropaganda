@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Source_Sans_3 } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
+import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme-bootstrap";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -98,8 +99,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html:
-              'try{var m=localStorage.getItem("darkMode");if(m!==null)document.documentElement.setAttribute("data-theme",m==="true"?"dark":"light")}catch(e){}',
+            __html: THEME_BOOTSTRAP_SCRIPT,
           }}
         />
       </head>

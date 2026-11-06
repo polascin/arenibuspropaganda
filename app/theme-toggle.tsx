@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { focusRingClass } from "./link-styles";
 
 function getDarkModeSnapshot() {
   if (typeof window === "undefined") return false;
@@ -55,7 +56,7 @@ export default function ThemeToggle() {
       <button
         type="button"
         onClick={toggleDarkMode}
-        className="p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+        className={`p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors ${focusRingClass}`}
         aria-label={darkMode ? "Zapnúť svetlý režim" : "Zapnúť tmavý režim"}
         aria-pressed={darkMode}
       >

@@ -6,6 +6,7 @@ import {
   type Feature,
   type FeatureIconId,
 } from "@/lib/features";
+import { proseLinkClass } from "./link-styles";
 
 const ICONS: Record<FeatureIconId, ReactNode> = {
   patients: (
@@ -124,7 +125,7 @@ export default function FeatureCard({ feature }: { feature: Feature }) {
       {needsToggle ? (
         <button
           type="button"
-          className="mt-3 self-start text-sm font-semibold text-brand hover:text-brand-strong transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded"
+          className={`mt-3 self-start text-sm font-semibold ${proseLinkClass}`}
           aria-expanded={expanded}
           aria-controls={textId}
           aria-label={

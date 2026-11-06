@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { proseLinkClass } from "./link-styles";
+import { fieldFocusClass, proseLinkClass } from "./link-styles";
 
 const CONTACT_MAILTO = "mailto:arenibus@polascin.net";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzebqzj";
+const fieldClass = `w-full px-4 py-3 border border-border rounded-lg ${fieldFocusClass} bg-surface text-foreground transition-shadow disabled:opacity-70`;
 
 function buildMailto(name: string, email: string, message: string) {
   const subject = encodeURIComponent("Správa z webu Arenibus");
@@ -79,7 +80,7 @@ export default function ContactForm() {
           placeholder="Vaše meno"
           required
           maxLength={200}
-          className="w-full px-4 py-3 border border-border rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
+          className={fieldClass}
         />
       </div>
       <div>
@@ -94,7 +95,7 @@ export default function ContactForm() {
           placeholder="vas@email.sk"
           required
           maxLength={254}
-          className="w-full px-4 py-3 border border-border rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
+          className={fieldClass}
         />
       </div>
       <div>
@@ -108,7 +109,7 @@ export default function ContactForm() {
           maxLength={5000}
           autoComplete="off"
           enterKeyHint="send"
-          className="w-full px-4 py-3 border border-border rounded-lg focus-visible:ring-2 focus-visible:ring-brand focus-visible:border-transparent bg-surface text-foreground transition-shadow disabled:opacity-70"
+          className={fieldClass}
         ></textarea>
       </div>
       </fieldset>
@@ -152,7 +153,7 @@ export default function ContactForm() {
                   window.location.href = fallbackMailto;
                 }
               }}
-              className={`underline ${proseLinkClass}`}
+              className={proseLinkClass}
             >
               arenibus@polascin.net
             </a>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { mutedLinkClass } from "./link-styles";
+import { focusRingClass, mutedLinkClass } from "./link-styles";
 import ThemeToggle from "./theme-toggle";
 
 type SiteHeaderProps = {
@@ -74,13 +74,13 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-50">
-      <nav className="w-full bg-surface/90 backdrop-blur-md border-b border-border" aria-label="Hlavná navigácia">
+      <nav className="w-full bg-surface border-b border-border" aria-label="Hlavná navigácia">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link
               href="/"
               aria-current={isHome ? "page" : undefined}
-              className="flex items-center gap-3 group rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+              className={`flex items-center gap-3 group rounded ${focusRingClass}`}
             >
               <div className="w-10 h-10 rounded-lg overflow-hidden relative ring-1 ring-border">
                 <Image
@@ -110,7 +110,7 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
                   ref={menuButtonRef}
                   type="button"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+                  className={`md:hidden p-2 rounded-lg bg-surface-2 border border-border hover:bg-surface-3 transition-colors ${focusRingClass}`}
                   aria-label={mobileMenuOpen ? "Zavrieť menu" : "Otvoriť menu"}
                   aria-expanded={mobileMenuOpen}
                   aria-controls="mobile-menu"
@@ -127,10 +127,7 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             ) : (
               <div className="flex items-center gap-3">
                 <ThemeToggle />
-                <Link
-                  href="/"
-                  className="text-foreground-2 hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded"
-                >
+                <Link href="/" className={mutedLinkClass}>
                   Späť na úvod
                 </Link>
               </div>
