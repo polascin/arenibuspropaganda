@@ -5,3 +5,7 @@ export const proseLinkClass =
 /** Softer contact/nav-adjacent text links on the homepage. */
 export const mutedLinkClass =
   "text-foreground-2 hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded";
+
+/** Footer nav links (muted default, brand on hover/focus). */
+export const footerLinkClass =
+  "text-muted hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded";

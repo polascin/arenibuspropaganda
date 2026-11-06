@@ -42,13 +42,11 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  alternates: {
-    canonical: "/",
-  },
+  // Homepage-only canonical / openGraph.url live on app/page.tsx so legal and
+  // 404 routes do not inherit a self-referencing home URL by default.
   openGraph: {
     type: "website",
     locale: "sk_SK",
-    url: "https://arenibus.polascin.net/",
     siteName: "Arenibus",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,

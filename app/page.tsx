@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { DEMO_VERSION } from "@/lib/site";
 import ContactForm from "./contact-form";
@@ -7,6 +8,15 @@ import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import SiteJsonLd from "./site-json-ld";
 import SkipLink from "./skip-link";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: "https://arenibus.polascin.net/",
+  },
+};
 
 const DEMO_ACCESS_MAILTO =
   "mailto:arenibus@nephroctor.com" +

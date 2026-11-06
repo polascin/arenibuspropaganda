@@ -1,8 +1,7 @@
 import Link from "next/link";
+import { footerLinkClass } from "./link-styles";
 
 type FooterPage = "home" | "privacy" | "terms" | "security";
-
-const linkClass = "text-muted hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded";
 
 export default function SiteFooter({ current }: { current?: FooterPage }) {
   return (
@@ -24,28 +23,28 @@ export default function SiteFooter({ current }: { current?: FooterPage }) {
           <Link
             href="/"
             aria-current={current === "home" ? "page" : undefined}
-            className={linkClass}
+            className={footerLinkClass}
           >
             Úvod
           </Link>
           <Link
             href="/privacy/"
             aria-current={current === "privacy" ? "page" : undefined}
-            className={linkClass}
+            className={footerLinkClass}
           >
             Ochrana osobných údajov
           </Link>
           <Link
             href="/terms/"
             aria-current={current === "terms" ? "page" : undefined}
-            className={linkClass}
+            className={footerLinkClass}
           >
             Podmienky používania
           </Link>
           <Link
             href="/security/"
             aria-current={current === "security" ? "page" : undefined}
-            className={linkClass}
+            className={footerLinkClass}
           >
             Bezpečnostný kontakt
           </Link>
