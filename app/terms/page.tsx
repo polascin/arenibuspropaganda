@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../breadcrumbs";
+import { proseLinkClass } from "../link-styles";
 import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
 import SkipLink from "../skip-link";
@@ -71,7 +72,7 @@ export default function TermsPage() {
                   href="https://demo.arenibus.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand hover:text-brand-strong transition-colors"
+                  className={proseLinkClass}
                 >
                   demo.arenibus.com
                   <span className="sr-only"> (otvorí sa v novom okne)</span>
@@ -105,7 +106,7 @@ export default function TermsPage() {
                   href="https://demo.arenibus.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand hover:text-brand-strong transition-colors"
+                  className={proseLinkClass}
                 >
                   demo.arenibus.com
                   <span className="sr-only"> (otvorí sa v novom okne)</span>
@@ -138,7 +139,7 @@ export default function TermsPage() {
               </p>
               <p className="text-foreground-2">
                 Spracúvanie údajov v deme opisuje{" "}
-                <Link href="/privacy/#demo" className="text-brand hover:text-brand-strong transition-colors">
+                <Link href="/privacy/#demo" className={proseLinkClass}>
                   článok 7 zásad ochrany osobných údajov
                 </Link>
                 .
@@ -196,14 +197,14 @@ export default function TermsPage() {
                 Tento článok platí pre celé znenie, vrátane článkov, ktoré sa vzťahujú na demo prostredie.
                 Prevádzkovateľ môže tieto podmienky kedykoľvek zmeniť; aktuálne znenie je vždy zverejnené
                 na tejto stránke. Informácie o spracúvaní osobných údajov nájdete v dokumente{" "}
-                <Link href="/privacy/" className="text-brand hover:text-brand-strong transition-colors">
+                <Link href="/privacy/" className={proseLinkClass}>
                   Zásady ochrany osobných údajov
                 </Link>
                 .
               </p>
               <p className="text-foreground-2">
                 V prípade otázok nás kontaktujte e-mailom na{" "}
-                <a href="mailto:arenibus@polascin.net" className="text-brand hover:text-brand-strong transition-colors">
+                <a href="mailto:arenibus@polascin.net" className={proseLinkClass}>
                   arenibus@polascin.net
                 </a>
                 . Tieto podmienky sú účinné od 3. októbra 2026.

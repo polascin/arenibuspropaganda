@@ -2,6 +2,7 @@ import Image from "next/image";
 import { DEMO_VERSION } from "@/lib/site";
 import ContactForm from "./contact-form";
 import FeaturesSection from "./features-section";
+import { mutedLinkClass, proseLinkClass } from "./link-styles";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import SiteJsonLd from "./site-json-ld";
@@ -127,7 +128,7 @@ export default function Home() {
               Demo heslá nie sú verejné. Pošlite žiadosť na{" "}
               <a
                 href={DEMO_ACCESS_MAILTO}
-                className="underline font-medium text-brand hover:text-brand-strong transition-colors"
+                className={`underline font-medium ${proseLinkClass}`}
               >
                 arenibus@nephroctor.com
               </a>
@@ -183,7 +184,7 @@ export default function Home() {
                     <svg className="w-5 h-5 text-brand mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <a href="mailto:arenibus@polascin.net" className="text-foreground-2 hover:text-brand transition-colors">arenibus@polascin.net</a>
+                    <a href="mailto:arenibus@polascin.net" className={mutedLinkClass}>arenibus@polascin.net</a>
                   </div>
                 </div>
               </div>

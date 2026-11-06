@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../breadcrumbs";
+import { proseLinkClass } from "../link-styles";
 import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
 import SkipLink from "../skip-link";
@@ -64,13 +65,13 @@ export default function SecurityPage() {
                     href="https://demo.arenibus.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand hover:text-brand-strong transition-colors"
+                    className={proseLinkClass}
                   >
                     demo.arenibus.com
                     <span className="sr-only"> (otvorí sa v novom okne)</span>
                   </a>
                   , napíšte na{" "}
-                  <a href="mailto:arenibus@polascin.net" className="text-brand hover:text-brand-strong transition-colors">
+                  <a href="mailto:arenibus@polascin.net" className={proseLinkClass}>
                     arenibus@polascin.net
                   </a>
                   . Preferované jazyky sú slovenčina a angličtina.
@@ -91,7 +92,7 @@ export default function SecurityPage() {
                       href="https://demo.arenibus.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-brand hover:text-brand-strong transition-colors"
+                      className={proseLinkClass}
                     >
                       demo.arenibus.com
                       <span className="sr-only"> (otvorí sa v novom okne)</span>
@@ -102,11 +103,11 @@ export default function SecurityPage() {
                 <p className="text-foreground-2">
                   Do hlásenia nevkladajte skutočné údaje o pacientoch. Informácie o osobných údajoch sú v
                   dokumente{" "}
-                  <Link href="/privacy/" className="text-brand hover:text-brand-strong transition-colors">
+                  <Link href="/privacy/" className={proseLinkClass}>
                     Zásady ochrany osobných údajov
                   </Link>
                   ; pre demo platí{" "}
-                  <Link href="/privacy/#demo" className="text-brand hover:text-brand-strong transition-colors">
+                  <Link href="/privacy/#demo" className={proseLinkClass}>
                     článok 7
                   </Link>
                   .

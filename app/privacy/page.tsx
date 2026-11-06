@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../breadcrumbs";
+import { proseLinkClass } from "../link-styles";
 import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
 import SkipLink from "../skip-link";
@@ -71,14 +72,14 @@ export default function PrivacyPage() {
                   href="https://demo.arenibus.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand hover:text-brand-strong transition-colors"
+                  className={proseLinkClass}
                 >
                   demo.arenibus.com
                   <span className="sr-only"> (otvorí sa v novom okne)</span>
                 </a>
                 {" "}
                 (samostatný{" "}
-                <a href="#demo" className="text-brand hover:text-brand-strong transition-colors">
+                <a href="#demo" className={proseLinkClass}>
                   článok 7
                 </a>
                 , ktorý platí výhradne preň).
@@ -103,13 +104,13 @@ export default function PrivacyPage() {
                 <p className="text-foreground-2 mt-1">IČO: 57 646 856</p>
                 <p className="text-foreground-2 mt-1">
                   E-mail:{" "}
-                  <a href="mailto:arenibus@polascin.net" className="text-brand hover:text-brand-strong transition-colors">
+                  <a href="mailto:arenibus@polascin.net" className={proseLinkClass}>
                     arenibus@polascin.net
                   </a>
                 </p>
                 <p className="text-foreground-2 mt-1">
                   Demo prístup:{" "}
-                  <a href="mailto:arenibus@nephroctor.com" className="text-brand hover:text-brand-strong transition-colors">
+                  <a href="mailto:arenibus@nephroctor.com" className={proseLinkClass}>
                     arenibus@nephroctor.com
                   </a>
                 </p>
@@ -204,7 +205,7 @@ export default function PrivacyPage() {
               <p className="text-foreground-2 mt-3">
                 Príjemcovia uvedení v tomto článku sa týkajú výhradne webovej stránky. Demo prostredie
                 má vlastný hosting aj vlastných príjemcov: sú opísaní v{" "}
-                <a href="#demo" className="text-brand hover:text-brand-strong transition-colors">
+                <a href="#demo" className={proseLinkClass}>
                   článku 7
                 </a>
                 .
@@ -221,7 +222,7 @@ export default function PrivacyPage() {
                   href="https://demo.arenibus.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand hover:text-brand-strong transition-colors"
+                  className={proseLinkClass}
                 >
                   demo.arenibus.com
                   <span className="sr-only"> (otvorí sa v novom okne)</span>
@@ -380,7 +381,7 @@ export default function PrivacyPage() {
                 odstránenie môžete požiadať na{" "}
                 <a
                   href="mailto:arenibus@nephroctor.com"
-                  className="text-brand hover:text-brand-strong transition-colors"
+                  className={proseLinkClass}
                 >
                   arenibus@nephroctor.com
                 </a>
@@ -404,7 +405,7 @@ export default function PrivacyPage() {
               <p className="text-foreground-2 mt-3">
                 Svoje práva si môžete uplatniť e-mailom na arenibus@polascin.net. Bezpečnostné hlásenia
                 posielajte na rovnakú adresu; podrobnosti sú na stránke{" "}
-                <Link href="/security/" className="text-brand hover:text-brand-strong transition-colors">
+                <Link href="/security/" className={proseLinkClass}>
                   Bezpečnostný kontakt
                 </Link>
                 . Ak sa domnievate, že
@@ -414,7 +415,7 @@ export default function PrivacyPage() {
                   href="https://dataprotection.gov.sk/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand hover:text-brand-strong transition-colors"
+                  className={proseLinkClass}
                 >
                   Úrad na ochranu osobných údajov Slovenskej republiky
                   <span className="sr-only"> (otvorí sa v novom okne)</span>

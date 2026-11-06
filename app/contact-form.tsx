@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { proseLinkClass } from "./link-styles";
 
 const CONTACT_MAILTO = "mailto:arenibus@polascin.net";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvzebqzj";
@@ -58,7 +59,7 @@ export default function ContactForm() {
       <noscript>
         <p className="text-sm text-foreground-2">
           Bez JavaScriptu nám napíšte na{" "}
-          <a href={CONTACT_MAILTO} className="text-brand hover:text-brand-strong transition-colors">
+          <a href={CONTACT_MAILTO} className={proseLinkClass}>
             arenibus@polascin.net
           </a>
           .
@@ -151,7 +152,7 @@ export default function ContactForm() {
                   window.location.href = fallbackMailto;
                 }
               }}
-              className="underline text-brand hover:text-brand-strong transition-colors"
+              className={`underline ${proseLinkClass}`}
             >
               arenibus@polascin.net
             </a>

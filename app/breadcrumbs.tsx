@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { proseLinkClass } from "./link-styles";
 
 const SITE_ORIGIN = "https://arenibus.polascin.net";
 
@@ -39,7 +40,7 @@ export default function Breadcrumbs({ currentLabel, currentPath }: BreadcrumbsPr
           <li className="flex items-center gap-2">
             <Link
               href="/"
-              className="text-brand hover:text-brand-strong transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 rounded"
+              className={proseLinkClass}
             >
               Arenibus
             </Link>
