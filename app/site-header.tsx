@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import HashLink, { focusHashTarget } from "./hash-link";
 import {
   focusRingClass,
   mutedLinkClass,
@@ -23,11 +24,7 @@ function focusSectionAfterMenuClose(
   href: string,
 ) {
   setOpen(false);
-  const id = href.startsWith("#") ? href.slice(1) : "";
-  if (!id) return;
-  window.setTimeout(() => {
-    document.getElementById(id)?.focus({ preventScroll: false });
-  }, 0);
+  focusHashTarget(href);
 }
 
 export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
@@ -138,9 +135,9 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             {isHome ? (
               <div className="flex items-center space-x-4 md:space-x-8">
                 <div className="hidden md:flex space-x-8">
-                  <a href="#features" className={`nav-link ${mutedLinkClass}`}>Funkcie</a>
-                  <a href="#demo" className={`nav-link ${mutedLinkClass}`}>Demo</a>
-                  <a href="#contact" className={`nav-link ${mutedLinkClass}`}>Kontakt</a>
+                  <HashLink href="#features" className={`nav-link ${mutedLinkClass}`}>Funkcie</HashLink>
+                  <HashLink href="#demo" className={`nav-link ${mutedLinkClass}`}>Demo</HashLink>
+                  <HashLink href="#contact" className={`nav-link ${mutedLinkClass}`}>Kontakt</HashLink>
                 </div>
                 <span ref={themeWrapRef} className="inline-flex">
                   <ThemeToggle />

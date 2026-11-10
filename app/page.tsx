@@ -3,6 +3,7 @@ import Image from "next/image";
 import { DEMO_VERSION, SITE_ORIGIN } from "@/lib/site";
 import ContactForm from "./contact-form";
 import FeaturesSection from "./features-section";
+import HashLink from "./hash-link";
 import { mutedLinkClass, proseLinkClass } from "./link-styles";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
@@ -78,12 +79,12 @@ export default function Home() {
               Vyskúšať demo verziu
               <span className="sr-only"> (otvorí sa v novom okne)</span>
             </a>
-            <a
+            <HashLink
               href="#contact"
               className="btn-secondary px-8 py-3.5 bg-transparent border-2 border-brand text-brand rounded-lg font-semibold hover:bg-brand hover:text-brand-text"
             >
               Kontaktujte nás
-            </a>
+            </HashLink>
           </div>
         </div>
       </section>

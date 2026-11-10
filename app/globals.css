@@ -374,8 +374,13 @@ a:not([class]) {
 }
 
 .btn-primary:focus-visible {
-  outline: 2px solid var(--brand-text);
-  outline-offset: 3px;
+  /* Dual ring: surface halo stays visible on the teal demo band, brand ring
+     stays visible on white cards and the light hero. A lone brand-text outline
+     disappeared on `bg-surface` cards (Požiadať o demo heslo). */
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--surface),
+    0 0 0 4px var(--brand);
 }
 
 .btn-secondary {
@@ -391,8 +396,10 @@ a:not([class]) {
 }
 
 .btn-secondary:focus-visible {
-  outline: 2px solid var(--brand);
-  outline-offset: 3px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--surface),
+    0 0 0 4px var(--brand);
 }
 
 @keyframes fade-up {

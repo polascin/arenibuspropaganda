@@ -1,7 +1,7 @@
 /**
  * Link checker for the Arenibus marketing site.
  *
- * Inventories user-facing href / Link / fetch URLs from app source, PHP
+ * Inventories user-facing href / Link / HashLink / fetch URLs from app source, PHP
  * redirects, and sitemap <loc> entries, then verifies internals against
  * `out/`, fragments against `id` attributes, mailto against an address
  * allowlist, and externals with HTTP GET.
@@ -385,18 +385,33 @@ for (const file of appFiles) {
   for (const tag of extractOpenTags(src, "a")) {
     const href = resolveHref(tag, consts);
     if (!href) {
+      // Wrappers such as HashLink forward href={prop}; callers are inventoried.
+      const forwarded = attr(tag, "href");
+      if (forwarded?.ident) {
+        pass(whereFile, `<a href={${forwarded.ident}}> forwarded (callers inventoried)`);
+        continue;
+      }
       fail(whereFile, "could not resolve <a> href");
       continue;
     }
     findings.push({ file, tag, href, isAnchor: true, src, where: `${whereFile} <a href>` });
   }
-  for (const tag of extractOpenTags(src, "Link")) {
-    const href = resolveHref(tag, consts);
-    if (!href) {
-      fail(whereFile, "could not resolve <Link> href");
-      continue;
+  for (const tagName of ["Link", "HashLink"]) {
+    for (const tag of extractOpenTags(src, tagName)) {
+      const href = resolveHref(tag, consts);
+      if (!href) {
+        fail(whereFile, `could not resolve <${tagName}> href`);
+        continue;
+      }
+      findings.push({
+        file,
+        tag,
+        href,
+        isAnchor: tagName !== "Link",
+        src,
+        where: `${whereFile} <${tagName} href>`,
+      });
     }
-    findings.push({ file, tag, href, isAnchor: false, src, where: `${whereFile} <Link href>` });
   }
 
   const fetchRe = /\bfetch\s*\(\s*("([^"]+)"|'([^']+)'|(\w+))/g;
