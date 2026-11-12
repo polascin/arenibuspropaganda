@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_OG_IMAGE } from "@/lib/site";
 import Breadcrumbs from "../breadcrumbs";
+import HashLink from "../hash-link";
 import { proseLinkClass } from "../link-styles";
 import SiteFooter from "../site-footer";
 import SiteHeader from "../site-header";
@@ -73,9 +74,9 @@ export default function PrivacyPage() {
                 </a>
                 {" "}
                 (samostatný{" "}
-                <a href="#demo" className={proseLinkClass}>
+                <HashLink href="#demo" className={proseLinkClass}>
                   článok 7
-                </a>
+                </HashLink>
                 , ktorý platí výhradne preň).
               </li>
             </ul>
@@ -209,9 +210,9 @@ export default function PrivacyPage() {
               <p className="text-foreground-2 mt-3">
                 Príjemcovia uvedení v tomto článku sa týkajú výhradne webovej stránky. Demo prostredie
                 má vlastný hosting aj vlastných príjemcov: sú opísaní v{" "}
-                <a href="#demo" className={proseLinkClass}>
+                <HashLink href="#demo" className={proseLinkClass}>
                   článku 7
-                </a>
+                </HashLink>
                 .
               </p>
             </section>

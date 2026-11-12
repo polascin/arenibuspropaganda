@@ -47,7 +47,7 @@ export default function Breadcrumbs({ currentLabel, currentPath }: BreadcrumbsPr
               /
             </span>
           </li>
-          <li aria-current="page" className="text-foreground-2">
+          <li aria-current="page" className="font-semibold text-foreground">
             {currentLabel}
           </li>
         </ol>
