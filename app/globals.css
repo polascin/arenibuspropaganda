@@ -520,6 +520,13 @@ a:not([class]) {
     scroll-behavior: auto !important;
   }
 
+  /* `both` fill-mode would still flash the 12px fade-up `from` frame at 0.01ms. */
+  .motion-fade-up,
+  .motion-fade-up-delay,
+  .motion-fade-up-delay-2 {
+    animation: none !important;
+  }
+
   .feature-card:hover,
   .btn-primary:hover,
   .btn-secondary:hover {
