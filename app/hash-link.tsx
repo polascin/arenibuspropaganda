@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { forwardRef, type MouseEvent, type ReactNode } from "react";
 
 /** Move keyboard focus into an in-page hash target after the native scroll. */
 export function focusHashTarget(href: string) {
@@ -11,18 +11,29 @@ export function focusHashTarget(href: string) {
   }, 0);
 }
 
-export default function HashLink({
-  href,
-  className,
-  children,
-}: {
+type HashLinkProps = {
   href: `#${string}`;
   className?: string;
   children: ReactNode;
-}) {
-  return (
-    <a href={href} className={className} onClick={() => focusHashTarget(href)}>
-      {children}
-    </a>
-  );
-}
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+};
+
+const HashLink = forwardRef<HTMLAnchorElement, HashLinkProps>(
+  function HashLink({ href, className, children, onClick }, ref) {
+    return (
+      <a
+        ref={ref}
+        href={href}
+        className={className}
+        onClick={(event) => {
+          onClick?.(event);
+          if (!event.defaultPrevented) focusHashTarget(href);
+        }}
+      >
+        {children}
+      </a>
+    );
+  },
+);
+
+export default HashLink;

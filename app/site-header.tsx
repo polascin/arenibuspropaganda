@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import HashLink, { focusHashTarget } from "./hash-link";
+import HashLink from "./hash-link";
 import {
   focusRingClass,
   mutedLinkClass,
@@ -17,15 +17,6 @@ type SiteHeaderProps = {
 };
 
 const mobileMenuLinkClass = `block text-foreground-2 hover:text-brand hover:bg-surface-2 rounded-lg transition-colors py-2.5 px-2 ${programmaticFocusRingClass}`;
-
-/** Close the panel, then move focus into the hash target (links stay hidden otherwise). */
-function focusSectionAfterMenuClose(
-  setOpen: (open: boolean) => void,
-  href: string,
-) {
-  setOpen(false);
-  focusHashTarget(href);
-}
 
 export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -178,28 +169,28 @@ export default function SiteHeader({ variant = "home" }: SiteHeaderProps) {
             className={mobileMenuOpen ? "md:hidden bg-surface border-b border-border" : "hidden"}
           >
             <div className="px-4 py-3 space-y-1">
-              <a
+              <HashLink
                 ref={firstMenuLinkRef}
                 href="#features"
-                onClick={() => focusSectionAfterMenuClose(setMobileMenuOpen, "#features")}
+                onClick={() => setMobileMenuOpen(false)}
                 className={mobileMenuLinkClass}
               >
                 Funkcie
-              </a>
-              <a
+              </HashLink>
+              <HashLink
                 href="#demo"
-                onClick={() => focusSectionAfterMenuClose(setMobileMenuOpen, "#demo")}
+                onClick={() => setMobileMenuOpen(false)}
                 className={mobileMenuLinkClass}
               >
                 Demo
-              </a>
-              <a
+              </HashLink>
+              <HashLink
                 href="#contact"
-                onClick={() => focusSectionAfterMenuClose(setMobileMenuOpen, "#contact")}
+                onClick={() => setMobileMenuOpen(false)}
                 className={mobileMenuLinkClass}
               >
                 Kontakt
-              </a>
+              </HashLink>
             </div>
           </div>
         ) : null}
