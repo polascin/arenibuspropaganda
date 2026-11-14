@@ -133,7 +133,7 @@ export default function ContactForm() {
         disabled={formStatus === "submitting"}
         className="btn-primary w-full px-6 py-3 bg-brand text-brand-text rounded-lg font-semibold hover:bg-brand-strong disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
       >
-        {formStatus === "submitting" ? "Odosielam..." : "Odoslať správu"}
+        {formStatus === "submitting" ? "Odosielam správu" : "Odoslať správu"}
       </button>
       <p
         ref={statusRef}
