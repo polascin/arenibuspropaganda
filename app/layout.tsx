@@ -1,15 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Source_Sans_3 } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_ORIGIN, SITE_TITLE } from "@/lib/site";
+import { sourceSans } from "@/lib/source-sans";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme-bootstrap";
 import "./globals.css";
-
-const sourceSans = Source_Sans_3({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  variable: "--font-source-sans",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
