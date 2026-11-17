@@ -27,7 +27,17 @@ const HashLink = forwardRef<HTMLAnchorElement, HashLinkProps>(
         className={className}
         onClick={(event) => {
           onClick?.(event);
-          if (!event.defaultPrevented) focusHashTarget(href);
+          if (
+            event.defaultPrevented ||
+            event.button !== 0 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+          focusHashTarget(href);
         }}
       >
         {children}

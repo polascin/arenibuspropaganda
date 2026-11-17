@@ -77,6 +77,8 @@ const PAIRS = [
   ["username code", "foreground", "surface-3", 4.5],
   ["theme toggle icon", "foreground-2", "surface-2", 4.5],
   ["demo OIDC caption (text-sm)", "brand-text", "brand-strong", 4.5],
+  ["hero version notice (text-sm)", "muted", "background", 4.5],
+  ["hero version notice on brand-soft", "muted", "brand-soft", 4.5],
   ["form input text", "foreground", "surface", 4.5],
   ["legal effective-date (text-sm)", "muted", "surface", 4.5],
   ["breadcrumb current (text-sm)", "foreground-2", "surface", 4.5],
