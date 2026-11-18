@@ -55,7 +55,7 @@ The repository includes `.github/workflows/deploy.yml` that automatically builds
 5. Builds the static export (`npm run build`).
 6. Checks user-facing web links (`npm run check:links`).
 7. Connects via SSH and prepares the remote directory.
-8. Uploads `out/` contents via SCP.
+8. Pushes `out/` in one SSH session (`tar` on stdin → `.incoming` swap).
 9. Sets file permissions and performs a smoke test against https://arenibus.polascin.net/.
 
 ### Required GitHub Secrets

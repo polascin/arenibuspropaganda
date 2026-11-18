@@ -76,76 +76,12 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" >> ~/.ssh/known_hosts
 
-      - name: Prepare remote directory
+      - name: Deploy over SSH
         run: |
-          ssh -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
-            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR }}"
-            BACKUP_DIR="$HOME/arenibus-backups"
-            BACKUP_KEEP=5
-            cd "$DEPLOY_DIR" || exit 1
-            if [ -n "$(ls -A . 2>/dev/null)" ]; then
-              # Write the archive outside DEPLOY_DIR, otherwise the cleanup below
-              # would delete the backup it just created.
-              mkdir -p "$BACKUP_DIR"
-              BACKUP_FILE="$BACKUP_DIR/backup_$(date +%Y%m%d_%H%M%S).tar.gz"
-              SOURCE_COUNT=$(find "$DEPLOY_DIR" -mindepth 1 | wc -l)
-              echo "Creating backup at $BACKUP_FILE ($SOURCE_COUNT entries to archive)..."
-              tar -czf "$BACKUP_FILE" -C "$DEPLOY_DIR" . || exit 1
-              # A backup that silently archives nothing is worse than no backup,
-              # so verify the archive before the directory is wiped.
-              BACKUP_BYTES=$(wc -c < "$BACKUP_FILE")
-              BACKUP_ENTRIES=$(tar -tzf "$BACKUP_FILE" | wc -l)
-              echo "Backup: $BACKUP_BYTES bytes, $BACKUP_ENTRIES entries"
-              if [ "$BACKUP_ENTRIES" -lt "$SOURCE_COUNT" ]; then
-                echo "Backup verification failed: archived $BACKUP_ENTRIES entries but $SOURCE_COUNT exist. Aborting before cleanup."
-                exit 1
-              fi
-              { ls -1t "$BACKUP_DIR"/backup_*.tar.gz 2>/dev/null || true; } \
-                | tail -n +$((BACKUP_KEEP + 1)) \
-                | while read -r old; do echo "Pruning $old"; rm -f -- "$old"; done
-            else
-              echo "Directory is empty, no backup needed."
-            fi
-            echo "Removing old files..."
-            find . -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
-          ENDSSH
-
-      - name: Upload built files
-        run: |
-          # Use out/. so hidden files (.htaccess, .well-known) are included;
-          # a bare out/* glob skips dotfiles and leaves parent CSP unbroken.
-          if [ ! -f out/.htaccess ]; then
-            echo "Build output is missing out/.htaccess (required for Next.js CSP)."
-            exit 1
-          fi
-          scp -P "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" -r out/. "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}:${{ secrets.WEBSUPPORT_DEPLOY_DIR }}/"
-
-      - name: Set permissions
-        run: |
-          # WebSupport may close the next SSH session immediately after a large
-          # scp (exit 255, "Connection closed by … port 26650"). Wait, then retry.
-          set +e
-          delay=5
-          for attempt in 1 2 3 4 5; do
-            echo "Setting remote permissions (attempt ${attempt}/5)..."
-            sleep "$delay"
-            ssh -o ConnectTimeout=20 -o ServerAliveInterval=5 -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
-            DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR }}"
-            cd "$DEPLOY_DIR" || exit 1
-            find . -type d -exec chmod 755 {} +
-            find . -type f -exec chmod 644 {} +
-            echo "Deployment completed successfully!"
-          ENDSSH
-            status=$?
-            if [ "$status" -eq 0 ]; then
-              echo "Remote permissions set on attempt ${attempt}."
-              exit 0
-            fi
-            echo "SSH permissions attempt ${attempt} failed with exit ${status}."
-            delay=$((delay * 2))
-          done
-          echo "SSH permissions failed after 5 attempts."
-          exit 1
+          bash scripts/websupport-push.sh \
+            "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" \
+            "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" \
+            "${{ secrets.WEBSUPPORT_DEPLOY_DIR }}"
 
       - name: Smoke test live site
         run: |
@@ -153,6 +89,7 @@ jobs:
           sleep 5
           fail=0
           for path in / /privacy/ /terms/ /security/ /robots.txt /sitemap.xml; do
+            sleep 2
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" -A "$UA" "https://arenibus.polascin.net${path}")
             echo "https://arenibus.polascin.net${path} HTTP $STATUS"
             if [ "$STATUS" != "200" ]; then
