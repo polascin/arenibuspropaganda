@@ -88,13 +88,29 @@ if ! ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "test -f '$DEPLOY_DIR/.htaccess'";
 fi
 
 echo "Setting permissions..."
-ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" DEPLOY_DIR="$DEPLOY_DIR" 'bash -s' <<'ENDSSH'
+# WebSupport may close the next SSH session immediately after a large scp
+# (exit 255, "Connection closed by … port 26650"). Wait, then retry.
+delay=5
+for attempt in 1 2 3 4 5; do
+    echo "Setting remote permissions (attempt ${attempt}/5)..."
+    sleep "$delay"
+    if ssh -o ConnectTimeout=20 -o ServerAliveInterval=5 -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" DEPLOY_DIR="$DEPLOY_DIR" 'bash -s' <<'ENDSSH'
 set -euo pipefail
 cd "$DEPLOY_DIR" || exit 1
 find . -type d -exec chmod 755 {} +
 find . -type f -exec chmod 644 {} +
 echo "Deployment completed successfully!"
 ENDSSH
+    then
+        break
+    fi
+    echo "SSH permissions attempt ${attempt} failed."
+    if [ "$attempt" -eq 5 ]; then
+        echo "SSH permissions failed after 5 attempts."
+        exit 1
+    fi
+    delay=$((delay * 2))
+done
 
 echo "Verifying live site..."
 UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'

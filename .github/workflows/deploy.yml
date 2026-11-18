@@ -122,13 +122,30 @@ jobs:
 
       - name: Set permissions
         run: |
-          ssh -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
+          # WebSupport may close the next SSH session immediately after a large
+          # scp (exit 255, "Connection closed by … port 26650"). Wait, then retry.
+          set +e
+          delay=5
+          for attempt in 1 2 3 4 5; do
+            echo "Setting remote permissions (attempt ${attempt}/5)..."
+            sleep "$delay"
+            ssh -o ConnectTimeout=20 -o ServerAliveInterval=5 -p "${{ secrets.WEBSUPPORT_SSH_PORT || '26650' }}" "${{ secrets.WEBSUPPORT_SSH_USER || 'uid58858' }}@${{ secrets.WEBSUPPORT_SSH_HOST || 'shell.r1.websupport.sk' }}" <<'ENDSSH'
             DEPLOY_DIR="${{ secrets.WEBSUPPORT_DEPLOY_DIR }}"
             cd "$DEPLOY_DIR" || exit 1
             find . -type d -exec chmod 755 {} +
             find . -type f -exec chmod 644 {} +
             echo "Deployment completed successfully!"
           ENDSSH
+            status=$?
+            if [ "$status" -eq 0 ]; then
+              echo "Remote permissions set on attempt ${attempt}."
+              exit 0
+            fi
+            echo "SSH permissions attempt ${attempt} failed with exit ${status}."
+            delay=$((delay * 2))
+          done
+          echo "SSH permissions failed after 5 attempts."
+          exit 1
 
       - name: Smoke test live site
         run: |
