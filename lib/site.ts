@@ -2,7 +2,7 @@
 export const SITE_ORIGIN = "https://arenibus.polascin.net";
 
 /** Live demo footer / bundle version shown on https://demo.arenibus.com/. */
-export const DEMO_VERSION = "v0.17.293";
+export const DEMO_VERSION = "v0.17.297";
 
 /** Same value without the leading `v`, for schema.org `softwareVersion`. */
 export const DEMO_VERSION_PLAIN = DEMO_VERSION.replace(/^v/, "");
