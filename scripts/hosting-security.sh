@@ -36,7 +36,7 @@ if [ ! -w "$target" ] || [ ! -w "$directory" ]; then
   mkdir -p -- "$directory"
   target="$directory/composer"
 fi
-if [ -e "$target" ] && ! php -r 'try { new Phar($argv[1]); } catch (Throwable $e) { exit(1); }' "$target"; then
+if [ -e "$target" ] && ! php -r 'try { Phar::loadPhar($argv[1]); } catch (Throwable $e) { exit(1); }' "$target"; then
   echo 'Composer executable is a wrapper rather than a PHAR; no installation changed.'
   exit 0
 fi
