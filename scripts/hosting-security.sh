@@ -3,7 +3,7 @@ set -euo pipefail
 umask 077
 
 # Run over the hosting account's existing authenticated SSH connection.
-# Update only a writable, existing Composer PHAR; never change shell profiles.
+# Preserve provider binaries; use an account-local override when needed.
 version=2.11.3
 printf 'PHP CLI: '
 if ! command -v php >/dev/null; then
@@ -28,11 +28,15 @@ if php -r 'exit(version_compare($argv[1], $argv[2], ">=") ? 0 : 1);' "$current" 
   echo 'Composer already meets the patched version; no downgrade performed.'
   exit 0
 fi
+local_install=0
 if [ ! -w "$target" ] || [ ! -w "$directory" ]; then
-  echo 'Composer is managed by the hosting provider or another account; update requires its administrator.'
-  exit 0
+  echo 'Provider Composer is read-only; installing a verified account-local override.'
+  local_install=1
+  directory="$HOME/.local/bin"
+  mkdir -p -- "$directory"
+  target="$directory/composer"
 fi
-if ! php -r 'try { new Phar($argv[1]); } catch (Throwable $e) { exit(1); }' "$target"; then
+if [ -e "$target" ] && ! php -r 'try { new Phar($argv[1]); } catch (Throwable $e) { exit(1); }' "$target"; then
   echo 'Composer executable is a wrapper rather than a PHAR; no installation changed.'
   exit 0
 fi
@@ -57,12 +61,37 @@ php "$temporary/composer.phar" --no-plugins --no-scripts --version >/dev/null
 backup_dir="$HOME/.cache/composer-security-backups"
 mkdir -p -- "$backup_dir"
 chmod 700 -- "$backup_dir"
-backup=$(mktemp "$backup_dir/composer-before-$current.XXXXXXXX.phar")
-cp -p -- "$target" "$backup"
+if [ -f "$target" ]; then
+  backup=$(mktemp "$backup_dir/composer-before-$current.XXXXXXXX.phar")
+  cp -p -- "$target" "$backup"
+fi
 staged=$(mktemp "$directory/.composer-security.XXXXXXXX")
 cp -- "$temporary/composer.phar" "$staged"
-chmod --reference="$target" "$staged"
+if [ -f "$target" ]; then chmod --reference="$target" "$staged"; else chmod 755 "$staged"; fi
 mv -f -- "$staged" "$target"
 staged=''
 php "$target" --no-plugins --no-scripts --version
-echo 'Composer updated atomically; previous PHAR retained in the private account backup directory.'
+if [ "$local_install" -eq 1 ]; then
+  profile="$HOME/.profile"
+  if [ -f "$HOME/.bash_profile" ]; then profile="$HOME/.bash_profile";
+  elif [ -f "$HOME/.bash_login" ]; then profile="$HOME/.bash_login"; fi
+  if [ -e "$profile" ] && [ ! -w "$profile" ]; then
+    echo 'Account-local Composer updated; login profile is read-only, so default PATH remains unchanged.'
+    exit 0
+  fi
+  if ! grep -Fq '# Composer security account-local override' "$profile" 2>/dev/null; then
+    if [ -f "$profile" ]; then
+      profile_backup=$(mktemp "$backup_dir/login-profile.XXXXXXXX")
+      cp -p -- "$profile" "$profile_backup"
+    fi
+    printf '\n# Composer security account-local override\nexport PATH="$HOME/.local/bin:$PATH"\n' >> "$profile"
+  fi
+  selected=$(bash -lc 'command -v composer' 2>/dev/null)
+  if [ "$selected" = "$target" ]; then
+    echo 'Verified: new login shells select the patched account-local Composer.'
+  else
+    echo 'Account-local Composer updated; the hosting login configuration still selects another executable.'
+  fi
+else
+  echo 'Composer updated atomically; previous PHAR retained in the private account backup directory.'
+fi
