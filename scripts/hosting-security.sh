@@ -21,6 +21,13 @@ if [ -z "$target" ] || [ ! -f "$target" ]; then
 fi
 target=$(readlink -f -- "$target")
 directory=$(dirname -- "$target")
+current=$(php "$target" --no-plugins --no-scripts --version 2>/dev/null | sed -n 's/^Composer version \([^ ]*\).*/\1/p')
+if [ -z "$current" ]; then echo 'Cannot verify installed Composer version; no installation changed.'; exit 1; fi
+printf 'Composer before: %s\n' "$current"
+if php -r 'exit(version_compare($argv[1], $argv[2], ">=") ? 0 : 1);' "$current" "$version"; then
+  echo 'Composer already meets the patched version; no downgrade performed.'
+  exit 0
+fi
 if [ ! -w "$target" ] || [ ! -w "$directory" ]; then
   echo 'Composer is managed by the hosting provider or another account; update requires its administrator.'
   exit 0
@@ -47,14 +54,6 @@ if [[ ! "$expected" =~ ^[0-9a-fA-F]{64}$ ]]; then
 fi
 printf '%s  %s\n' "$expected" "$temporary/composer.phar" | sha256sum --check --status
 php "$temporary/composer.phar" --no-plugins --no-scripts --version >/dev/null
-current=$(php "$target" --no-plugins --no-scripts --version 2>/dev/null | sed -n 's/^Composer version \([^ ]*\).*/\1/p')
-if [ -z "$current" ]; then echo 'Cannot verify installed Composer version; no installation changed.'; exit 1; fi
-printf 'Composer before: %s\n' "$current"
-if php -r 'exit(version_compare($argv[1], $argv[2], ">=") ? 0 : 1);' "$current" "$version"; then
-  echo 'Composer already meets the patched version; no downgrade performed.'
-  exit 0
-fi
-
 backup_dir="$HOME/.cache/composer-security-backups"
 mkdir -p -- "$backup_dir"
 chmod 700 -- "$backup_dir"
