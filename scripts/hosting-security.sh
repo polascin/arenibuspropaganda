@@ -40,6 +40,14 @@ if [ -e "$target" ] && ! php -r 'try { new Phar($argv[1]); } catch (Throwable $e
   echo 'Composer executable is a wrapper rather than a PHAR; no installation changed.'
   exit 0
 fi
+if [ "$local_install" -eq 1 ] && [ -f "$target" ]; then
+  local_version=$(php "$target" --no-plugins --no-scripts --version 2>/dev/null | sed -n 's/^Composer version \([^ ]*\).*/\1/p')
+  if [ -z "$local_version" ]; then echo 'Cannot verify account-local Composer; no installation changed.'; exit 1; fi
+  if php -r 'exit(version_compare($argv[1], $argv[2], ">=") ? 0 : 1);' "$local_version" "$version"; then
+    printf 'Account-local Composer already meets the patched version: %s; no downgrade performed.\n' "$local_version"
+    exit 0
+  fi
+fi
 if ! command -v curl >/dev/null || ! command -v sha256sum >/dev/null; then
   echo 'Verified download needs curl and sha256sum; no installation changed.'
   exit 0
